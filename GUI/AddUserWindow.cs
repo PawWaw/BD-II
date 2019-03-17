@@ -15,7 +15,6 @@ namespace GUI
         public AddUserWindow()
         {
             InitializeComponent();
-            FunctionCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
