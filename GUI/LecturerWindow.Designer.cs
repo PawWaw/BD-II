@@ -123,6 +123,7 @@
             this.CourseCombobox.Name = "CourseCombobox";
             this.CourseCombobox.Size = new System.Drawing.Size(120, 24);
             this.CourseCombobox.TabIndex = 7;
+            this.CourseCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SectionStatusButton
             // 
@@ -144,6 +145,7 @@
             this.StatusCombobox.Name = "StatusCombobox";
             this.StatusCombobox.Size = new System.Drawing.Size(121, 24);
             this.StatusCombobox.TabIndex = 9;
+            this.StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SecNameCombobox
             // 
@@ -152,6 +154,7 @@
             this.SecNameCombobox.Name = "SecNameCombobox";
             this.SecNameCombobox.Size = new System.Drawing.Size(121, 24);
             this.SecNameCombobox.TabIndex = 10;
+            this.SecNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SectionCombobox
             // 
@@ -161,6 +164,7 @@
             this.SectionCombobox.Size = new System.Drawing.Size(94, 17);
             this.SectionCombobox.TabIndex = 11;
             this.SectionCombobox.Text = "Section name";
+
             // 
             // StatusLabel
             // 
@@ -205,6 +209,8 @@
             this.SectionNameCombobox.Name = "SectionNameCombobox";
             this.SectionNameCombobox.Size = new System.Drawing.Size(120, 24);
             this.SectionNameCombobox.TabIndex = 16;
+            this.SectionNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+
             // 
             // StudentCombobox
             // 
@@ -213,6 +219,7 @@
             this.StudentCombobox.Name = "StudentCombobox";
             this.StudentCombobox.Size = new System.Drawing.Size(120, 24);
             this.StudentCombobox.TabIndex = 17;
+            this.StudentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // MarkCombobox
             // 
@@ -229,6 +236,9 @@
             this.MarkCombobox.Name = "MarkCombobox";
             this.MarkCombobox.Size = new System.Drawing.Size(120, 24);
             this.MarkCombobox.TabIndex = 18;
+            this.MarkCombobox.SelectedIndex = 0;
+            this.MarkCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+
             // 
             // FileLabel
             // 
@@ -264,6 +274,7 @@
             this.TopicCombobox.Name = "TopicCombobox";
             this.TopicCombobox.Size = new System.Drawing.Size(120, 24);
             this.TopicCombobox.TabIndex = 22;
+            this.TopicCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // TopicNameLabel
             // 

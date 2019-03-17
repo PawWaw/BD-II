@@ -56,6 +56,7 @@
             this.SignedUpCombobox.Name = "SignedUpCombobox";
             this.SignedUpCombobox.Size = new System.Drawing.Size(120, 24);
             this.SignedUpCombobox.TabIndex = 1;
+            this.SignedUpCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SignUpLabel
             // 
@@ -89,6 +90,7 @@
             this.LeaveCombobox.Name = "LeaveCombobox";
             this.LeaveCombobox.Size = new System.Drawing.Size(120, 24);
             this.LeaveCombobox.TabIndex = 5;
+            this.LeaveCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // AddFileButton
             // 
@@ -102,7 +104,9 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = false;
+            this.openFileDialog1.FileName = "";
+            this.openFileDialog1.Filter = "PDF Files (*.pdf) | *.pdf";
             // 
             // FilenameLabel
             // 

@@ -15,14 +15,6 @@ namespace GUI
         public LecturerWindow()
         {
             InitializeComponent();
-            MarkCombobox.SelectedIndex = 0;
-            CourseCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            TopicCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            SectionNameCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            SectionNameCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            StudentCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            MarkCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
