@@ -228,6 +228,8 @@
             this.MarkCombobox.Location = new System.Drawing.Point(530, 160);
             this.MarkCombobox.Name = "MarkCombobox";
             this.MarkCombobox.Size = new System.Drawing.Size(120, 24);
+            this.MarkCombobox.SelectedIndex = 2;
+            this.MarkCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MarkCombobox.TabIndex = 18;
             // 
             // FileLabel
