@@ -16,15 +16,17 @@ namespace GUI
         public StudentWindow()
         {
             InitializeComponent();
-        }
-
-        private void AddFileButton_Click(object sender, EventArgs e)
-        {
             openFileDialog1.Multiselect = false;
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "PDF Files (*.pdf) | *.pdf";
+            SignedUpCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            LeaveCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void AddFileButton_Click(object sender, EventArgs e)
+        {           
             openFileDialog1.ShowDialog();
-            FilenameLabel.Text = openFileDialog1.SafeFileName;
+            FilenameLabel.Text = openFileDialog1.FileName;
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

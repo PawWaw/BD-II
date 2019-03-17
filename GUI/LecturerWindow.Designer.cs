@@ -35,12 +35,12 @@
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.SectionTextbox1 = new System.Windows.Forms.TextBox();
             this.QuantityTextbox = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CourseCombobox = new System.Windows.Forms.ComboBox();
             this.SectionStatusButton = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.StatusCombobox = new System.Windows.Forms.ComboBox();
+            this.SecNameCombobox = new System.Windows.Forms.ComboBox();
             this.SectionCombobox = new System.Windows.Forms.Label();
-            this.StatusCombobox = new System.Windows.Forms.Label();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.SectionNameLabel2 = new System.Windows.Forms.Label();
             this.StudentNameLabel = new System.Windows.Forms.Label();
             this.MarkLabel = new System.Windows.Forms.Label();
@@ -116,13 +116,13 @@
             this.QuantityTextbox.Size = new System.Drawing.Size(120, 22);
             this.QuantityTextbox.TabIndex = 6;
             // 
-            // comboBox1
+            // CourseCombobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 24);
-            this.comboBox1.TabIndex = 7;
+            this.CourseCombobox.FormattingEnabled = true;
+            this.CourseCombobox.Location = new System.Drawing.Point(130, 40);
+            this.CourseCombobox.Name = "CourseCombobox";
+            this.CourseCombobox.Size = new System.Drawing.Size(120, 24);
+            this.CourseCombobox.TabIndex = 7;
             // 
             // SectionStatusButton
             // 
@@ -133,25 +133,25 @@
             this.SectionStatusButton.Text = "Set status";
             this.SectionStatusButton.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // StatusCombobox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.StatusCombobox.FormattingEnabled = true;
+            this.StatusCombobox.Items.AddRange(new object[] {
             "Open",
             "Closed",
             "Final"});
-            this.comboBox2.Location = new System.Drawing.Point(130, 290);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 9;
+            this.StatusCombobox.Location = new System.Drawing.Point(130, 290);
+            this.StatusCombobox.Name = "StatusCombobox";
+            this.StatusCombobox.Size = new System.Drawing.Size(121, 24);
+            this.StatusCombobox.TabIndex = 9;
             // 
-            // comboBox3
+            // SecNameCombobox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(130, 250);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 10;
+            this.SecNameCombobox.FormattingEnabled = true;
+            this.SecNameCombobox.Location = new System.Drawing.Point(130, 250);
+            this.SecNameCombobox.Name = "SecNameCombobox";
+            this.SecNameCombobox.Size = new System.Drawing.Size(121, 24);
+            this.SecNameCombobox.TabIndex = 10;
             // 
             // SectionCombobox
             // 
@@ -162,14 +162,14 @@
             this.SectionCombobox.TabIndex = 11;
             this.SectionCombobox.Text = "Section name";
             // 
-            // StatusCombobox
+            // StatusLabel
             // 
-            this.StatusCombobox.AutoSize = true;
-            this.StatusCombobox.Location = new System.Drawing.Point(30, 290);
-            this.StatusCombobox.Name = "StatusCombobox";
-            this.StatusCombobox.Size = new System.Drawing.Size(48, 17);
-            this.StatusCombobox.TabIndex = 12;
-            this.StatusCombobox.Text = "Status";
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Location = new System.Drawing.Point(30, 290);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(48, 17);
+            this.StatusLabel.TabIndex = 12;
+            this.StatusLabel.Text = "Status";
             // 
             // SectionNameLabel2
             // 
@@ -228,8 +228,6 @@
             this.MarkCombobox.Location = new System.Drawing.Point(530, 160);
             this.MarkCombobox.Name = "MarkCombobox";
             this.MarkCombobox.Size = new System.Drawing.Size(120, 24);
-            this.MarkCombobox.SelectedIndex = 2;
-            this.MarkCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MarkCombobox.TabIndex = 18;
             // 
             // FileLabel
@@ -300,8 +298,8 @@
             // 
             // LecturerWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(682, 473);
             this.Controls.Add(this.TopicInfoLabel);
             this.Controls.Add(this.InfoRichTextbox);
@@ -317,12 +315,12 @@
             this.Controls.Add(this.MarkLabel);
             this.Controls.Add(this.StudentNameLabel);
             this.Controls.Add(this.SectionNameLabel2);
-            this.Controls.Add(this.StatusCombobox);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.SectionCombobox);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.SecNameCombobox);
+            this.Controls.Add(this.StatusCombobox);
             this.Controls.Add(this.SectionStatusButton);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CourseCombobox);
             this.Controls.Add(this.QuantityTextbox);
             this.Controls.Add(this.SectionTextbox1);
             this.Controls.Add(this.QuantityLabel);
@@ -348,12 +346,12 @@
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.TextBox SectionTextbox1;
         private System.Windows.Forms.TextBox QuantityTextbox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CourseCombobox;
         private System.Windows.Forms.Button SectionStatusButton;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox StatusCombobox;
+        private System.Windows.Forms.ComboBox SecNameCombobox;
         private System.Windows.Forms.Label SectionCombobox;
-        private System.Windows.Forms.Label StatusCombobox;
+        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Label SectionNameLabel2;
         private System.Windows.Forms.Label StudentNameLabel;
         private System.Windows.Forms.Label MarkLabel;

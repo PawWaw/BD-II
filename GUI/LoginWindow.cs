@@ -17,7 +17,7 @@ namespace GUI
             InitializeComponent();
         }
 
-        string accountType = "lecturer";
+        string accountType = "admin";
 
         private void Form1_Load(object sender, EventArgs e)
         {

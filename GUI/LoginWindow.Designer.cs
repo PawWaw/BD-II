@@ -30,7 +30,7 @@
         {
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PswdTextBox = new System.Windows.Forms.TextBox();
-            this.InfoLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
@@ -51,14 +51,14 @@
             this.PswdTextBox.Size = new System.Drawing.Size(100, 22);
             this.PswdTextBox.TabIndex = 1;
             // 
-            // InfoLabel
+            // label1
             // 
-            this.InfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.InfoLabel.Location = new System.Drawing.Point(120, 60);
-            this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(60, 20);
-            this.InfoLabel.TabIndex = 2;
-            this.InfoLabel.Text = "Sign In";
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(120, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Sign In";
             // 
             // LoginButton
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.InfoLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.PswdTextBox);
             this.Controls.Add(this.LoginTextBox);
             this.MaximizeBox = false;
@@ -113,7 +113,7 @@
 
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.TextBox PswdTextBox;
-        private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label PasswordLabel;
