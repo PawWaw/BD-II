@@ -33,18 +33,8 @@
             this.PswdLabel = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.SectionTextbox = new System.Windows.Forms.TextBox();
-            this.GroupTextbox = new System.Windows.Forms.TextBox();
-            this.YearTextbox = new System.Windows.Forms.TextBox();
-            this.CourseTextbox = new System.Windows.Forms.TextBox();
-            this.SurnameTextbox = new System.Windows.Forms.TextBox();
-            this.NameTextbox = new System.Windows.Forms.TextBox();
             this.AlbumTextbox = new System.Windows.Forms.TextBox();
             this.Section = new System.Windows.Forms.Label();
-            this.Group = new System.Windows.Forms.Label();
-            this.Year = new System.Windows.Forms.Label();
-            this.Course = new System.Windows.Forms.Label();
-            this.Surname = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
             this.AlbumLabel = new System.Windows.Forms.Label();
             this.AddUserButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
@@ -52,7 +42,7 @@
             // 
             // PswdTextbox
             // 
-            this.PswdTextbox.Location = new System.Drawing.Point(200, 450);
+            this.PswdTextbox.Location = new System.Drawing.Point(200, 200);
             this.PswdTextbox.Name = "PswdTextbox";
             this.PswdTextbox.PasswordChar = '*';
             this.PswdTextbox.Size = new System.Drawing.Size(100, 22);
@@ -60,14 +50,14 @@
             // 
             // LoginTextbox
             // 
-            this.LoginTextbox.Location = new System.Drawing.Point(200, 400);
+            this.LoginTextbox.Location = new System.Drawing.Point(200, 150);
             this.LoginTextbox.Name = "LoginTextbox";
             this.LoginTextbox.Size = new System.Drawing.Size(100, 22);
             this.LoginTextbox.TabIndex = 42;
             // 
             // PswdLabel
             // 
-            this.PswdLabel.Location = new System.Drawing.Point(50, 450);
+            this.PswdLabel.Location = new System.Drawing.Point(50, 200);
             this.PswdLabel.Name = "PswdLabel";
             this.PswdLabel.Size = new System.Drawing.Size(100, 22);
             this.PswdLabel.TabIndex = 41;
@@ -75,7 +65,7 @@
             // 
             // LoginLabel
             // 
-            this.LoginLabel.Location = new System.Drawing.Point(50, 400);
+            this.LoginLabel.Location = new System.Drawing.Point(50, 150);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(100, 22);
             this.LoginLabel.TabIndex = 40;
@@ -83,45 +73,10 @@
             // 
             // SectionTextbox
             // 
-            this.SectionTextbox.Location = new System.Drawing.Point(200, 350);
+            this.SectionTextbox.Location = new System.Drawing.Point(200, 100);
             this.SectionTextbox.Name = "SectionTextbox";
             this.SectionTextbox.Size = new System.Drawing.Size(100, 22);
             this.SectionTextbox.TabIndex = 37;
-            // 
-            // GroupTextbox
-            // 
-            this.GroupTextbox.Location = new System.Drawing.Point(200, 300);
-            this.GroupTextbox.Name = "GroupTextbox";
-            this.GroupTextbox.Size = new System.Drawing.Size(100, 22);
-            this.GroupTextbox.TabIndex = 36;
-            // 
-            // YearTextbox
-            // 
-            this.YearTextbox.Location = new System.Drawing.Point(200, 250);
-            this.YearTextbox.Name = "YearTextbox";
-            this.YearTextbox.Size = new System.Drawing.Size(100, 22);
-            this.YearTextbox.TabIndex = 35;
-            // 
-            // CourseTextbox
-            // 
-            this.CourseTextbox.Location = new System.Drawing.Point(200, 200);
-            this.CourseTextbox.Name = "CourseTextbox";
-            this.CourseTextbox.Size = new System.Drawing.Size(100, 22);
-            this.CourseTextbox.TabIndex = 34;
-            // 
-            // SurnameTextbox
-            // 
-            this.SurnameTextbox.Location = new System.Drawing.Point(200, 150);
-            this.SurnameTextbox.Name = "SurnameTextbox";
-            this.SurnameTextbox.Size = new System.Drawing.Size(100, 22);
-            this.SurnameTextbox.TabIndex = 33;
-            // 
-            // NameTextbox
-            // 
-            this.NameTextbox.Location = new System.Drawing.Point(200, 100);
-            this.NameTextbox.Name = "NameTextbox";
-            this.NameTextbox.Size = new System.Drawing.Size(100, 22);
-            this.NameTextbox.TabIndex = 32;
             // 
             // AlbumTextbox
             // 
@@ -132,51 +87,11 @@
             // 
             // Section
             // 
-            this.Section.Location = new System.Drawing.Point(50, 350);
+            this.Section.Location = new System.Drawing.Point(50, 100);
             this.Section.Name = "Section";
             this.Section.Size = new System.Drawing.Size(100, 22);
             this.Section.TabIndex = 30;
             this.Section.Text = "Section";
-            // 
-            // Group
-            // 
-            this.Group.Location = new System.Drawing.Point(50, 300);
-            this.Group.Name = "Group";
-            this.Group.Size = new System.Drawing.Size(100, 22);
-            this.Group.TabIndex = 29;
-            this.Group.Text = "Group";
-            // 
-            // Year
-            // 
-            this.Year.Location = new System.Drawing.Point(50, 250);
-            this.Year.Name = "Year";
-            this.Year.Size = new System.Drawing.Size(100, 22);
-            this.Year.TabIndex = 28;
-            this.Year.Text = "Year";
-            // 
-            // Course
-            // 
-            this.Course.Location = new System.Drawing.Point(50, 200);
-            this.Course.Name = "Course";
-            this.Course.Size = new System.Drawing.Size(100, 22);
-            this.Course.TabIndex = 27;
-            this.Course.Text = "Course";
-            // 
-            // Surname
-            // 
-            this.Surname.Location = new System.Drawing.Point(50, 150);
-            this.Surname.Name = "Surname";
-            this.Surname.Size = new System.Drawing.Size(100, 22);
-            this.Surname.TabIndex = 26;
-            this.Surname.Text = "Surname";
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.Location = new System.Drawing.Point(50, 100);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(100, 22);
-            this.NameLabel.TabIndex = 25;
-            this.NameLabel.Text = "Name";
             // 
             // AlbumLabel
             // 
@@ -188,16 +103,16 @@
             // 
             // AddUserButton
             // 
-            this.AddUserButton.Location = new System.Drawing.Point(50, 500);
+            this.AddUserButton.Location = new System.Drawing.Point(50, 250);
             this.AddUserButton.Name = "AddUserButton";
             this.AddUserButton.Size = new System.Drawing.Size(100, 30);
             this.AddUserButton.TabIndex = 23;
-            this.AddUserButton.Text = "Add User";
+            this.AddUserButton.Text = "Change Data";
             this.AddUserButton.UseVisualStyleBackColor = true;
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(200, 500);
+            this.CloseButton.Location = new System.Drawing.Point(200, 250);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 30);
             this.CloseButton.TabIndex = 22;
@@ -209,29 +124,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 573);
+            this.ClientSize = new System.Drawing.Size(332, 323);
             this.Controls.Add(this.PswdTextbox);
             this.Controls.Add(this.LoginTextbox);
             this.Controls.Add(this.PswdLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.SectionTextbox);
-            this.Controls.Add(this.GroupTextbox);
-            this.Controls.Add(this.YearTextbox);
-            this.Controls.Add(this.CourseTextbox);
-            this.Controls.Add(this.SurnameTextbox);
-            this.Controls.Add(this.NameTextbox);
             this.Controls.Add(this.AlbumTextbox);
             this.Controls.Add(this.Section);
-            this.Controls.Add(this.Group);
-            this.Controls.Add(this.Year);
-            this.Controls.Add(this.Course);
-            this.Controls.Add(this.Surname);
-            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.AlbumLabel);
             this.Controls.Add(this.AddUserButton);
             this.Controls.Add(this.CloseButton);
-            this.MaximumSize = new System.Drawing.Size(350, 620);
-            this.MinimumSize = new System.Drawing.Size(350, 620);
+            this.MaximumSize = new System.Drawing.Size(350, 370);
+            this.MinimumSize = new System.Drawing.Size(350, 370);
             this.Name = "PersonalDataWindow";
             this.Text = "PersonalDataWindow";
             this.ResumeLayout(false);
@@ -246,18 +151,8 @@
         private System.Windows.Forms.Label PswdLabel;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.TextBox SectionTextbox;
-        private System.Windows.Forms.TextBox GroupTextbox;
-        private System.Windows.Forms.TextBox YearTextbox;
-        private System.Windows.Forms.TextBox CourseTextbox;
-        private System.Windows.Forms.TextBox SurnameTextbox;
-        private System.Windows.Forms.TextBox NameTextbox;
         private System.Windows.Forms.TextBox AlbumTextbox;
         private System.Windows.Forms.Label Section;
-        private System.Windows.Forms.Label Group;
-        private System.Windows.Forms.Label Year;
-        private System.Windows.Forms.Label Course;
-        private System.Windows.Forms.Label Surname;
-        private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label AlbumLabel;
         private System.Windows.Forms.Button AddUserButton;
         private System.Windows.Forms.Button CloseButton;

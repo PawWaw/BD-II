@@ -20,6 +20,9 @@ namespace GUI
 
         private void AddFileButton_Click(object sender, EventArgs e)
         {
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.FileName = "";
+            openFileDialog1.Filter = "PDF Files (*.pdf) | *.pdf";
             openFileDialog1.ShowDialog();
             FilenameLabel.Text = openFileDialog1.FileName;
         }

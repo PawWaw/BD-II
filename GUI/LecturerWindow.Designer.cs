@@ -49,11 +49,17 @@
             this.MarkCombobox = new System.Windows.Forms.ComboBox();
             this.FileLabel = new System.Windows.Forms.Label();
             this.LogoutButton = new System.Windows.Forms.Button();
+            this.TopicLabel = new System.Windows.Forms.Label();
+            this.TopicCombobox = new System.Windows.Forms.ComboBox();
+            this.TopicNameLabel = new System.Windows.Forms.Label();
+            this.TopicTextbox = new System.Windows.Forms.TextBox();
+            this.InfoRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.TopicInfoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NewSectionButton
             // 
-            this.NewSectionButton.Location = new System.Drawing.Point(130, 160);
+            this.NewSectionButton.Location = new System.Drawing.Point(130, 200);
             this.NewSectionButton.Name = "NewSectionButton";
             this.NewSectionButton.Size = new System.Drawing.Size(100, 30);
             this.NewSectionButton.TabIndex = 0;
@@ -235,7 +241,7 @@
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Location = new System.Drawing.Point(530, 330);
+            this.LogoutButton.Location = new System.Drawing.Point(530, 420);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(100, 30);
             this.LogoutButton.TabIndex = 20;
@@ -243,11 +249,64 @@
             this.LogoutButton.UseVisualStyleBackColor = true;
             this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
+            // TopicLabel
+            // 
+            this.TopicLabel.Location = new System.Drawing.Point(33, 159);
+            this.TopicLabel.Name = "TopicLabel";
+            this.TopicLabel.Size = new System.Drawing.Size(100, 23);
+            this.TopicLabel.TabIndex = 21;
+            this.TopicLabel.Text = "Topic";
+            // 
+            // TopicCombobox
+            // 
+            this.TopicCombobox.FormattingEnabled = true;
+            this.TopicCombobox.Location = new System.Drawing.Point(130, 160);
+            this.TopicCombobox.Name = "TopicCombobox";
+            this.TopicCombobox.Size = new System.Drawing.Size(120, 24);
+            this.TopicCombobox.TabIndex = 22;
+            // 
+            // TopicNameLabel
+            // 
+            this.TopicNameLabel.Location = new System.Drawing.Point(420, 250);
+            this.TopicNameLabel.Name = "TopicNameLabel";
+            this.TopicNameLabel.Size = new System.Drawing.Size(100, 23);
+            this.TopicNameLabel.TabIndex = 23;
+            this.TopicNameLabel.Text = "Topic name";
+            // 
+            // TopicTextbox
+            // 
+            this.TopicTextbox.Location = new System.Drawing.Point(530, 250);
+            this.TopicTextbox.Name = "TopicTextbox";
+            this.TopicTextbox.Size = new System.Drawing.Size(100, 22);
+            this.TopicTextbox.TabIndex = 24;
+            // 
+            // InfoRichTextbox
+            // 
+            this.InfoRichTextbox.Location = new System.Drawing.Point(530, 300);
+            this.InfoRichTextbox.Name = "InfoRichTextbox";
+            this.InfoRichTextbox.Size = new System.Drawing.Size(100, 100);
+            this.InfoRichTextbox.TabIndex = 25;
+            this.InfoRichTextbox.Text = "";
+            // 
+            // TopicInfoLabel
+            // 
+            this.TopicInfoLabel.Location = new System.Drawing.Point(420, 300);
+            this.TopicInfoLabel.Name = "TopicInfoLabel";
+            this.TopicInfoLabel.Size = new System.Drawing.Size(100, 23);
+            this.TopicInfoLabel.TabIndex = 26;
+            this.TopicInfoLabel.Text = "Information";
+            // 
             // LecturerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 453);
+            this.ClientSize = new System.Drawing.Size(682, 473);
+            this.Controls.Add(this.TopicInfoLabel);
+            this.Controls.Add(this.InfoRichTextbox);
+            this.Controls.Add(this.TopicTextbox);
+            this.Controls.Add(this.TopicNameLabel);
+            this.Controls.Add(this.TopicCombobox);
+            this.Controls.Add(this.TopicLabel);
             this.Controls.Add(this.LogoutButton);
             this.Controls.Add(this.FileLabel);
             this.Controls.Add(this.MarkCombobox);
@@ -269,8 +328,8 @@
             this.Controls.Add(this.CourseLabel);
             this.Controls.Add(this.AddMarkButton);
             this.Controls.Add(this.NewSectionButton);
-            this.MaximumSize = new System.Drawing.Size(700, 500);
-            this.MinimumSize = new System.Drawing.Size(700, 500);
+            this.MaximumSize = new System.Drawing.Size(700, 520);
+            this.MinimumSize = new System.Drawing.Size(700, 520);
             this.Name = "LecturerWindow";
             this.Text = "Lecturer On-Line";
             this.ResumeLayout(false);
@@ -301,5 +360,11 @@
         private System.Windows.Forms.ComboBox MarkCombobox;
         private System.Windows.Forms.Label FileLabel;
         private System.Windows.Forms.Button LogoutButton;
+        private System.Windows.Forms.Label TopicLabel;
+        private System.Windows.Forms.ComboBox TopicCombobox;
+        private System.Windows.Forms.Label TopicNameLabel;
+        private System.Windows.Forms.TextBox TopicTextbox;
+        private System.Windows.Forms.RichTextBox InfoRichTextbox;
+        private System.Windows.Forms.Label TopicInfoLabel;
     }
 }
