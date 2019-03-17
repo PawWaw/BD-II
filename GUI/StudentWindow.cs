@@ -24,7 +24,7 @@ namespace GUI
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "PDF Files (*.pdf) | *.pdf";
             openFileDialog1.ShowDialog();
-            FilenameLabel.Text = openFileDialog1.FileName;
+            FilenameLabel.Text = openFileDialog1.SafeFileName;
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

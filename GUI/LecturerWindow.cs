@@ -15,6 +15,8 @@ namespace GUI
         public LecturerWindow()
         {
             InitializeComponent();
+            MarkCombobox.SelectedIndex = 0;
+            
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
