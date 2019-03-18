@@ -55,6 +55,7 @@
             this.TopicTextbox = new System.Windows.Forms.TextBox();
             this.InfoRichTextbox = new System.Windows.Forms.RichTextBox();
             this.TopicInfoLabel = new System.Windows.Forms.Label();
+            this.TopicButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewSectionButton
@@ -118,12 +119,12 @@
             // 
             // CourseCombobox
             // 
+            this.CourseCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CourseCombobox.FormattingEnabled = true;
             this.CourseCombobox.Location = new System.Drawing.Point(130, 40);
             this.CourseCombobox.Name = "CourseCombobox";
             this.CourseCombobox.Size = new System.Drawing.Size(120, 24);
             this.CourseCombobox.TabIndex = 7;
-            this.CourseCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SectionStatusButton
             // 
@@ -136,6 +137,7 @@
             // 
             // StatusCombobox
             // 
+            this.StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatusCombobox.FormattingEnabled = true;
             this.StatusCombobox.Items.AddRange(new object[] {
             "Open",
@@ -145,16 +147,15 @@
             this.StatusCombobox.Name = "StatusCombobox";
             this.StatusCombobox.Size = new System.Drawing.Size(121, 24);
             this.StatusCombobox.TabIndex = 9;
-            this.StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SecNameCombobox
             // 
+            this.SecNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SecNameCombobox.FormattingEnabled = true;
             this.SecNameCombobox.Location = new System.Drawing.Point(130, 250);
             this.SecNameCombobox.Name = "SecNameCombobox";
             this.SecNameCombobox.Size = new System.Drawing.Size(121, 24);
             this.SecNameCombobox.TabIndex = 10;
-            this.SecNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // SectionCombobox
             // 
@@ -164,7 +165,6 @@
             this.SectionCombobox.Size = new System.Drawing.Size(94, 17);
             this.SectionCombobox.TabIndex = 11;
             this.SectionCombobox.Text = "Section name";
-
             // 
             // StatusLabel
             // 
@@ -204,25 +204,25 @@
             // 
             // SectionNameCombobox
             // 
+            this.SectionNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SectionNameCombobox.FormattingEnabled = true;
             this.SectionNameCombobox.Location = new System.Drawing.Point(530, 40);
             this.SectionNameCombobox.Name = "SectionNameCombobox";
             this.SectionNameCombobox.Size = new System.Drawing.Size(120, 24);
             this.SectionNameCombobox.TabIndex = 16;
-            this.SectionNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-
             // 
             // StudentCombobox
             // 
+            this.StudentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StudentCombobox.FormattingEnabled = true;
             this.StudentCombobox.Location = new System.Drawing.Point(530, 80);
             this.StudentCombobox.Name = "StudentCombobox";
             this.StudentCombobox.Size = new System.Drawing.Size(120, 24);
             this.StudentCombobox.TabIndex = 17;
-            this.StudentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // MarkCombobox
             // 
+            this.MarkCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MarkCombobox.FormattingEnabled = true;
             this.MarkCombobox.Items.AddRange(new object[] {
             "2",
@@ -236,9 +236,6 @@
             this.MarkCombobox.Name = "MarkCombobox";
             this.MarkCombobox.Size = new System.Drawing.Size(120, 24);
             this.MarkCombobox.TabIndex = 18;
-            this.MarkCombobox.SelectedIndex = 0;
-            this.MarkCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-
             // 
             // FileLabel
             // 
@@ -251,7 +248,7 @@
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Location = new System.Drawing.Point(530, 420);
+            this.LogoutButton.Location = new System.Drawing.Point(530, 470);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(100, 30);
             this.LogoutButton.TabIndex = 20;
@@ -269,12 +266,12 @@
             // 
             // TopicCombobox
             // 
+            this.TopicCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TopicCombobox.FormattingEnabled = true;
             this.TopicCombobox.Location = new System.Drawing.Point(130, 160);
             this.TopicCombobox.Name = "TopicCombobox";
             this.TopicCombobox.Size = new System.Drawing.Size(120, 24);
             this.TopicCombobox.TabIndex = 22;
-            this.TopicCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // TopicNameLabel
             // 
@@ -307,11 +304,21 @@
             this.TopicInfoLabel.TabIndex = 26;
             this.TopicInfoLabel.Text = "Information";
             // 
+            // TopicButton
+            // 
+            this.TopicButton.Location = new System.Drawing.Point(530, 420);
+            this.TopicButton.Name = "TopicButton";
+            this.TopicButton.Size = new System.Drawing.Size(100, 30);
+            this.TopicButton.TabIndex = 27;
+            this.TopicButton.Text = "Add Topic";
+            this.TopicButton.UseVisualStyleBackColor = true;
+            // 
             // LecturerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(682, 473);
+            this.ClientSize = new System.Drawing.Size(682, 523);
+            this.Controls.Add(this.TopicButton);
             this.Controls.Add(this.TopicInfoLabel);
             this.Controls.Add(this.InfoRichTextbox);
             this.Controls.Add(this.TopicTextbox);
@@ -339,8 +346,8 @@
             this.Controls.Add(this.CourseLabel);
             this.Controls.Add(this.AddMarkButton);
             this.Controls.Add(this.NewSectionButton);
-            this.MaximumSize = new System.Drawing.Size(700, 520);
-            this.MinimumSize = new System.Drawing.Size(700, 520);
+            this.MaximumSize = new System.Drawing.Size(700, 570);
+            this.MinimumSize = new System.Drawing.Size(700, 570);
             this.Name = "LecturerWindow";
             this.Text = "Lecturer On-Line";
             this.ResumeLayout(false);
@@ -377,5 +384,6 @@
         private System.Windows.Forms.TextBox TopicTextbox;
         private System.Windows.Forms.RichTextBox InfoRichTextbox;
         private System.Windows.Forms.Label TopicInfoLabel;
+        private System.Windows.Forms.Button TopicButton;
     }
 }

@@ -26,7 +26,9 @@ namespace GUI
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            LoginWindow log = new LoginWindow();
+            log.Show();
         }
     }
 }
