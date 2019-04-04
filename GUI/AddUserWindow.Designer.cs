@@ -42,10 +42,10 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(160, 200);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CloseButton.Location = new System.Drawing.Point(200, 250);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(80, 24);
+            this.CloseButton.Size = new System.Drawing.Size(100, 45);
             this.CloseButton.TabIndex = 0;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -53,94 +53,94 @@
             // 
             // AddUserButton
             // 
-            this.AddUserButton.Location = new System.Drawing.Point(40, 200);
-            this.AddUserButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddUserButton.Location = new System.Drawing.Point(50, 250);
+            this.AddUserButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddUserButton.Name = "AddUserButton";
-            this.AddUserButton.Size = new System.Drawing.Size(80, 24);
+            this.AddUserButton.Size = new System.Drawing.Size(100, 45);
             this.AddUserButton.TabIndex = 1;
-            this.AddUserButton.Text = "Add User";
+            this.AddUserButton.Text = "Save and Exit";
             this.AddUserButton.UseVisualStyleBackColor = true;
             // 
             // AlbumLabel
             // 
-            this.AlbumLabel.Location = new System.Drawing.Point(40, 40);
+            this.AlbumLabel.Location = new System.Drawing.Point(50, 50);
             this.AlbumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AlbumLabel.Name = "AlbumLabel";
-            this.AlbumLabel.Size = new System.Drawing.Size(80, 18);
+            this.AlbumLabel.Size = new System.Drawing.Size(100, 22);
             this.AlbumLabel.TabIndex = 2;
             this.AlbumLabel.Text = "Album number";
             // 
             // AlbumTextbox
             // 
-            this.AlbumTextbox.Location = new System.Drawing.Point(160, 40);
-            this.AlbumTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AlbumTextbox.Location = new System.Drawing.Point(200, 50);
+            this.AlbumTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.AlbumTextbox.Name = "AlbumTextbox";
-            this.AlbumTextbox.Size = new System.Drawing.Size(81, 20);
+            this.AlbumTextbox.Size = new System.Drawing.Size(100, 22);
             this.AlbumTextbox.TabIndex = 9;
             // 
             // FunctionLabel
             // 
-            this.FunctionLabel.Location = new System.Drawing.Point(40, 80);
+            this.FunctionLabel.Location = new System.Drawing.Point(50, 100);
             this.FunctionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FunctionLabel.Name = "FunctionLabel";
-            this.FunctionLabel.Size = new System.Drawing.Size(80, 18);
+            this.FunctionLabel.Size = new System.Drawing.Size(100, 22);
             this.FunctionLabel.TabIndex = 16;
             this.FunctionLabel.Text = "Function";
             // 
             // FunctionCombobox
             // 
+            this.FunctionCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FunctionCombobox.FormattingEnabled = true;
             this.FunctionCombobox.Items.AddRange(new object[] {
             "Admin",
             "Lecturer",
             "Student"});
-            this.FunctionCombobox.Location = new System.Drawing.Point(160, 80);
-            this.FunctionCombobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FunctionCombobox.Location = new System.Drawing.Point(200, 100);
+            this.FunctionCombobox.Margin = new System.Windows.Forms.Padding(2);
             this.FunctionCombobox.Name = "FunctionCombobox";
-            this.FunctionCombobox.Size = new System.Drawing.Size(81, 21);
+            this.FunctionCombobox.Size = new System.Drawing.Size(100, 24);
             this.FunctionCombobox.TabIndex = 17;
-            this.FunctionCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // LoginLabel
             // 
-            this.LoginLabel.Location = new System.Drawing.Point(40, 120);
+            this.LoginLabel.Location = new System.Drawing.Point(50, 150);
             this.LoginLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(80, 18);
+            this.LoginLabel.Size = new System.Drawing.Size(100, 22);
             this.LoginLabel.TabIndex = 18;
             this.LoginLabel.Text = "Login";
             // 
             // PswdLabel
             // 
-            this.PswdLabel.Location = new System.Drawing.Point(40, 160);
+            this.PswdLabel.Location = new System.Drawing.Point(50, 200);
             this.PswdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PswdLabel.Name = "PswdLabel";
-            this.PswdLabel.Size = new System.Drawing.Size(80, 18);
+            this.PswdLabel.Size = new System.Drawing.Size(100, 22);
             this.PswdLabel.TabIndex = 19;
             this.PswdLabel.Text = "Password";
             // 
             // LoginTextbox
             // 
-            this.LoginTextbox.Location = new System.Drawing.Point(160, 120);
-            this.LoginTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoginTextbox.Location = new System.Drawing.Point(200, 150);
+            this.LoginTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginTextbox.Name = "LoginTextbox";
-            this.LoginTextbox.Size = new System.Drawing.Size(81, 20);
+            this.LoginTextbox.Size = new System.Drawing.Size(100, 22);
             this.LoginTextbox.TabIndex = 20;
             // 
             // PswdTextbox
             // 
-            this.PswdTextbox.Location = new System.Drawing.Point(160, 160);
-            this.PswdTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PswdTextbox.Location = new System.Drawing.Point(200, 200);
+            this.PswdTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.PswdTextbox.Name = "PswdTextbox";
             this.PswdTextbox.PasswordChar = '*';
-            this.PswdTextbox.Size = new System.Drawing.Size(81, 20);
+            this.PswdTextbox.Size = new System.Drawing.Size(100, 22);
             this.PswdTextbox.TabIndex = 21;
             // 
             // AddUserWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(267, 265);
+            this.ClientSize = new System.Drawing.Size(331, 321);
             this.Controls.Add(this.PswdTextbox);
             this.Controls.Add(this.LoginTextbox);
             this.Controls.Add(this.PswdLabel);
@@ -151,9 +151,9 @@
             this.Controls.Add(this.AlbumLabel);
             this.Controls.Add(this.AddUserButton);
             this.Controls.Add(this.CloseButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(283, 304);
-            this.MinimumSize = new System.Drawing.Size(283, 304);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(349, 368);
+            this.MinimumSize = new System.Drawing.Size(349, 368);
             this.Name = "AddUserWindow";
             this.Text = "AddUserWindow";
             this.Load += new System.EventHandler(this.AddUserWindow_Load);

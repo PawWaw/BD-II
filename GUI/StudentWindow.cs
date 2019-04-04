@@ -16,6 +16,9 @@ namespace GUI
         public StudentWindow()
         {
             InitializeComponent();
+            SectionCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            SignUpButton.Enabled = false;
+            LeaveButton.Enabled = false;
         }
 
         private void AddFileButton_Click(object sender, EventArgs e)
@@ -43,6 +46,20 @@ namespace GUI
             this.Hide();
             LoginWindow log = new LoginWindow();
             log.Show();
+        }
+
+        private void SectionCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SectionCombobox.SelectedIndex == 0)
+            {
+                SignUpButton.Enabled = false;
+                LeaveButton.Enabled = true;
+            }
+            else if (SectionCombobox.SelectedIndex == 1)
+            {
+                SignUpButton.Enabled = true;
+                LeaveButton.Enabled = false;
+            }
         }
     }
 }

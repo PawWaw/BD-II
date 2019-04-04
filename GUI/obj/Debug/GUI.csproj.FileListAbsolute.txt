@@ -43,3 +43,6 @@ E:\GitHub\BD_II_PROJ\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
 E:\GitHub\BD_II_PROJ\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
 E:\GitHub\BD_II_PROJ\GUI\obj\Debug\GUI.exe
 E:\GitHub\BD_II_PROJ\GUI\obj\Debug\GUI.pdb
+C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.AddSectionWindow.resources
+C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.AddMarkWindow.resources
+C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.AddTopicWindow.resources

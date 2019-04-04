@@ -15,6 +15,8 @@ namespace GUI
         public AdminWindow()
         {
             InitializeComponent();
+            AlbumTextbox.Enabled = false;
+            TypeCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void ChangeDataButton_Click(object sender, EventArgs e)
@@ -34,6 +36,21 @@ namespace GUI
             this.Hide();
             LoginWindow log = new LoginWindow();
             log.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TypeCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TypeCombobox.SelectedIndex == 1)
+                AlbumTextbox.Enabled = true;
+            else
+            {
+                AlbumTextbox.Enabled = false;
+            }
         }
     }
 }

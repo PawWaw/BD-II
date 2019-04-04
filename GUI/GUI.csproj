@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMarkWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMarkWindow.Designer.cs">
+      <DependentUpon>AddMarkWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSectionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSectionWindow.Designer.cs">
+      <DependentUpon>AddSectionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTopicWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTopicWindow.Designer.cs">
+      <DependentUpon>AddTopicWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUserWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +102,15 @@
     <Compile Include="StudentWindow.Designer.cs">
       <DependentUpon>StudentWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMarkWindow.resx">
+      <DependentUpon>AddMarkWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSectionWindow.resx">
+      <DependentUpon>AddSectionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTopicWindow.resx">
+      <DependentUpon>AddTopicWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddUserWindow.resx">
       <DependentUpon>AddUserWindow.cs</DependentUpon>
     </EmbeddedResource>

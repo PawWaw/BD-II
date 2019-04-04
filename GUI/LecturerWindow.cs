@@ -23,5 +23,23 @@ namespace GUI
             LoginWindow log = new LoginWindow();
             log.Show();
         }
+
+        private void NewSectionButton_Click(object sender, EventArgs e)
+        {
+            AddSectionWindow ads = new AddSectionWindow();
+            ads.ShowDialog();
+        }
+
+        private void AddMarkButton_Click(object sender, EventArgs e)
+        {
+            AddMarkWindow adm = new AddMarkWindow();
+            adm.ShowDialog();
+        }
+
+        private void TopicButton_Click(object sender, EventArgs e)
+        {
+            AddTopicWindow adt = new AddTopicWindow();
+            adt.ShowDialog();
+        }
     }
 }
