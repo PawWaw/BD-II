@@ -1,4 +1,4 @@
-Versions:
+Versions: </br>
 GUI 6.1 - added new file filter, corrected checking files, default values in comboboxes</br>
 GUI 5.4 - adding files corrected</br>
 GUI 5.3 - correction of .gitignore</br>
