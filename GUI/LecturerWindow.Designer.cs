@@ -84,6 +84,7 @@
             this.StatusCombobox.Name = "StatusCombobox";
             this.StatusCombobox.Size = new System.Drawing.Size(121, 24);
             this.StatusCombobox.TabIndex = 9;
+            this.StatusCombobox.SelectedItem = "Open";
             // 
             // SectionCombobox
             // 

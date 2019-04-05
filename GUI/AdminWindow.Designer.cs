@@ -181,6 +181,7 @@
             this.TypeCombobox.Size = new System.Drawing.Size(60, 24);
             this.TypeCombobox.TabIndex = 14;
             this.TypeCombobox.SelectedIndexChanged += new System.EventHandler(this.TypeCombobox_SelectedIndexChanged);
+            this.TypeCombobox.SelectedItem = "Std";
             // 
             // AlbumNumberLabel
             // 

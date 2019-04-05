@@ -70,7 +70,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "PDF Files (*.pdf) | *.pdf";
+            this.openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf|Zip Files (*.zip;*.7z)|*7z;*.zip"; //Add for filter and if so add case in switch in fucntion AddFileButton_Click
             // 
             // FilenameLabel
             // 

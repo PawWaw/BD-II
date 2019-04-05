@@ -62,6 +62,7 @@
             this.MarkCombobox.Name = "MarkCombobox";
             this.MarkCombobox.Size = new System.Drawing.Size(120, 24);
             this.MarkCombobox.TabIndex = 25;
+            this.MarkCombobox.SelectedItem = "2";
             // 
             // MarkLabel
             // 

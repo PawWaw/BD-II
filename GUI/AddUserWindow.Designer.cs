@@ -100,6 +100,7 @@
             this.FunctionCombobox.Name = "FunctionCombobox";
             this.FunctionCombobox.Size = new System.Drawing.Size(100, 24);
             this.FunctionCombobox.TabIndex = 17;
+            this.FunctionCombobox.SelectedItem = "Student";
             // 
             // LoginLabel
             // 

@@ -22,22 +22,26 @@ namespace GUI
         }
 
         private void AddFileButton_Click(object sender, EventArgs e)
-        {       
-            while(true)
+        {
+            System.Boolean noErrors = false;
+            while(!noErrors)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    if (Path.GetExtension(openFileDialog1.FileName).Equals(".pdf"))
+                    switch(Path.GetExtension(openFileDialog1.FileName).ToLower())
                     {
-                        FilenameLabel.Text = openFileDialog1.SafeFileName;
-                        break;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please choose file with pdf extension.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        case ".pdf":
+                        case ".zip":
+                        case ".7z"://Add case here if you add some filter
+                            FilenameLabel.Text = openFileDialog1.SafeFileName;
+                            noErrors = true;
+                            break;
+                        default:
+                            MessageBox.Show("Please choose file with pdf extension or archive file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            break;
                     }
                 }
-                else { break; }
+                else { noErrors = true; }
             }        
         }
 
