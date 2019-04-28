@@ -16,7 +16,7 @@ namespace GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginWindow());
+            Application.Run(new LoginPanel());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

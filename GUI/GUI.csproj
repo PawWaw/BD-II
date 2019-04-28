@@ -46,85 +46,160 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddMarkWindow.cs">
+    <Compile Include="AddMark.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddMarkWindow.Designer.cs">
-      <DependentUpon>AddMarkWindow.cs</DependentUpon>
+    <Compile Include="AddMark.Designer.cs">
+      <DependentUpon>AddMark.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddSectionWindow.cs">
+    <Compile Include="AddPresence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddSectionWindow.Designer.cs">
-      <DependentUpon>AddSectionWindow.cs</DependentUpon>
+    <Compile Include="AddPresence.Designer.cs">
+      <DependentUpon>AddPresence.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddTopicWindow.cs">
+    <Compile Include="AddSection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTopicWindow.Designer.cs">
-      <DependentUpon>AddTopicWindow.cs</DependentUpon>
+    <Compile Include="AddSection.Designer.cs">
+      <DependentUpon>AddSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUserWindow.cs">
+    <Compile Include="FileHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUserWindow.Designer.cs">
-      <DependentUpon>AddUserWindow.cs</DependentUpon>
+    <Compile Include="FileHistory.Designer.cs">
+      <DependentUpon>FileHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="LecturerWindow.cs">
+    <Compile Include="Marks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LecturerWindow.Designer.cs">
-      <DependentUpon>LecturerWindow.cs</DependentUpon>
+    <Compile Include="Marks.Designer.cs">
+      <DependentUpon>Marks.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindow.cs">
+    <Compile Include="OpenFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginWindow.Designer.cs">
-      <DependentUpon>LoginWindow.cs</DependentUpon>
+    <Compile Include="OpenFile.Designer.cs">
+      <DependentUpon>OpenFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminWindow.cs">
+    <Compile Include="Presences.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminWindow.Designer.cs">
-      <DependentUpon>AdminWindow.cs</DependentUpon>
+    <Compile Include="Presences.Designer.cs">
+      <DependentUpon>Presences.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonalDataWindow.cs">
+    <Compile Include="TopicDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonalDataWindow.Designer.cs">
-      <DependentUpon>PersonalDataWindow.cs</DependentUpon>
+    <Compile Include="TopicDetails.Designer.cs">
+      <DependentUpon>TopicDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileDetails.Designer.cs">
+      <DependentUpon>FileDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections.Designer.cs">
+      <DependentUpon>Sections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPanel.Designer.cs">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoreInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoreInfo.Designer.cs">
+      <DependentUpon>MoreInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentWindow.cs">
+    <Compile Include="PswdChange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentWindow.Designer.cs">
-      <DependentUpon>StudentWindow.cs</DependentUpon>
+    <Compile Include="PswdChange.Designer.cs">
+      <DependentUpon>PswdChange.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddMarkWindow.resx">
-      <DependentUpon>AddMarkWindow.cs</DependentUpon>
+    <Compile Include="StudentPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentPanel.Designer.cs">
+      <DependentUpon>StudentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherPanel.Designer.cs">
+      <DependentUpon>TeacherPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Topics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Topics.Designer.cs">
+      <DependentUpon>Topics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopicSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopicSet.Designer.cs">
+      <DependentUpon>TopicSet.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddMark.resx">
+      <DependentUpon>AddMark.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddSectionWindow.resx">
-      <DependentUpon>AddSectionWindow.cs</DependentUpon>
+    <EmbeddedResource Include="AddPresence.resx">
+      <DependentUpon>AddPresence.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddTopicWindow.resx">
-      <DependentUpon>AddTopicWindow.cs</DependentUpon>
+    <EmbeddedResource Include="AddSection.resx">
+      <DependentUpon>AddSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUserWindow.resx">
-      <DependentUpon>AddUserWindow.cs</DependentUpon>
+    <EmbeddedResource Include="FileHistory.resx">
+      <DependentUpon>FileHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LecturerWindow.resx">
-      <DependentUpon>LecturerWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Marks.resx">
+      <DependentUpon>Marks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginWindow.resx">
-      <DependentUpon>LoginWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Presences.resx">
+      <DependentUpon>Presences.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminWindow.resx">
-      <DependentUpon>AdminWindow.cs</DependentUpon>
+    <EmbeddedResource Include="TopicDetails.resx">
+      <DependentUpon>TopicDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonalDataWindow.resx">
-      <DependentUpon>PersonalDataWindow.cs</DependentUpon>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDetails.resx">
+      <DependentUpon>FileDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections.resx">
+      <DependentUpon>Sections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPanel.resx">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoreInfo.resx">
+      <DependentUpon>MoreInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,8 +210,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StudentWindow.resx">
-      <DependentUpon>StudentWindow.cs</DependentUpon>
+    <EmbeddedResource Include="PswdChange.resx">
+      <DependentUpon>PswdChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentPanel.resx">
+      <DependentUpon>StudentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherPanel.resx">
+      <DependentUpon>TeacherPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Topics.resx">
+      <DependentUpon>Topics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopicSet.resx">
+      <DependentUpon>TopicSet.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,6 +237,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
