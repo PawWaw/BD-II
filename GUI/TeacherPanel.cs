@@ -37,7 +37,9 @@ namespace GUI
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
+            LoginPanel lgp = new LoginPanel();
             this.Hide();
+            lgp.ShowDialog();
         }
     }
 }

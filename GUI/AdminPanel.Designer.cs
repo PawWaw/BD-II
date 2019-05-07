@@ -93,7 +93,6 @@
             this.SurnameLabel.Size = new System.Drawing.Size(80, 22);
             this.SurnameLabel.TabIndex = 9;
             this.SurnameLabel.Text = "Last Name";
-            this.SurnameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // NameLabel
             // 
@@ -208,8 +207,9 @@
             this.SearchButton.TabIndex = 17;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // AdminWindow
+            // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -229,9 +229,11 @@
             this.Controls.Add(this.ChangeDataButton);
             this.MaximumSize = new System.Drawing.Size(1000, 600);
             this.MinimumSize = new System.Drawing.Size(1000, 600);
-            this.Name = "AdminWindow";
+            this.Name = "AdminPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminWindow";
+            this.Activated += new System.EventHandler(this.AdminPanel_Activated);
+            this.Deactivate += new System.EventHandler(this.AdminPanel_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

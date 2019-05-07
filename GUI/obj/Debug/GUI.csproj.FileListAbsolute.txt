@@ -73,3 +73,9 @@ C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.AddPresence.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.FileHistory.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.Presences.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.Marks.resources
+C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\BizzLayer.dll
+C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\DataLayer.dll
+C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\BizzLayer.pdb
+C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\DataLayer.pdb
+C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\DataLayer.dll.config
+C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.csproj.CopyComplete

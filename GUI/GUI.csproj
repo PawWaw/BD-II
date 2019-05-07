@@ -241,5 +241,15 @@
   <ItemGroup>
     <Content Include="README.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BizzLayer\BizzLayer.csproj">
+      <Project>{0b5abca2-a526-4bb7-a93f-7cd5f068535c}</Project>
+      <Name>BizzLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{cae05b01-c1f4-42ff-936e-8e6e39700167}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

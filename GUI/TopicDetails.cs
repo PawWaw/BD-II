@@ -22,6 +22,7 @@ namespace GUI
             if(mode == 0)
             {
                 InitializeComponent();
+                StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             }
             else if(mode == 1)
             {

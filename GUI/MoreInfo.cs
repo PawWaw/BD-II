@@ -20,13 +20,17 @@ namespace GUI
         public MoreInfo(int mode)
         {
             if(mode == 0)
+            {
                 InitializeComponent();
+                StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
             else if (mode == 1)
             {
                 InitializeComponent();
                 SaveButton.Visible = false;
                 MarkLabel.Visible = true;
                 MarkTextbox.Visible = true;
+                StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else if (mode == 2)
             {
@@ -42,6 +46,7 @@ namespace GUI
                 TeacherTextbox.Enabled = true;
                 PlacesTexbox.Enabled = true;
                 MembersTextbox.Enabled = true;
+                StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
 
