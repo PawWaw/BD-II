@@ -1,4 +1,5 @@
 Versions: </br>
+8.5 - create/edit sections and topics, relations between them, logging on own account</br>
 8.0 - added full connection between AdminPanel and database</br>
 GUI 7.0 - final version of GUI</br>
 GUI 6.1 - added new file filter, corrected checking files, default values in comboboxes</br>
