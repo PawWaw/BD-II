@@ -38,11 +38,13 @@
             this.StatusCombobox = new System.Windows.Forms.ComboBox();
             this.TeacherLabel = new System.Windows.Forms.Label();
             this.TeacherTextbox = new System.Windows.Forms.TextBox();
+            this.IDlabel = new System.Windows.Forms.Label();
+            this.IDTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // TopicInfoLabel
             // 
-            this.TopicInfoLabel.Location = new System.Drawing.Point(33, 78);
+            this.TopicInfoLabel.Location = new System.Drawing.Point(31, 128);
             this.TopicInfoLabel.Name = "TopicInfoLabel";
             this.TopicInfoLabel.Size = new System.Drawing.Size(100, 23);
             this.TopicInfoLabel.TabIndex = 30;
@@ -50,7 +52,7 @@
             // 
             // InfoRichTextbox
             // 
-            this.InfoRichTextbox.Location = new System.Drawing.Point(163, 78);
+            this.InfoRichTextbox.Location = new System.Drawing.Point(161, 128);
             this.InfoRichTextbox.Name = "InfoRichTextbox";
             this.InfoRichTextbox.Size = new System.Drawing.Size(319, 100);
             this.InfoRichTextbox.TabIndex = 29;
@@ -58,14 +60,14 @@
             // 
             // TopicTextbox
             // 
-            this.TopicTextbox.Location = new System.Drawing.Point(163, 28);
+            this.TopicTextbox.Location = new System.Drawing.Point(161, 78);
             this.TopicTextbox.Name = "TopicTextbox";
             this.TopicTextbox.Size = new System.Drawing.Size(319, 22);
             this.TopicTextbox.TabIndex = 28;
             // 
             // TopicNameLabel
             // 
-            this.TopicNameLabel.Location = new System.Drawing.Point(33, 28);
+            this.TopicNameLabel.Location = new System.Drawing.Point(31, 78);
             this.TopicNameLabel.Name = "TopicNameLabel";
             this.TopicNameLabel.Size = new System.Drawing.Size(100, 23);
             this.TopicNameLabel.TabIndex = 27;
@@ -73,7 +75,7 @@
             // 
             // LeaveButton
             // 
-            this.LeaveButton.Location = new System.Drawing.Point(382, 310);
+            this.LeaveButton.Location = new System.Drawing.Point(380, 360);
             this.LeaveButton.Name = "LeaveButton";
             this.LeaveButton.Size = new System.Drawing.Size(100, 45);
             this.LeaveButton.TabIndex = 32;
@@ -83,7 +85,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(255, 310);
+            this.SaveButton.Location = new System.Drawing.Point(253, 360);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(100, 45);
             this.SaveButton.TabIndex = 31;
@@ -93,7 +95,7 @@
             // 
             // StatusLabel
             // 
-            this.StatusLabel.Location = new System.Drawing.Point(36, 208);
+            this.StatusLabel.Location = new System.Drawing.Point(34, 258);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(100, 23);
             this.StatusLabel.TabIndex = 33;
@@ -106,7 +108,7 @@
             "Open",
             "Closed",
             "Final"});
-            this.StatusCombobox.Location = new System.Drawing.Point(163, 208);
+            this.StatusCombobox.Location = new System.Drawing.Point(161, 258);
             this.StatusCombobox.Name = "StatusCombobox";
             this.StatusCombobox.Size = new System.Drawing.Size(319, 24);
             this.StatusCombobox.TabIndex = 34;
@@ -114,7 +116,7 @@
             // TeacherLabel
             // 
             this.TeacherLabel.AutoSize = true;
-            this.TeacherLabel.Location = new System.Drawing.Point(36, 258);
+            this.TeacherLabel.Location = new System.Drawing.Point(34, 308);
             this.TeacherLabel.Name = "TeacherLabel";
             this.TeacherLabel.Size = new System.Drawing.Size(61, 17);
             this.TeacherLabel.TabIndex = 35;
@@ -122,16 +124,33 @@
             // 
             // TeacherTextbox
             // 
-            this.TeacherTextbox.Location = new System.Drawing.Point(163, 258);
+            this.TeacherTextbox.Location = new System.Drawing.Point(161, 308);
             this.TeacherTextbox.Name = "TeacherTextbox";
             this.TeacherTextbox.Size = new System.Drawing.Size(319, 22);
             this.TeacherTextbox.TabIndex = 36;
+            // 
+            // IDlabel
+            // 
+            this.IDlabel.Location = new System.Drawing.Point(31, 28);
+            this.IDlabel.Name = "IDlabel";
+            this.IDlabel.Size = new System.Drawing.Size(100, 23);
+            this.IDlabel.TabIndex = 37;
+            this.IDlabel.Text = "ID:";
+            // 
+            // IDTextbox
+            // 
+            this.IDTextbox.Location = new System.Drawing.Point(161, 28);
+            this.IDTextbox.Name = "IDTextbox";
+            this.IDTextbox.Size = new System.Drawing.Size(319, 22);
+            this.IDTextbox.TabIndex = 38;
             // 
             // TopicDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 403);
+            this.ClientSize = new System.Drawing.Size(510, 453);
+            this.Controls.Add(this.IDTextbox);
+            this.Controls.Add(this.IDlabel);
             this.Controls.Add(this.TeacherTextbox);
             this.Controls.Add(this.TeacherLabel);
             this.Controls.Add(this.StatusCombobox);
@@ -142,8 +161,8 @@
             this.Controls.Add(this.InfoRichTextbox);
             this.Controls.Add(this.TopicTextbox);
             this.Controls.Add(this.TopicNameLabel);
-            this.MaximumSize = new System.Drawing.Size(528, 450);
-            this.MinimumSize = new System.Drawing.Size(528, 450);
+            this.MaximumSize = new System.Drawing.Size(528, 500);
+            this.MinimumSize = new System.Drawing.Size(528, 500);
             this.Name = "TopicDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Details";
@@ -164,5 +183,7 @@
         private System.Windows.Forms.ComboBox StatusCombobox;
         private System.Windows.Forms.Label TeacherLabel;
         private System.Windows.Forms.TextBox TeacherTextbox;
+        private System.Windows.Forms.Label IDlabel;
+        private System.Windows.Forms.TextBox IDTextbox;
     }
 }

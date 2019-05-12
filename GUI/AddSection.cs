@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
     public partial class AddSection : Form
     {
+        Groups searchCrit;
         public AddSection()
         {
             InitializeComponent();
@@ -24,9 +27,12 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // DO DODANIA - zapis do bazy danych
+            searchCrit = new Groups
+            {
+                GroupSize = Convert.ToByte(QuantityTextbox.Text),
+            };
+            DependencyFacade.InsertSection(searchCrit);
             this.Hide();
         }
-
     }
 }

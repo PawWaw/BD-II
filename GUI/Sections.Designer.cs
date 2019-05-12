@@ -30,14 +30,7 @@
         {
             this.SectionLabel = new System.Windows.Forms.Label();
             this.SectionTextbox = new System.Windows.Forms.TextBox();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.NameTextbox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Section_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
@@ -59,65 +52,17 @@
             // 
             this.SectionTextbox.Location = new System.Drawing.Point(140, 23);
             this.SectionTextbox.Name = "SectionTextbox";
-            this.SectionTextbox.Size = new System.Drawing.Size(150, 22);
+            this.SectionTextbox.Size = new System.Drawing.Size(493, 22);
             this.SectionTextbox.TabIndex = 28;
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.Location = new System.Drawing.Point(360, 23);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(57, 23);
-            this.NameLabel.TabIndex = 29;
-            this.NameLabel.Text = "Name";
-            // 
-            // NameTextbox
-            // 
-            this.NameTextbox.Location = new System.Drawing.Point(420, 23);
-            this.NameTextbox.Name = "NameTextbox";
-            this.NameTextbox.Size = new System.Drawing.Size(150, 22);
-            this.NameTextbox.TabIndex = 30;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Section_ID,
-            this.Topic,
-            this.Size,
-            this.Status,
-            this.Mark});
             this.dataGridView1.Location = new System.Drawing.Point(33, 70);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(600, 440);
             this.dataGridView1.TabIndex = 31;
-            // 
-            // Section_ID
-            // 
-            this.Section_ID.HeaderText = "ID";
-            this.Section_ID.Name = "Section_ID";
-            this.Section_ID.Width = 50;
-            // 
-            // Topic
-            // 
-            this.Topic.HeaderText = "Topic";
-            this.Topic.Name = "Topic";
-            this.Topic.Width = 200;
-            // 
-            // Size
-            // 
-            this.Size.HeaderText = "Size";
-            this.Size.Name = "Size";
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            // 
-            // Mark
-            // 
-            this.Mark.HeaderText = "Mark";
-            this.Mark.Name = "Mark";
             // 
             // SearchButton
             // 
@@ -127,6 +72,7 @@
             this.SearchButton.TabIndex = 32;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // CloseButton
             // 
@@ -190,8 +136,6 @@
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.NameTextbox);
-            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.SectionTextbox);
             this.Controls.Add(this.SectionLabel);
             this.MaximumSize = new System.Drawing.Size(800, 570);
@@ -199,6 +143,8 @@
             this.Name = "Sections";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sections";
+            this.Activated += new System.EventHandler(this.Sections_Activated);
+            this.Deactivate += new System.EventHandler(this.Sections_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,8 +154,6 @@
         #endregion
         private System.Windows.Forms.Label SectionLabel;
         private System.Windows.Forms.TextBox SectionTextbox;
-        private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.TextBox NameTextbox;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button CloseButton;
@@ -217,10 +161,5 @@
         private System.Windows.Forms.Button TopicButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button PresenceButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Section_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Topic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Size;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mark;
     }
 }

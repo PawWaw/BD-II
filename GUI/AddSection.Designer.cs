@@ -45,6 +45,7 @@
             // 
             // SectionTextbox1
             // 
+            this.SectionTextbox1.Enabled = false;
             this.SectionTextbox1.Location = new System.Drawing.Point(136, 34);
             this.SectionTextbox1.Name = "SectionTextbox1";
             this.SectionTextbox1.Size = new System.Drawing.Size(120, 22);
@@ -64,9 +65,9 @@
             this.SectionNameLabel1.AutoSize = true;
             this.SectionNameLabel1.Location = new System.Drawing.Point(36, 34);
             this.SectionNameLabel1.Name = "SectionNameLabel1";
-            this.SectionNameLabel1.Size = new System.Drawing.Size(94, 17);
+            this.SectionNameLabel1.Size = new System.Drawing.Size(72, 17);
             this.SectionNameLabel1.TabIndex = 24;
-            this.SectionNameLabel1.Text = "Section name";
+            this.SectionNameLabel1.Text = "Section ID";
             // 
             // SaveButton
             // 

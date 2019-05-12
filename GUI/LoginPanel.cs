@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
@@ -17,30 +19,35 @@ namespace GUI
             InitializeComponent();
         }
 
-        string accountType = "admin";
+        string accountType = "";
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        Users userSearchCriteria;
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            if (true)   //sprawdzanie, czy istnieje konto o podanym loginie i haśle
+            userSearchCriteria = new Users
             {
-                if(accountType == "admin")
+                Password = PswdTextBox.Text,
+                Login = LoginTextBox.Text
+                
+            };
+            accountType = UserFacade.LogIn(userSearchCriteria);
+
+            if (accountType != null)   //sprawdzanie, czy istnieje konto o podanym loginie i haśle
+            {
+                if(accountType == "adm")
                 {
                     this.Hide();
                     AdminPanel fm = new AdminPanel();
                     fm.Show();
                 }
-                else if (accountType == "lecturer")
+                else if (accountType == "tch")
                 {
                     this.Hide();
                     TeacherPanel lct = new TeacherPanel();
                     lct.Show();
                 }
-                else if (accountType == "student")
+                else if (accountType == "std")
                 {
                     this.Hide();
                     StudentWindow std = new StudentWindow();
@@ -50,6 +57,8 @@ namespace GUI
             else
             {
                 MessageBox.Show("Wrong login or password!", "Error");
+                LoginTextBox.Text = "";
+                PswdTextBox.Text = "";
             }
         }
     }

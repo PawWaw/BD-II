@@ -87,7 +87,7 @@
             this.PasswordLabel.TabIndex = 5;
             this.PasswordLabel.Text = "Password:";
             // 
-            // LoginWindow
+            // LoginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -101,10 +101,9 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(300, 330);
             this.MinimumSize = new System.Drawing.Size(300, 330);
-            this.Name = "LoginWindow";
+            this.Name = "LoginPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

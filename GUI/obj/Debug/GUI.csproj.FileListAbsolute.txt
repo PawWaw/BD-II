@@ -67,7 +67,6 @@ C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.FileDetails.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.Sections.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.TeacherPanel.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.TopicDetails.resources
-C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.Topics.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.TopicSet.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.AddPresence.resources
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.FileHistory.resources
@@ -79,3 +78,4 @@ C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\BizzLayer.pdb
 C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\DataLayer.pdb
 C:\Users\pawel\source\repos\BD-II\GUI\bin\Debug\DataLayer.dll.config
 C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\pawel\source\repos\BD-II\GUI\obj\Debug\GUI.Topic.resources

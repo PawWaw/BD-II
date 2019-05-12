@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Topics
+    partial class Topic
     {
         /// <summary>
         /// Required designer variable.
@@ -32,10 +32,6 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Topic_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Teacher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDTextbox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.TopicTextbox = new System.Windows.Forms.TextBox();
@@ -72,42 +68,16 @@
             this.SearchButton.TabIndex = 40;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Topic_ID,
-            this.Topic,
-            this.Status,
-            this.Teacher});
             this.dataGridView1.Location = new System.Drawing.Point(36, 81);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(600, 440);
             this.dataGridView1.TabIndex = 39;
-            // 
-            // Topic_ID
-            // 
-            this.Topic_ID.HeaderText = "ID";
-            this.Topic_ID.Name = "Topic_ID";
-            // 
-            // Topic
-            // 
-            this.Topic.HeaderText = "Topic";
-            this.Topic.Name = "Topic";
-            this.Topic.Width = 200;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            // 
-            // Teacher
-            // 
-            this.Teacher.HeaderText = "Teacher";
-            this.Teacher.Name = "Teacher";
-            this.Teacher.Width = 150;
             // 
             // IDTextbox
             // 
@@ -149,7 +119,7 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // Topics
+            // Topic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,8 +135,10 @@
             this.Controls.Add(this.TopicLabel);
             this.MaximumSize = new System.Drawing.Size(820, 599);
             this.MinimumSize = new System.Drawing.Size(820, 599);
-            this.Name = "Topics";
+            this.Name = "Topic";
             this.Text = "Topics";
+            this.Activated += new System.EventHandler(this.Topic_Activated);
+            this.Deactivate += new System.EventHandler(this.Topic_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,10 +155,6 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.TextBox TopicTextbox;
         private System.Windows.Forms.Label TopicLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Topic_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Topic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Teacher;
         private System.Windows.Forms.Button AddButton;
     }
 }

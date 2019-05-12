@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
@@ -19,7 +21,8 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // connect topic and section
+            if (DependencyFacade.SetTopic(Convert.ToInt32(TopicTextbox.Text), Convert.ToInt32(SectionTexbox.Text)) == 0)
+                MessageBox.Show("Can't set section to topic!", "Error");
             this.Hide();
         }
 

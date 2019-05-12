@@ -48,8 +48,12 @@ namespace GUI
                 NameTextBox.Text = user.Name;
                 SurnameTextbox.Text = user.Surname;
                 LoginTextbox.Text = user.Login;
-                AlbumTextbox.Text = UserFacade.GetAlbumNumber(Convert.ToInt32(user.ID)).ToString();
                 FunctionCombobox.SelectedIndex = Convert.ToInt32(user.TypeOfUser);
+                if (FunctionCombobox.SelectedIndex == 2)
+                    AlbumTextbox.Text = UserFacade.GetAlbumNumber(Convert.ToInt32(user.ID)).ToString();
+
+                FunctionCombobox.Enabled = false;
+
             }
         }
 
@@ -96,14 +100,19 @@ namespace GUI
                 user.TypeOfUser = "adm";
             if (openType == 1)
             {      
-                UserFacade.UpdateStudents(user);
+                UserFacade.UpdateUsers(user);
                 this.Hide();
             }
             else if (openType == 0)
             {
                 int max = UserFacade.GetMaxIndex();
                 user.Password = PswdTextbox.Text;
-                UserFacade.InsertStudent(user, max);
+                if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
+                    UserFacade.InsertStudent(user, max);
+                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Lecturer"))
+                    UserFacade.InsertTeacher(user, DegreeTextbox.Text);
+                else
+                    UserFacade.InsertUser(user);
                 this.Hide();
             }
         }

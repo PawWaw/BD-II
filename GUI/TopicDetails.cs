@@ -7,34 +7,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
     public partial class TopicDetails : Form
     {
+        Topics searchCrit;
+        byte opentype = 0;
+
         public TopicDetails()
         {
             InitializeComponent();
         }
 
-        public TopicDetails(int mode)
+        public TopicDetails(int mode, Topics topic)
         {
             if(mode == 0)
             {
+                opentype = 0;
                 InitializeComponent();
                 StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                Topics top = DependencyFacade.GetTopicData(topic);
+                TopicTextbox.Text = top.Title;
+                InfoRichTextbox.Text = top.Description;
+                if (top.Active == "opn")
+                    StatusCombobox.SelectedIndex = 0;
+                else if (top.Active == "cls")
+                    StatusCombobox.SelectedIndex = 1;
+                else
+                    StatusCombobox.SelectedIndex = 2;
+                TeacherTextbox.Text = top.TeacherID.ToString();
+                IDTextbox.Text = top.ID.ToString();
+                IDTextbox.Enabled = false;
             }
             else if(mode == 1)
             {
+                opentype = 1;
                 InitializeComponent();
                 StatusCombobox.Enabled = false;
                 StatusCombobox.SelectedIndex = 0;
+                IDTextbox.Enabled = false;
             }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // DO DODANIA - zapis do bazy danych
+            searchCrit = new Topics
+            {
+                ID = Convert.ToInt32(IDTextbox.Text),
+                Title = TopicTextbox.Text,
+                Description = InfoRichTextbox.Text,
+                Active = StatusCombobox.SelectedItem.ToString(),
+                TeacherID = Convert.ToInt32(TeacherTextbox.Text)
+            };
+            if (opentype == 1)
+                DependencyFacade.InsertTopic(searchCrit);
+            else
+                DependencyFacade.UpdateTopics(searchCrit);
             this.Hide();
         }
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
@@ -17,7 +19,7 @@ namespace GUI
             InitializeComponent();
         }
 
-        public MoreInfo(int mode)
+        public MoreInfo(int mode, Groups grp, Topics top)
         {
             if(mode == 0)
             {
@@ -47,6 +49,19 @@ namespace GUI
                 PlacesTexbox.Enabled = true;
                 MembersTextbox.Enabled = true;
                 StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                if(top != null)
+                {
+                    TopicTextbox.Text = top.Title;
+                    DetailsTextbox.Text = top.Description;
+                    TeacherTextbox.Text = top.TeacherID.ToString();
+                    if (top.Active == "opn")
+                        StatusCombobox.SelectedIndex = 0;
+                    else if (top.Active == "cls")
+                        StatusCombobox.SelectedIndex = 1;
+                    else
+                        StatusCombobox.SelectedIndex = 2;
+                }
+                PlacesTexbox.Text = grp.GroupSize.ToString();
             }
         }
 

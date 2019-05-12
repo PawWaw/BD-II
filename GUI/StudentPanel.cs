@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
@@ -53,13 +55,17 @@ namespace GUI
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
-            MoreInfo mri = new MoreInfo(0);
+            Groups grp = new Groups();
+            Topics top = new Topics();
+            MoreInfo mri = new MoreInfo(0, grp, top);
             mri.ShowDialog();
         }
 
         private void MySecButton_Click(object sender, EventArgs e)
         {
-            MoreInfo mri = new MoreInfo(1);
+            Groups grp = new Groups();
+            Topics top = new Topics();
+            MoreInfo mri = new MoreInfo(1, grp, top);
             mri.ShowDialog();
         }
     }

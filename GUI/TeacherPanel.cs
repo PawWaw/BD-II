@@ -31,7 +31,7 @@ namespace GUI
 
         private void TopicButton_Click(object sender, EventArgs e)
         {
-            Topics top = new Topics();
+            Topic top = new Topic();
             top.ShowDialog();
         }
 

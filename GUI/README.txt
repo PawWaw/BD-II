@@ -28,3 +28,10 @@ Formularze:
 * TopicDetails = szczegółowe dane dotyczące tematu, dostępne z okna Topics i przycisku "Details"
 * Topics = okno dotyczące tematów, otwierane z okna TeacherPanel i przycisku "Add/Edit Topic"
 * TopicSet = przydzielanie tematu do sekcji, w oknie Sections przycisk "Set Topic"
+
+TO DO:
+* usuwanie (disable) sekcji, tematów i użytkowników
+* oddzielanie sekcji od tematu
+* wyświetlanie PODCZAS DODAWANIA przyszłego ID jakie będzie nadane
+* zamienić wyświetlanie ID teachera na nazwisko
+* free places w sekcjach
