@@ -35,9 +35,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.InfoButton = new System.Windows.Forms.Button();
             this.MySecButton = new System.Windows.Forms.Button();
-            this.Section_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Free_Places = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,10 +72,6 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Section_ID,
-            this.Topic,
-            this.Free_Places});
             this.dataGridView1.Location = new System.Drawing.Point(30, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
@@ -105,24 +98,6 @@
             this.MySecButton.UseVisualStyleBackColor = true;
             this.MySecButton.Click += new System.EventHandler(this.MySecButton_Click);
             // 
-            // Section_ID
-            // 
-            this.Section_ID.HeaderText = "Section ID";
-            this.Section_ID.Name = "Section_ID";
-            this.Section_ID.Width = 70;
-            // 
-            // Topic
-            // 
-            this.Topic.HeaderText = "Topic";
-            this.Topic.Name = "Topic";
-            this.Topic.Width = 300;
-            // 
-            // Free_Places
-            // 
-            this.Free_Places.HeaderText = "Places";
-            this.Free_Places.Name = "Free_Places";
-            this.Free_Places.Width = 70;
-            // 
             // StudentWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -139,6 +114,7 @@
             this.Name = "StudentWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student On-Line";
+            this.Load += new System.EventHandler(this.StudentWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -152,8 +128,5 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button InfoButton;
         private System.Windows.Forms.Button MySecButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Section_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Topic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Free_Places;
     }
 }

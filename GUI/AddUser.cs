@@ -32,6 +32,8 @@ namespace GUI
                 DegreeTextbox.Enabled = false;
                 AlbumTextbox.Enabled = false;
                 IDTextbox.Enabled = false;
+                IDTextbox.Visible = false;
+                IDLabel.Visible = false;
             }
             else if(windowType == 1)
             {

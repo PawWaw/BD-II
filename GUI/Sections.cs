@@ -102,5 +102,26 @@ namespace GUI
         }
 
         private void Sections_Deactivate(object sender, EventArgs e) => flag = 1;
+
+        private void DelTopicButton_Click(object sender, EventArgs e)
+        {
+            Groups grp = new Groups();
+            Topics top = new Topics();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                top.ID = (int)row.Cells[2].Value;
+                top.Active = "opn";
+                DependencyFacade.UpdateTopics(top);
+
+                grp.ID = (int)row.Cells[0].Value;
+                grp.GroupSize = (byte)row.Cells[1].Value;
+                grp.TopicID = null;
+                grp.SemID = (int)row.Cells[3].Value;
+
+                DependencyFacade.UpdateSection(grp);
+
+            }
+            SearchButton_Click(sender, e);
+        }
     }
 }

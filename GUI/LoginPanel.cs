@@ -14,41 +14,42 @@ namespace GUI
 {
     public partial class LoginPanel : Form
     {
+        public static int albumNumber = 0;
+
         public LoginPanel()
         {
             InitializeComponent();
         }
 
-        string accountType = "";
-
-        Users userSearchCriteria;
+        Users userSearchCriteria, log;
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             userSearchCriteria = new Users
             {
                 Password = PswdTextBox.Text,
-                Login = LoginTextBox.Text
-                
+                Login = LoginTextBox.Text  
             };
-            accountType = UserFacade.LogIn(userSearchCriteria);
 
-            if (accountType != null)   //sprawdzanie, czy istnieje konto o podanym loginie i haśle
+            log = UserFacade.LogIn(userSearchCriteria);
+
+            if (log != null)   //sprawdzanie, czy istnieje konto o podanym loginie i haśle
             {
-                if(accountType == "adm")
+                if(log.TypeOfUser == "adm")
                 {
                     this.Hide();
                     AdminPanel fm = new AdminPanel();
                     fm.Show();
                 }
-                else if (accountType == "tch")
+                else if (log.TypeOfUser == "tch")
                 {
                     this.Hide();
                     TeacherPanel lct = new TeacherPanel();
                     lct.Show();
                 }
-                else if (accountType == "std")
+                else if (log.TypeOfUser == "std")
                 {
+                    albumNumber = UserFacade.GetAlbumNumber(log.ID);
                     this.Hide();
                     StudentWindow std = new StudentWindow();
                     std.Show();

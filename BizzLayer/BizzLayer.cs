@@ -63,7 +63,31 @@ namespace BizzLayer
 
             string[] words = dc.Students.Where(x => x.UserID == id).Select(x => x.AlbumNr).ToArray();              
             return Convert.ToInt32(words[0]);
+        }
 
+        public static Users GetTeacher(int id)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+
+            var res = (from el in dc.Users
+                      join ol in dc.Teachers on el.ID equals ol.UserID
+                      where
+                      (id == Convert.ToInt32(ol.ID))
+                      select el).SingleOrDefault();
+            return res;
+        }
+
+        public static Users[] GetSectionSquad(int id)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+
+            Users[] res =  (from el in dc.Users
+                       join ol in dc.Students on el.ID equals ol.UserID
+                       join il in dc.Students_Groups on ol.AlbumNr equals il.StudentAlbumNr
+                       where
+                       (id == Convert.ToInt32(il.GroupID))
+                       select el).ToArray();
+            return res;
         }
 
         public static Users InsertUser(Users user)
@@ -127,12 +151,12 @@ namespace BizzLayer
             }
         }
 
-        public static string LogIn(Users searchCrit)
+        public static Users LogIn(Users searchCrit)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
 
-            string[] words = dc.Users.Where(x => Equals(x.Password,searchCrit.Password)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x.TypeOfUser).ToArray();
-            return words.ElementAtOrDefault(0);
+            Users usr = dc.Users.Where(x => Equals(x.Password,searchCrit.Password)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x).SingleOrDefault();
+            return usr;
         }
     }
 
@@ -154,15 +178,46 @@ namespace BizzLayer
             return res;
         }
 
-        public static IQueryable<Topics> GetTopics(Topics searchCrit)
+        public static IQueryable<dynamic> GetTopics(Topics searchCrit)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             var res = from el in dc.Topics
+                      join ol in dc.Teachers on el.TeacherID equals ol.ID
+                      join il in dc.Users on ol.UserID equals il.ID
                       where
                       ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
                       &&
-                      ((el.Title == searchCrit.Title) || String.IsNullOrEmpty(searchCrit.Title))
-                      select el;
+                      (el.Title.StartsWith(searchCrit.Title) || string.IsNullOrEmpty(searchCrit.Title))
+                      select new
+                      {
+                          el.ID,
+                          el.Title,
+                          el.Active,
+                          il.Name,
+                          il.Surname
+                      };
+            return res;
+        }
+
+        public static IQueryable<dynamic> GetAvailableTopics(Topics searchCrit)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var res = from el in dc.Topics
+                      join ol in dc.Teachers on el.TeacherID equals ol.ID
+                      join il in dc.Users on ol.UserID equals il.ID
+                      join ul in dc.Groups on el.ID equals ul.TopicID
+                      where
+                      ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
+                      &&
+                      (el.Title.StartsWith(searchCrit.Title) || string.IsNullOrEmpty(searchCrit.Title))
+                      select new
+                      {
+                          el.ID,
+                          el.Title,
+                          el.Active,
+                          il.Name,
+                          il.Surname
+                      };
             return res;
         }
 
@@ -173,14 +228,41 @@ namespace BizzLayer
             return res;
         }
 
+        public static Groups GetSectionData(int topicID)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var res = dc.Groups.Where(x => x.TopicID == topicID).Select(s => s).SingleOrDefault();
+            return res;
+        }
+
+        public static int GetStudentNumber(int groupID)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var res = dc.Students_Groups.Where(x => x.GroupID == groupID).Select(s => s).Count();
+            return res;
+        }
+
+        public static Groups GetMySection(int albumnr)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var res = (from el in dc.Groups
+                      join ol in dc.Students_Groups on el.ID equals ol.GroupID
+                      where
+                      (Convert.ToInt32(ol.StudentAlbumNr) == albumnr)
+                      select el).SingleOrDefault();
+            return res;
+        }
+
         public static void InsertSection(Groups section)
         {
             using (DataClasses1DataContext dc = new DataClasses1DataContext())
             {
-                Groups grp = new Groups();
-                grp.GroupSize = section.GroupSize;
-                grp.ID = -1;
-                grp.SemID = 1;
+                Groups grp = new Groups
+                {
+                    GroupSize = section.GroupSize,
+                    ID = -1,
+                    SemID = 1
+                };
                 dc.Groups.InsertOnSubmit(grp);
                 dc.SubmitChanges();
             }
@@ -190,12 +272,14 @@ namespace BizzLayer
         {
             using (DataClasses1DataContext dc = new DataClasses1DataContext())
             {
-                Topics tpc = new Topics();
-                tpc.ID = -1;
-                tpc.Title = topic.Title;
-                tpc.Description = topic.Description;
-                tpc.Active = "opn";
-                tpc.TeacherID = topic.TeacherID;
+                Topics tpc = new Topics
+                {
+                    ID = -1,
+                    Title = topic.Title,
+                    Description = topic.Description,
+                    Active = "opn",
+                    TeacherID = topic.TeacherID
+                };
                 dc.Topics.InsertOnSubmit(tpc);
                 dc.SubmitChanges();
             }
@@ -211,9 +295,30 @@ namespace BizzLayer
                 if (res == null)
                     return;
                 res.ID = topic.ID;
-                res.Title = topic.Title;
-                res.Description = topic.Description;
-                res.TeacherID = topic.TeacherID;
+                res.Active = topic.Active;
+
+                if(topic.Title != null)
+                {
+                    res.Title = topic.Title;
+                    res.Description = topic.Description;
+                    res.TeacherID = topic.TeacherID;
+                }
+                dc.SubmitChanges();
+            }
+        }
+
+        public static void UpdateSection(Groups grp)
+        {
+            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            {
+                var res = (from el in dc.Groups
+                           where el.ID == grp.ID
+                           select el).SingleOrDefault();
+                if (res == null)
+                    return;
+                res.ID = grp.ID;
+                res.GroupSize = grp.GroupSize;
+                res.TopicID = grp.TopicID;
                 dc.SubmitChanges();
             }
         }
@@ -225,7 +330,7 @@ namespace BizzLayer
                 var res2 = (from ol in dc.Topics
                             where ol.ID == topicID
                             select ol).SingleOrDefault();
-                if (res2.Active == "opn")
+                if (res2 != null)
                 {
                     var res = (from el in dc.Groups
                                where el.ID == sectionID
@@ -239,9 +344,23 @@ namespace BizzLayer
                 else
                     return 0;
 
-                res2.Active = "cls";
-                dc.SubmitChanges();
                 return 1;
+            }
+        }
+
+        public static void SetStudentSection(int album, int topicID)
+        {
+            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            {
+                Students_Groups stg = new Students_Groups
+                {
+                    ID = -1,
+                    StudentAlbumNr = album.ToString(),
+                    GroupID = DependencyFacade.GetSectionData(topicID).ID
+                };
+
+                dc.Students_Groups.InsertOnSubmit(stg);
+                dc.SubmitChanges();
             }
         }
     }

@@ -30,8 +30,8 @@ Formularze:
 * TopicSet = przydzielanie tematu do sekcji, w oknie Sections przycisk "Set Topic"
 
 TO DO:
-* usuwanie (disable) sekcji, tematów i użytkowników
-* oddzielanie sekcji od tematu
-* wyświetlanie PODCZAS DODAWANIA przyszłego ID jakie będzie nadane
-* zamienić wyświetlanie ID teachera na nazwisko
-* free places w sekcjach
+* usuwanie (disable) sekcji, tematów i użytkowników?
+* details po zaznaczeniu jednej komórki (wszędzie)
+* obsługa ocen
+* obecności
+* zmiana sekcji

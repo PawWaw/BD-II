@@ -35,10 +35,7 @@ namespace GUI
             tpd.ShowDialog();
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
+        private void CloseButton_Click(object sender, EventArgs e) => this.Hide();
 
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -64,10 +61,14 @@ namespace GUI
                 };
             }
             dataGridView1.DataSource = DependencyFacade.GetTopics(searchCrit);
-            dataGridView1.Columns.Remove("Description");
-            dataGridView1.Columns.Remove("Teachers");
-            DataGridViewColumn col = dataGridView1.Columns[1];
-            col.Width = 250;
+            dataGridView1.Columns[3].HeaderText = "Teacher name";
+            dataGridView1.Columns[4].HeaderText = "Teacher surname";
+            for(int i = 0; i < 5; i++)
+            {
+                DataGridViewColumn col = dataGridView1.Columns[i];
+                col.Width = i == 1 ? 250 : 70;
+            }
+
         }
 
         private void Topic_Activated(object sender, EventArgs e)
@@ -76,9 +77,6 @@ namespace GUI
                 SearchButton_Click(sender, e);
         }
 
-        private void Topic_Deactivate(object sender, EventArgs e)
-        {
-            flag = 1;
-        }
+        private void Topic_Deactivate(object sender, EventArgs e) => flag = 1;
     }
 }

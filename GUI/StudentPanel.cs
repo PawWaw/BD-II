@@ -20,6 +20,14 @@ namespace GUI
             InitializeComponent();
         }
 
+        private void StudentWindow_Load(object sender, EventArgs e)
+        {
+            Topics top = new Topics();
+            dataGridView1.DataSource = DependencyFacade.GetAvailableTopics(top);
+            dataGridView1.Columns[0].Width = 50;
+            //dataGridView1.Columns[]
+        }
+
         private void AddFileButton_Click(object sender, EventArgs e)
         {
             System.Boolean noErrors = false;
@@ -57,6 +65,14 @@ namespace GUI
         {
             Groups grp = new Groups();
             Topics top = new Topics();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                top.ID = (int)row.Cells[0].Value;
+                top.Title = row.Cells[1].Value.ToString();
+                top.Active = row.Cells[2].Value.ToString();
+            }
+            grp = DependencyFacade.GetSectionData(top.ID);
+            top = DependencyFacade.GetTopicData(top);
             MoreInfo mri = new MoreInfo(0, grp, top);
             mri.ShowDialog();
         }
@@ -65,6 +81,12 @@ namespace GUI
         {
             Groups grp = new Groups();
             Topics top = new Topics();
+            grp = DependencyFacade.GetMySection(LoginPanel.albumNumber);
+            if (grp != null)
+            {
+                top.ID = (int)grp.TopicID;
+                top = DependencyFacade.GetTopicData(top);
+            }
             MoreInfo mri = new MoreInfo(1, grp, top);
             mri.ShowDialog();
         }

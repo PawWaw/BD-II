@@ -118,9 +118,9 @@
             this.TeacherLabel.AutoSize = true;
             this.TeacherLabel.Location = new System.Drawing.Point(34, 308);
             this.TeacherLabel.Name = "TeacherLabel";
-            this.TeacherLabel.Size = new System.Drawing.Size(61, 17);
+            this.TeacherLabel.Size = new System.Drawing.Size(82, 17);
             this.TeacherLabel.TabIndex = 35;
-            this.TeacherLabel.Text = "Teacher";
+            this.TeacherLabel.Text = "Teacher ID:";
             // 
             // TeacherTextbox
             // 

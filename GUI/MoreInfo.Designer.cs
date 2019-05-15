@@ -34,7 +34,6 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.TeacherLabel = new System.Windows.Forms.Label();
             this.StudentsLabel = new System.Windows.Forms.Label();
-            this.TopicTextbox = new System.Windows.Forms.TextBox();
             this.TeacherTextbox = new System.Windows.Forms.TextBox();
             this.PlacesTexbox = new System.Windows.Forms.TextBox();
             this.StatusTextbox = new System.Windows.Forms.TextBox();
@@ -45,12 +44,13 @@
             this.MarkLabel = new System.Windows.Forms.Label();
             this.MarkTextbox = new System.Windows.Forms.TextBox();
             this.StatusCombobox = new System.Windows.Forms.ComboBox();
+            this.TopicTextbox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // TopicLabel
             // 
             this.TopicLabel.AutoSize = true;
-            this.TopicLabel.Location = new System.Drawing.Point(30, 50);
+            this.TopicLabel.Location = new System.Drawing.Point(30, 25);
             this.TopicLabel.Name = "TopicLabel";
             this.TopicLabel.Size = new System.Drawing.Size(47, 17);
             this.TopicLabel.TabIndex = 0;
@@ -101,20 +101,12 @@
             this.StudentsLabel.TabIndex = 5;
             this.StudentsLabel.Text = "Members";
             // 
-            // TopicTextbox
-            // 
-            this.TopicTextbox.Enabled = false;
-            this.TopicTextbox.Location = new System.Drawing.Point(150, 50);
-            this.TopicTextbox.Name = "TopicTextbox";
-            this.TopicTextbox.Size = new System.Drawing.Size(150, 22);
-            this.TopicTextbox.TabIndex = 6;
-            // 
             // TeacherTextbox
             // 
             this.TeacherTextbox.Enabled = false;
             this.TeacherTextbox.Location = new System.Drawing.Point(150, 200);
             this.TeacherTextbox.Name = "TeacherTextbox";
-            this.TeacherTextbox.Size = new System.Drawing.Size(150, 22);
+            this.TeacherTextbox.Size = new System.Drawing.Size(200, 22);
             this.TeacherTextbox.TabIndex = 8;
             // 
             // PlacesTexbox
@@ -122,7 +114,7 @@
             this.PlacesTexbox.Enabled = false;
             this.PlacesTexbox.Location = new System.Drawing.Point(150, 250);
             this.PlacesTexbox.Name = "PlacesTexbox";
-            this.PlacesTexbox.Size = new System.Drawing.Size(150, 22);
+            this.PlacesTexbox.Size = new System.Drawing.Size(200, 22);
             this.PlacesTexbox.TabIndex = 9;
             // 
             // StatusTextbox
@@ -130,7 +122,7 @@
             this.StatusTextbox.Enabled = false;
             this.StatusTextbox.Location = new System.Drawing.Point(150, 400);
             this.StatusTextbox.Name = "StatusTextbox";
-            this.StatusTextbox.Size = new System.Drawing.Size(150, 22);
+            this.StatusTextbox.Size = new System.Drawing.Size(200, 22);
             this.StatusTextbox.TabIndex = 11;
             // 
             // DetailsTextbox
@@ -138,7 +130,7 @@
             this.DetailsTextbox.Enabled = false;
             this.DetailsTextbox.Location = new System.Drawing.Point(150, 100);
             this.DetailsTextbox.Name = "DetailsTextbox";
-            this.DetailsTextbox.Size = new System.Drawing.Size(150, 80);
+            this.DetailsTextbox.Size = new System.Drawing.Size(200, 80);
             this.DetailsTextbox.TabIndex = 12;
             this.DetailsTextbox.Text = "";
             // 
@@ -147,7 +139,7 @@
             this.MembersTextbox.Enabled = false;
             this.MembersTextbox.Location = new System.Drawing.Point(150, 300);
             this.MembersTextbox.Name = "MembersTextbox";
-            this.MembersTextbox.Size = new System.Drawing.Size(150, 80);
+            this.MembersTextbox.Size = new System.Drawing.Size(200, 80);
             this.MembersTextbox.TabIndex = 13;
             this.MembersTextbox.Text = "";
             // 
@@ -163,7 +155,7 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(200, 500);
+            this.CloseButton.Location = new System.Drawing.Point(250, 500);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 30);
             this.CloseButton.TabIndex = 15;
@@ -186,7 +178,7 @@
             this.MarkTextbox.Enabled = false;
             this.MarkTextbox.Location = new System.Drawing.Point(150, 450);
             this.MarkTextbox.Name = "MarkTextbox";
-            this.MarkTextbox.Size = new System.Drawing.Size(150, 22);
+            this.MarkTextbox.Size = new System.Drawing.Size(200, 22);
             this.MarkTextbox.TabIndex = 17;
             this.MarkTextbox.Visible = false;
             // 
@@ -199,15 +191,25 @@
             "Final"});
             this.StatusCombobox.Location = new System.Drawing.Point(150, 400);
             this.StatusCombobox.Name = "StatusCombobox";
-            this.StatusCombobox.Size = new System.Drawing.Size(150, 24);
+            this.StatusCombobox.Size = new System.Drawing.Size(200, 24);
             this.StatusCombobox.TabIndex = 19;
             this.StatusCombobox.Visible = false;
+            // 
+            // TopicTextbox
+            // 
+            this.TopicTextbox.Enabled = false;
+            this.TopicTextbox.Location = new System.Drawing.Point(150, 25);
+            this.TopicTextbox.Name = "TopicTextbox";
+            this.TopicTextbox.Size = new System.Drawing.Size(200, 53);
+            this.TopicTextbox.TabIndex = 20;
+            this.TopicTextbox.Text = "";
             // 
             // MoreInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 553);
+            this.ClientSize = new System.Drawing.Size(382, 553);
+            this.Controls.Add(this.TopicTextbox);
             this.Controls.Add(this.StatusCombobox);
             this.Controls.Add(this.MarkTextbox);
             this.Controls.Add(this.MarkLabel);
@@ -218,7 +220,6 @@
             this.Controls.Add(this.StatusTextbox);
             this.Controls.Add(this.PlacesTexbox);
             this.Controls.Add(this.TeacherTextbox);
-            this.Controls.Add(this.TopicTextbox);
             this.Controls.Add(this.StudentsLabel);
             this.Controls.Add(this.TeacherLabel);
             this.Controls.Add(this.StatusLabel);
@@ -240,7 +241,6 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Label TeacherLabel;
         private System.Windows.Forms.Label StudentsLabel;
-        private System.Windows.Forms.TextBox TopicTextbox;
         private System.Windows.Forms.TextBox TeacherTextbox;
         private System.Windows.Forms.TextBox PlacesTexbox;
         private System.Windows.Forms.TextBox StatusTextbox;
@@ -251,5 +251,6 @@
         private System.Windows.Forms.Label MarkLabel;
         private System.Windows.Forms.TextBox MarkTextbox;
         private System.Windows.Forms.ComboBox StatusCombobox;
+        private System.Windows.Forms.RichTextBox TopicTextbox;
     }
 }

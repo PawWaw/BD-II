@@ -37,6 +37,7 @@
             this.TopicButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.PresenceButton = new System.Windows.Forms.Button();
+            this.DelTopicButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@
             // 
             // PresenceButton
             // 
-            this.PresenceButton.Location = new System.Drawing.Point(670, 220);
+            this.PresenceButton.Location = new System.Drawing.Point(670, 270);
             this.PresenceButton.Name = "PresenceButton";
             this.PresenceButton.Size = new System.Drawing.Size(100, 30);
             this.PresenceButton.TabIndex = 37;
@@ -124,11 +125,22 @@
             this.PresenceButton.UseVisualStyleBackColor = true;
             this.PresenceButton.Click += new System.EventHandler(this.PresenceButton_Click);
             // 
+            // DelTopicButton
+            // 
+            this.DelTopicButton.Location = new System.Drawing.Point(670, 220);
+            this.DelTopicButton.Name = "DelTopicButton";
+            this.DelTopicButton.Size = new System.Drawing.Size(100, 30);
+            this.DelTopicButton.TabIndex = 38;
+            this.DelTopicButton.Text = "Delete topic";
+            this.DelTopicButton.UseVisualStyleBackColor = true;
+            this.DelTopicButton.Click += new System.EventHandler(this.DelTopicButton_Click);
+            // 
             // Sections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(782, 523);
+            this.Controls.Add(this.DelTopicButton);
             this.Controls.Add(this.PresenceButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.TopicButton);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.Button TopicButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button PresenceButton;
+        private System.Windows.Forms.Button DelTopicButton;
     }
 }

@@ -59,9 +59,16 @@ namespace GUI
                 ID = Convert.ToInt32(IDTextbox.Text),
                 Title = TopicTextbox.Text,
                 Description = InfoRichTextbox.Text,
-                Active = StatusCombobox.SelectedItem.ToString(),
                 TeacherID = Convert.ToInt32(TeacherTextbox.Text)
             };
+
+            if (StatusCombobox.SelectedItem.ToString() == "Open")
+                searchCrit.Active = "opn";
+            else if (StatusCombobox.SelectedItem.ToString() == "Closed")
+                searchCrit.Active = "cls";
+            else
+                searchCrit.Active = "fin";
+           
             if (opentype == 1)
                 DependencyFacade.InsertTopic(searchCrit);
             else
