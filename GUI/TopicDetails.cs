@@ -30,16 +30,19 @@ namespace GUI
                 InitializeComponent();
                 StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 Topics top = DependencyFacade.GetTopicData(topic);
-                TopicTextbox.Text = top.Title;
-                InfoRichTextbox.Text = top.Description;
-                if (top.Active == "opn")
-                    StatusCombobox.SelectedIndex = 0;
-                else if (top.Active == "cls")
-                    StatusCombobox.SelectedIndex = 1;
-                else
-                    StatusCombobox.SelectedIndex = 2;
-                TeacherTextbox.Text = top.TeacherID.ToString();
-                IDTextbox.Text = top.ID.ToString();
+                if (top != null)
+                {
+                    TopicTextbox.Text = top.Title;
+                    InfoRichTextbox.Text = top.Description;
+                    if (top.Active == "opn")
+                        StatusCombobox.SelectedIndex = 0;
+                    else if (top.Active == "cls")
+                        StatusCombobox.SelectedIndex = 1;
+                    else
+                        StatusCombobox.SelectedIndex = 2;
+                    TeacherTextbox.Text = top.TeacherID.ToString();
+                    IDTextbox.Text = top.ID.ToString();
+                }
                 IDTextbox.Enabled = false;
             }
             else if(mode == 1)
@@ -54,26 +57,31 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            searchCrit = new Topics
+            searchCrit = new Topics();
+            if (TopicTextbox.Text != "" && InfoRichTextbox.Text != "" && TeacherTextbox.Text != "")
             {
-                ID = Convert.ToInt32(IDTextbox.Text),
-                Title = TopicTextbox.Text,
-                Description = InfoRichTextbox.Text,
-                TeacherID = Convert.ToInt32(TeacherTextbox.Text)
-            };
+                searchCrit.Title = TopicTextbox.Text;
+                searchCrit.Description = InfoRichTextbox.Text;
+                searchCrit.TeacherID = Convert.ToInt32(TeacherTextbox.Text);
 
-            if (StatusCombobox.SelectedItem.ToString() == "Open")
-                searchCrit.Active = "opn";
-            else if (StatusCombobox.SelectedItem.ToString() == "Closed")
-                searchCrit.Active = "cls";
+                if (IDTextbox.Text != "")
+                    searchCrit.ID = Convert.ToInt32(IDTextbox.Text);
+
+                if (StatusCombobox.SelectedItem.ToString() == "Open")
+                    searchCrit.Active = "opn";
+                else if (StatusCombobox.SelectedItem.ToString() == "Closed")
+                    searchCrit.Active = "cls";
+                else
+                    searchCrit.Active = "fin";
+
+                if (opentype == 1)
+                    DependencyFacade.InsertTopic(searchCrit);
+                else
+                    DependencyFacade.UpdateTopics(searchCrit);
+                this.Hide();
+            }
             else
-                searchCrit.Active = "fin";
-           
-            if (opentype == 1)
-                DependencyFacade.InsertTopic(searchCrit);
-            else
-                DependencyFacade.UpdateTopics(searchCrit);
-            this.Hide();
+                MessageBox.Show("Wrong parameters of topic.", "Warning", MessageBoxButtons.OK);
         }
 
         private void LeaveButton_Click(object sender, EventArgs e)

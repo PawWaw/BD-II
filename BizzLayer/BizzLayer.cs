@@ -178,6 +178,16 @@ namespace BizzLayer
             return res;
         }
 
+        public static Groups GetSection(Groups searchCrit)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            var res = (from el in dc.Groups
+                      where
+                      ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
+                      select el).SingleOrDefault();
+            return res;
+        }
+
         public static IQueryable<dynamic> GetTopics(Topics searchCrit)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
@@ -252,6 +262,8 @@ namespace BizzLayer
                       select el).SingleOrDefault();
             return res;
         }
+
+
 
         public static void InsertSection(Groups section)
         {
@@ -350,18 +362,55 @@ namespace BizzLayer
 
         public static void SetStudentSection(int album, int topicID)
         {
+            int nr = 0;
+            int oldnr = 0;
             using (DataClasses1DataContext dc = new DataClasses1DataContext())
             {
-                Students_Groups stg = new Students_Groups
-                {
-                    ID = -1,
-                    StudentAlbumNr = album.ToString(),
-                    GroupID = DependencyFacade.GetSectionData(topicID).ID
-                };
+                var res = dc.Students_Groups.Where(x => Convert.ToInt32(x.StudentAlbumNr) == album).Select(x => x).SingleOrDefault();
 
-                dc.Students_Groups.InsertOnSubmit(stg);
-                dc.SubmitChanges();
+                if(res == null)
+                {
+                    Students_Groups stg = new Students_Groups
+                    {
+                        ID = -1,
+                        StudentAlbumNr = album.ToString(),
+                        GroupID = DependencyFacade.GetSectionData(topicID).ID
+                    };
+
+                    dc.Students_Groups.InsertOnSubmit(stg);
+                    dc.SubmitChanges();
+                }
+                else
+                {
+                    res.ID = res.ID;
+                    res.StudentAlbumNr = res.StudentAlbumNr;
+                    oldnr = res.GroupID;
+                    res.GroupID = DependencyFacade.GetSectionData(topicID).ID;
+                    nr = res.GroupID;
+                    dc.SubmitChanges();
+                }
             }
+
+            Groups oldgrp = new Groups();
+            Groups newgrp = new Groups();
+            Topics topic = new Topics();
+            oldgrp.ID = oldnr;
+            newgrp.ID = nr;
+            oldgrp = (Groups)DependencyFacade.GetSection(oldgrp);
+            newgrp = (Groups)DependencyFacade.GetSection(newgrp);
+
+            if(newgrp.GroupSize == DependencyFacade.GetStudentNumber(newgrp.ID))
+            {
+                topic.Active = "cls";
+                topic.ID = (int)newgrp.TopicID;
+                DependencyFacade.UpdateTopics(topic);
+            }
+            if(oldgrp.GroupSize != DependencyFacade.GetStudentNumber(oldgrp.ID))
+            {
+                topic.Active = "opn";
+                topic.ID = (int)oldgrp.TopicID;
+                DependencyFacade.UpdateTopics(topic);
+            }          
         }
     }
 }

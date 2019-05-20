@@ -34,4 +34,4 @@ TO DO:
 * details po zaznaczeniu jednej komórki (wszędzie)
 * obsługa ocen
 * obecności
-* zmiana sekcji
+* members w teacherach
