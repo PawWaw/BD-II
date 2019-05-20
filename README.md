@@ -1,4 +1,6 @@
 Versions: </br>
+9.2 - closing section aded, minor bugs fixed</br>
+9.0 - added functions of student panel</br> 
 8.5 - create/edit sections and topics, relations between them, logging on own account</br>
 8.0 - added full connection between AdminPanel and database</br>
 GUI 7.0 - final version of GUI</br>
