@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Marks : Form
+    public partial class Grades : Form
     {
-        public Marks()
+        public Grades()
         {
             InitializeComponent();
         }

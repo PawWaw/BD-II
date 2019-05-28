@@ -25,6 +25,7 @@ namespace GUI
             InitializeComponent();
             AlbumTextbox.Enabled = false;
             TypeCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void ViewUsers(string type)

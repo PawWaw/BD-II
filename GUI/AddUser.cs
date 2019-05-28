@@ -96,7 +96,7 @@ namespace GUI
             user.Surname = SurnameTextbox.Text;
             if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
                 user.TypeOfUser = "std";
-            else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Lecturer"))
+            else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
                 user.TypeOfUser = "tch";
             else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Admin"))
                 user.TypeOfUser = "adm";
@@ -111,7 +111,7 @@ namespace GUI
                 user.Password = PswdTextbox.Text;
                 if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
                     UserFacade.InsertStudent(user, max);
-                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Lecturer"))
+                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
                     UserFacade.InsertTeacher(user, DegreeTextbox.Text);
                 else
                     UserFacade.InsertUser(user);

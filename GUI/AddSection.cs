@@ -14,10 +14,11 @@ namespace GUI
 {
     public partial class AddSection : Form
     {
-        Groups searchCrit;
+        Sections searchCrit;
         public AddSection()
         {
             InitializeComponent();
+            SectionTextbox1.Text = (DependencyFacade.GetMaxSecID() + 1).ToString();
         }
 
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            searchCrit = new Groups
+            searchCrit = new Sections
             {
                 GroupSize = Convert.ToByte(QuantityTextbox.Text),
             };

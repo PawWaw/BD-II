@@ -19,14 +19,8 @@ namespace GUI
 
         private void NewSectionButton_Click(object sender, EventArgs e)
         {
-            Sections sec = new Sections();
+            SectionPanel sec = new SectionPanel();
             sec.ShowDialog();
-        }
-
-        private void AddMarkButton_Click(object sender, EventArgs e)
-        {
-            Marks mrk = new Marks();
-            mrk.ShowDialog();
         }
 
         private void TopicButton_Click(object sender, EventArgs e)

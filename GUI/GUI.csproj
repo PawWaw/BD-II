@@ -70,11 +70,11 @@
     <Compile Include="FileHistory.Designer.cs">
       <DependentUpon>FileHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marks.cs">
+    <Compile Include="Grades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Marks.Designer.cs">
-      <DependentUpon>Marks.cs</DependentUpon>
+    <Compile Include="Grades.Designer.cs">
+      <DependentUpon>Grades.cs</DependentUpon>
     </Compile>
     <Compile Include="OpenFile.cs">
       <SubType>Form</SubType>
@@ -112,11 +112,11 @@
     <Compile Include="FileDetails.Designer.cs">
       <DependentUpon>FileDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections.cs">
+    <Compile Include="SectionPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections.Designer.cs">
-      <DependentUpon>Sections.cs</DependentUpon>
+    <Compile Include="SectionPanel.Designer.cs">
+      <DependentUpon>SectionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPanel.cs">
       <SubType>Form</SubType>
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="FileHistory.resx">
       <DependentUpon>FileHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Marks.resx">
-      <DependentUpon>Marks.cs</DependentUpon>
+    <EmbeddedResource Include="Grades.resx">
+      <DependentUpon>Grades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presences.resx">
       <DependentUpon>Presences.cs</DependentUpon>
@@ -192,8 +192,8 @@
     <EmbeddedResource Include="FileDetails.resx">
       <DependentUpon>FileDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections.resx">
-      <DependentUpon>Sections.cs</DependentUpon>
+    <EmbeddedResource Include="SectionPanel.resx">
+      <DependentUpon>SectionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>

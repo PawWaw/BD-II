@@ -18,14 +18,21 @@ namespace GUI
         public StudentWindow()
         {
             InitializeComponent();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void StudentWindow_Load(object sender, EventArgs e)
         {
-            Topics top = new Topics();
-            dataGridView1.DataSource = DependencyFacade.GetAvailableTopics(top);
-            dataGridView1.Columns[0].Width = 50;
-            //dataGridView1.Columns[]
+            Sections sec = new Sections();
+            dataGridView1.DataSource = DependencyFacade.GetSections(sec);
+            for (int i = 2; i < 5; i++)
+            {
+                DataGridViewColumn col = dataGridView1.Columns[i];
+                col.Width = 60;
+            }
+            dataGridView1.Columns[0].Width = 30;
+            dataGridView1.Columns[1].Width = 90;
+            dataGridView1.Columns[5].Width = 250;
         }
 
         private void AddFileButton_Click(object sender, EventArgs e)
@@ -39,7 +46,7 @@ namespace GUI
                     {
                         case ".pdf":
                         case ".zip":
-                        case ".7z"://Add case here if you add some filter
+                        case ".7z": //Add case here if you add some filter
                             FilenameLabel.Text = openFileDialog1.SafeFileName;
                             noErrors = true;
                             break;
@@ -63,13 +70,15 @@ namespace GUI
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
-            Groups grp = new Groups();
+            Sections grp = new Sections();
             Topics top = new Topics();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                top.ID = (int)row.Cells[0].Value;
-                top.Title = row.Cells[1].Value.ToString();
-                top.Active = row.Cells[2].Value.ToString();
+                if (row.Cells[4].Value != null)
+                {
+                    top.ID = (int)row.Cells[4].Value;
+                    top.Title = row.Cells[5].Value.ToString();
+                }
             }
             grp = DependencyFacade.GetSectionData(top.ID);
             top = DependencyFacade.GetTopicData(top);
@@ -79,7 +88,7 @@ namespace GUI
 
         private void MySecButton_Click(object sender, EventArgs e)
         {
-            Groups grp = new Groups();
+            Sections grp = new Sections();
             Topics top = new Topics();
             grp = DependencyFacade.GetMySection(LoginPanel.albumNumber);
             if (grp != null)
@@ -89,6 +98,12 @@ namespace GUI
             }
             MoreInfo mri = new MoreInfo(1, grp, top);
             mri.ShowDialog();
+        }
+
+        private void HistoryButton_Click(object sender, EventArgs e)
+        {
+            FileHistory flh = new FileHistory();
+            flh.ShowDialog();
         }
     }
 }

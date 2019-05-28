@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Marks
+    partial class Grades
     {
         /// <summary>
         /// Required designer variable.

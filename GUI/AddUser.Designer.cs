@@ -103,7 +103,7 @@
             this.FunctionCombobox.FormattingEnabled = true;
             this.FunctionCombobox.Items.AddRange(new object[] {
             "Admin",
-            "Lecturer",
+            "Teacher",
             "Student"});
             this.FunctionCombobox.Location = new System.Drawing.Point(200, 220);
             this.FunctionCombobox.Margin = new System.Windows.Forms.Padding(2);

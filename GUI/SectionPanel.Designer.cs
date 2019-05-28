@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Sections
+    partial class SectionPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.PresenceButton = new System.Windows.Forms.Button();
             this.DelTopicButton = new System.Windows.Forms.Button();
+            this.GradesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,11 +136,22 @@
             this.DelTopicButton.UseVisualStyleBackColor = true;
             this.DelTopicButton.Click += new System.EventHandler(this.DelTopicButton_Click);
             // 
-            // Sections
+            // GradesButton
+            // 
+            this.GradesButton.Location = new System.Drawing.Point(670, 320);
+            this.GradesButton.Name = "GradesButton";
+            this.GradesButton.Size = new System.Drawing.Size(100, 30);
+            this.GradesButton.TabIndex = 39;
+            this.GradesButton.Text = "Grades";
+            this.GradesButton.UseVisualStyleBackColor = true;
+            this.GradesButton.Click += new System.EventHandler(this.GradesButton_Click);
+            // 
+            // SectionPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(782, 523);
+            this.Controls.Add(this.GradesButton);
             this.Controls.Add(this.DelTopicButton);
             this.Controls.Add(this.PresenceButton);
             this.Controls.Add(this.AddButton);
@@ -152,7 +164,7 @@
             this.Controls.Add(this.SectionLabel);
             this.MaximumSize = new System.Drawing.Size(800, 570);
             this.MinimumSize = new System.Drawing.Size(800, 570);
-            this.Name = "Sections";
+            this.Name = "SectionPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sections";
             this.Activated += new System.EventHandler(this.Sections_Activated);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button PresenceButton;
         private System.Windows.Forms.Button DelTopicButton;
+        private System.Windows.Forms.Button GradesButton;
     }
 }

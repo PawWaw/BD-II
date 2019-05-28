@@ -14,9 +14,10 @@ namespace GUI
 {
     public partial class TopicSet : Form
     {
-        public TopicSet()
+        public TopicSet(int id)
         {
             InitializeComponent();
+            SectionTexbox.Text = id.ToString();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

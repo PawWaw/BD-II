@@ -12,14 +12,16 @@ using DataLayer;
 
 namespace GUI
 {
-    public partial class Sections : Form
+    public partial class SectionPanel : Form
     {
         byte flag = 0;
 
-        Groups searchCrit;
-        public Sections()
+        Sections searchCrit;
+
+        public SectionPanel()
         {
             InitializeComponent();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -29,16 +31,16 @@ namespace GUI
 
         private void DetailsButton_Click(object sender, EventArgs e)
         {
-            Groups grp = new Groups();
+            Sections grp = new Sections();
             Topics top = new Topics();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 grp.ID = (int)row.Cells[0].Value;
                 grp.GroupSize = (byte)row.Cells[1].Value;
-                if (row.Cells[2].Value != null)
+                if (row.Cells[4].Value != null)
                 {
-                    grp.TopicID = (int)row.Cells[2].Value;
-                    top.ID = (int)row.Cells[2].Value;
+                    grp.TopicID = (int)row.Cells[4].Value;
+                    top.ID = (int)row.Cells[4].Value;
                 }
                 else
                 {
@@ -55,7 +57,7 @@ namespace GUI
 
         private void TopicButton_Click(object sender, EventArgs e)
         {
-            TopicSet tps = new TopicSet();
+            TopicSet tps = new TopicSet(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
             tps.ShowDialog();
         }
 
@@ -75,24 +77,27 @@ namespace GUI
         {
             if(SectionTextbox.Text != "")
             {
-                searchCrit = new Groups
+                searchCrit = new Sections
                 {
                     ID = Convert.ToInt32(SectionTextbox.Text)
                 };
             }
             else
             {
-                searchCrit = new Groups
+                searchCrit = new Sections
                 {
                     ID = 0
                 };
             }
             dataGridView1.DataSource = DependencyFacade.GetSections(searchCrit);
-            for (int i = 0; i < 4; i++)
+            for (int i = 2; i < 5; i++)
             {
                 DataGridViewColumn col = dataGridView1.Columns[i];
-                col.Width = 130;
+                col.Width = 60;
             }
+            dataGridView1.Columns[0].Width = 30;
+            dataGridView1.Columns[1].Width = 90;
+            dataGridView1.Columns[5].Width = 250;
         }
 
         private void Sections_Activated(object sender, EventArgs e)
@@ -105,23 +110,30 @@ namespace GUI
 
         private void DelTopicButton_Click(object sender, EventArgs e)
         {
-            Groups grp = new Groups();
+            Sections grp = new Sections();
             Topics top = new Topics();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                top.ID = (int)row.Cells[2].Value;
-                top.Active = "opn";
-                DependencyFacade.UpdateTopics(top);
+                if(row.Cells[4].Value != null)
+                {
+                    top.ID = (int)row.Cells[4].Value;
+                    top.Status = "Open";
+                    DependencyFacade.UpdateTopics(top);
 
-                grp.ID = (int)row.Cells[0].Value;
-                grp.GroupSize = (byte)row.Cells[1].Value;
-                grp.TopicID = null;
-                grp.SemID = (int)row.Cells[3].Value;
-
-                DependencyFacade.UpdateSection(grp);
-
+                    grp.ID = (int)row.Cells[0].Value;
+                    grp.GroupSize = (byte)row.Cells[1].Value;
+                    grp.TopicID = null;
+                    grp.SemID = (int)row.Cells[3].Value;
+                    DependencyFacade.UpdateSection(grp);
+                }
             }
             SearchButton_Click(sender, e);
+        }
+
+        private void GradesButton_Click(object sender, EventArgs e)
+        {
+            Grades mrk = new Grades();
+            mrk.ShowDialog();
         }
     }
 }

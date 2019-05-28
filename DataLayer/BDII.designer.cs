@@ -23,25 +23,22 @@ namespace DataLayer
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BDII")]
-	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
+	public partial class BDIIDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertGroups(Groups instance);
-    partial void UpdateGroups(Groups instance);
-    partial void DeleteGroups(Groups instance);
-    partial void InsertUsers(Users instance);
-    partial void UpdateUsers(Users instance);
-    partial void DeleteUsers(Users instance);
-    partial void InsertPatient(Patient instance);
-    partial void UpdatePatient(Patient instance);
-    partial void DeletePatient(Patient instance);
     partial void InsertPresence(Presence instance);
     partial void UpdatePresence(Presence instance);
     partial void DeletePresence(Presence instance);
+    partial void InsertUsers(Users instance);
+    partial void UpdateUsers(Users instance);
+    partial void DeleteUsers(Users instance);
+    partial void InsertSections(Sections instance);
+    partial void UpdateSections(Sections instance);
+    partial void DeleteSections(Sections instance);
     partial void InsertSem_Student(Sem_Student instance);
     partial void UpdateSem_Student(Sem_Student instance);
     partial void DeleteSem_Student(Sem_Student instance);
@@ -62,41 +59,41 @@ namespace DataLayer
     partial void DeleteTopics(Topics instance);
     #endregion
 		
-		public DataClasses1DataContext() : 
+		public BDIIDataContext() : 
 				base(global::DataLayer.Properties.Settings.Default.BDIIConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection) : 
+		public BDIIDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
+		public BDIIDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public BDIIDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public BDIIDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Groups> Groups
+		public System.Data.Linq.Table<Presence> Presence
 		{
 			get
 			{
-				return this.GetTable<Groups>();
+				return this.GetTable<Presence>();
 			}
 		}
 		
@@ -108,19 +105,11 @@ namespace DataLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Patient> Patient
+		public System.Data.Linq.Table<Sections> Sections
 		{
 			get
 			{
-				return this.GetTable<Patient>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Presence> Presence
-		{
-			get
-			{
-				return this.GetTable<Presence>();
+				return this.GetTable<Sections>();
 			}
 		}
 		
@@ -173,25 +162,19 @@ namespace DataLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Groups")]
-	public partial class Groups : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Presence")]
+	public partial class Presence : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private byte _GroupSize;
+		private int _Group_StudentID;
 		
-		private System.Nullable<int> _TopicID;
+		private System.DateTime _Date;
 		
-		private int _SemID;
-		
-		private EntitySet<Students_Groups> _Students_Groups;
-		
-		private EntityRef<Sems> _Sems;
-		
-		private EntityRef<Topics> _Topics;
+		private bool _Presence1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -199,19 +182,16 @@ namespace DataLayer
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnGroupSizeChanging(byte value);
-    partial void OnGroupSizeChanged();
-    partial void OnTopicIDChanging(System.Nullable<int> value);
-    partial void OnTopicIDChanged();
-    partial void OnSemIDChanging(int value);
-    partial void OnSemIDChanged();
+    partial void OnGroup_StudentIDChanging(int value);
+    partial void OnGroup_StudentIDChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnPresence1Changing(bool value);
+    partial void OnPresence1Changed();
     #endregion
 		
-		public Groups()
+		public Presence()
 		{
-			this._Students_Groups = new EntitySet<Students_Groups>(new Action<Students_Groups>(this.attach_Students_Groups), new Action<Students_Groups>(this.detach_Students_Groups));
-			this._Sems = default(EntityRef<Sems>);
-			this._Topics = default(EntityRef<Topics>);
 			OnCreated();
 		}
 		
@@ -235,151 +215,62 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSize", DbType="TinyInt NOT NULL")]
-		public byte GroupSize
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Group_StudentID", DbType="Int NOT NULL")]
+		public int Group_StudentID
 		{
 			get
 			{
-				return this._GroupSize;
+				return this._Group_StudentID;
 			}
 			set
 			{
-				if ((this._GroupSize != value))
+				if ((this._Group_StudentID != value))
 				{
-					this.OnGroupSizeChanging(value);
+					this.OnGroup_StudentIDChanging(value);
 					this.SendPropertyChanging();
-					this._GroupSize = value;
-					this.SendPropertyChanged("GroupSize");
-					this.OnGroupSizeChanged();
+					this._Group_StudentID = value;
+					this.SendPropertyChanged("Group_StudentID");
+					this.OnGroup_StudentIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TopicID", DbType="Int")]
-		public System.Nullable<int> TopicID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
 		{
 			get
 			{
-				return this._TopicID;
+				return this._Date;
 			}
 			set
 			{
-				if ((this._TopicID != value))
+				if ((this._Date != value))
 				{
-					if (this._Topics.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTopicIDChanging(value);
+					this.OnDateChanging(value);
 					this.SendPropertyChanging();
-					this._TopicID = value;
-					this.SendPropertyChanged("TopicID");
-					this.OnTopicIDChanged();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SemID", DbType="Int NOT NULL")]
-		public int SemID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Presence", Storage="_Presence1", DbType="Bit NOT NULL")]
+		public bool Presence1
 		{
 			get
 			{
-				return this._SemID;
+				return this._Presence1;
 			}
 			set
 			{
-				if ((this._SemID != value))
+				if ((this._Presence1 != value))
 				{
-					if (this._Sems.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSemIDChanging(value);
+					this.OnPresence1Changing(value);
 					this.SendPropertyChanging();
-					this._SemID = value;
-					this.SendPropertyChanged("SemID");
-					this.OnSemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Groups_Students_Groups", Storage="_Students_Groups", ThisKey="ID", OtherKey="GroupID")]
-		public EntitySet<Students_Groups> Students_Groups
-		{
-			get
-			{
-				return this._Students_Groups;
-			}
-			set
-			{
-				this._Students_Groups.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sems_Groups", Storage="_Sems", ThisKey="SemID", OtherKey="ID", IsForeignKey=true)]
-		public Sems Sems
-		{
-			get
-			{
-				return this._Sems.Entity;
-			}
-			set
-			{
-				Sems previousValue = this._Sems.Entity;
-				if (((previousValue != value) 
-							|| (this._Sems.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Sems.Entity = null;
-						previousValue.Groups.Remove(this);
-					}
-					this._Sems.Entity = value;
-					if ((value != null))
-					{
-						value.Groups.Add(this);
-						this._SemID = value.ID;
-					}
-					else
-					{
-						this._SemID = default(int);
-					}
-					this.SendPropertyChanged("Sems");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topics_Groups", Storage="_Topics", ThisKey="TopicID", OtherKey="ID", IsForeignKey=true)]
-		public Topics Topics
-		{
-			get
-			{
-				return this._Topics.Entity;
-			}
-			set
-			{
-				Topics previousValue = this._Topics.Entity;
-				if (((previousValue != value) 
-							|| (this._Topics.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Topics.Entity = null;
-						previousValue.Groups.Remove(this);
-					}
-					this._Topics.Entity = value;
-					if ((value != null))
-					{
-						value.Groups.Add(this);
-						this._TopicID = value.ID;
-					}
-					else
-					{
-						this._TopicID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Topics");
+					this._Presence1 = value;
+					this.SendPropertyChanged("Presence1");
+					this.OnPresence1Changed();
 				}
 			}
 		}
@@ -402,18 +293,6 @@ namespace DataLayer
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Students_Groups(Students_Groups entity)
-		{
-			this.SendPropertyChanging();
-			entity.Groups = this;
-		}
-		
-		private void detach_Students_Groups(Students_Groups entity)
-		{
-			this.SendPropertyChanging();
-			entity.Groups = null;
 		}
 	}
 	
@@ -655,131 +534,27 @@ namespace DataLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Patient")]
-	public partial class Patient : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdPatient;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdPatientChanging(int value);
-    partial void OnIdPatientChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    #endregion
-		
-		public Patient()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdPatient", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdPatient
-		{
-			get
-			{
-				return this._IdPatient;
-			}
-			set
-			{
-				if ((this._IdPatient != value))
-				{
-					this.OnIdPatientChanging(value);
-					this.SendPropertyChanging();
-					this._IdPatient = value;
-					this.SendPropertyChanged("IdPatient");
-					this.OnIdPatientChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Presence")]
-	public partial class Presence : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sections")]
+	public partial class Sections : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private int _Group_StudentID;
+		private byte _GroupSize;
 		
-		private System.DateTime _Date;
+		private System.Nullable<int> _TopicID;
 		
-		private bool _Presence1;
+		private int _SemID;
+		
+		private string _Status;
 		
 		private EntitySet<Students_Groups> _Students_Groups;
+		
+		private EntityRef<Sems> _Sems;
+		
+		private EntityRef<Topics> _Topics;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -787,17 +562,21 @@ namespace DataLayer
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnGroup_StudentIDChanging(int value);
-    partial void OnGroup_StudentIDChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnPresence1Changing(bool value);
-    partial void OnPresence1Changed();
+    partial void OnGroupSizeChanging(byte value);
+    partial void OnGroupSizeChanged();
+    partial void OnTopicIDChanging(System.Nullable<int> value);
+    partial void OnTopicIDChanged();
+    partial void OnSemIDChanging(int value);
+    partial void OnSemIDChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
     #endregion
 		
-		public Presence()
+		public Sections()
 		{
 			this._Students_Groups = new EntitySet<Students_Groups>(new Action<Students_Groups>(this.attach_Students_Groups), new Action<Students_Groups>(this.detach_Students_Groups));
+			this._Sems = default(EntityRef<Sems>);
+			this._Topics = default(EntityRef<Topics>);
 			OnCreated();
 		}
 		
@@ -821,67 +600,95 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Group_StudentID", DbType="Int NOT NULL")]
-		public int Group_StudentID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSize", DbType="TinyInt NOT NULL")]
+		public byte GroupSize
 		{
 			get
 			{
-				return this._Group_StudentID;
+				return this._GroupSize;
 			}
 			set
 			{
-				if ((this._Group_StudentID != value))
+				if ((this._GroupSize != value))
 				{
-					this.OnGroup_StudentIDChanging(value);
+					this.OnGroupSizeChanging(value);
 					this.SendPropertyChanging();
-					this._Group_StudentID = value;
-					this.SendPropertyChanged("Group_StudentID");
-					this.OnGroup_StudentIDChanged();
+					this._GroupSize = value;
+					this.SendPropertyChanged("GroupSize");
+					this.OnGroupSizeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TopicID", DbType="Int")]
+		public System.Nullable<int> TopicID
 		{
 			get
 			{
-				return this._Date;
+				return this._TopicID;
 			}
 			set
 			{
-				if ((this._Date != value))
+				if ((this._TopicID != value))
 				{
-					this.OnDateChanging(value);
+					if (this._Topics.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTopicIDChanging(value);
 					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
+					this._TopicID = value;
+					this.SendPropertyChanged("TopicID");
+					this.OnTopicIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Presence", Storage="_Presence1", DbType="Bit NOT NULL")]
-		public bool Presence1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SemID", DbType="Int NOT NULL")]
+		public int SemID
 		{
 			get
 			{
-				return this._Presence1;
+				return this._SemID;
 			}
 			set
 			{
-				if ((this._Presence1 != value))
+				if ((this._SemID != value))
 				{
-					this.OnPresence1Changing(value);
+					if (this._Sems.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSemIDChanging(value);
 					this.SendPropertyChanging();
-					this._Presence1 = value;
-					this.SendPropertyChanged("Presence1");
-					this.OnPresence1Changed();
+					this._SemID = value;
+					this.SendPropertyChanged("SemID");
+					this.OnSemIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Presence_Students_Groups", Storage="_Students_Groups", ThisKey="ID", OtherKey="GroupID")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Students_Groups", ThisKey="ID", OtherKey="GroupID")]
 		public EntitySet<Students_Groups> Students_Groups
 		{
 			get
@@ -891,6 +698,74 @@ namespace DataLayer
 			set
 			{
 				this._Students_Groups.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sems_Sections", Storage="_Sems", ThisKey="SemID", OtherKey="ID", IsForeignKey=true)]
+		public Sems Sems
+		{
+			get
+			{
+				return this._Sems.Entity;
+			}
+			set
+			{
+				Sems previousValue = this._Sems.Entity;
+				if (((previousValue != value) 
+							|| (this._Sems.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Sems.Entity = null;
+						previousValue.Sections.Remove(this);
+					}
+					this._Sems.Entity = value;
+					if ((value != null))
+					{
+						value.Sections.Add(this);
+						this._SemID = value.ID;
+					}
+					else
+					{
+						this._SemID = default(int);
+					}
+					this.SendPropertyChanged("Sems");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topics_Sections", Storage="_Topics", ThisKey="TopicID", OtherKey="ID", IsForeignKey=true)]
+		public Topics Topics
+		{
+			get
+			{
+				return this._Topics.Entity;
+			}
+			set
+			{
+				Topics previousValue = this._Topics.Entity;
+				if (((previousValue != value) 
+							|| (this._Topics.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Topics.Entity = null;
+						previousValue.Sections.Remove(this);
+					}
+					this._Topics.Entity = value;
+					if ((value != null))
+					{
+						value.Sections.Add(this);
+						this._TopicID = value.ID;
+					}
+					else
+					{
+						this._TopicID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Topics");
+				}
 			}
 		}
 		
@@ -917,13 +792,13 @@ namespace DataLayer
 		private void attach_Students_Groups(Students_Groups entity)
 		{
 			this.SendPropertyChanging();
-			entity.Presence = this;
+			entity.Sections = this;
 		}
 		
 		private void detach_Students_Groups(Students_Groups entity)
 		{
 			this.SendPropertyChanging();
-			entity.Presence = null;
+			entity.Sections = null;
 		}
 	}
 	
@@ -1133,7 +1008,7 @@ namespace DataLayer
 		
 		private short _Sem;
 		
-		private EntitySet<Groups> _Groups;
+		private EntitySet<Sections> _Sections;
 		
 		private EntitySet<Sem_Student> _Sem_Student;
 		
@@ -1153,7 +1028,7 @@ namespace DataLayer
 		
 		public Sems()
 		{
-			this._Groups = new EntitySet<Groups>(new Action<Groups>(this.attach_Groups), new Action<Groups>(this.detach_Groups));
+			this._Sections = new EntitySet<Sections>(new Action<Sections>(this.attach_Sections), new Action<Sections>(this.detach_Sections));
 			this._Sem_Student = new EntitySet<Sem_Student>(new Action<Sem_Student>(this.attach_Sem_Student), new Action<Sem_Student>(this.detach_Sem_Student));
 			OnCreated();
 		}
@@ -1238,16 +1113,16 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sems_Groups", Storage="_Groups", ThisKey="ID", OtherKey="SemID")]
-		public EntitySet<Groups> Groups
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sems_Sections", Storage="_Sections", ThisKey="ID", OtherKey="SemID")]
+		public EntitySet<Sections> Sections
 		{
 			get
 			{
-				return this._Groups;
+				return this._Sections;
 			}
 			set
 			{
-				this._Groups.Assign(value);
+				this._Sections.Assign(value);
 			}
 		}
 		
@@ -1284,13 +1159,13 @@ namespace DataLayer
 			}
 		}
 		
-		private void attach_Groups(Groups entity)
+		private void attach_Sections(Sections entity)
 		{
 			this.SendPropertyChanging();
 			entity.Sems = this;
 		}
 		
-		private void detach_Groups(Groups entity)
+		private void detach_Sections(Sections entity)
 		{
 			this.SendPropertyChanging();
 			entity.Sems = null;
@@ -1506,9 +1381,7 @@ namespace DataLayer
 		
 		private System.Nullable<decimal> _Mark;
 		
-		private EntityRef<Groups> _Groups;
-		
-		private EntityRef<Presence> _Presence;
+		private EntityRef<Sections> _Sections;
 		
 		private EntityRef<Students> _Students;
 		
@@ -1528,8 +1401,7 @@ namespace DataLayer
 		
 		public Students_Groups()
 		{
-			this._Groups = default(EntityRef<Groups>);
-			this._Presence = default(EntityRef<Presence>);
+			this._Sections = default(EntityRef<Sections>);
 			this._Students = default(EntityRef<Students>);
 			OnCreated();
 		}
@@ -1565,7 +1437,7 @@ namespace DataLayer
 			{
 				if ((this._GroupID != value))
 				{
-					if ((this._Groups.HasLoadedOrAssignedValue || this._Presence.HasLoadedOrAssignedValue))
+					if (this._Sections.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1622,26 +1494,26 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Groups_Students_Groups", Storage="_Groups", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
-		public Groups Groups
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Sections", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
+		public Sections Sections
 		{
 			get
 			{
-				return this._Groups.Entity;
+				return this._Sections.Entity;
 			}
 			set
 			{
-				Groups previousValue = this._Groups.Entity;
+				Sections previousValue = this._Sections.Entity;
 				if (((previousValue != value) 
-							|| (this._Groups.HasLoadedOrAssignedValue == false)))
+							|| (this._Sections.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Groups.Entity = null;
+						this._Sections.Entity = null;
 						previousValue.Students_Groups.Remove(this);
 					}
-					this._Groups.Entity = value;
+					this._Sections.Entity = value;
 					if ((value != null))
 					{
 						value.Students_Groups.Add(this);
@@ -1651,41 +1523,7 @@ namespace DataLayer
 					{
 						this._GroupID = default(int);
 					}
-					this.SendPropertyChanged("Groups");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Presence_Students_Groups", Storage="_Presence", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
-		public Presence Presence
-		{
-			get
-			{
-				return this._Presence.Entity;
-			}
-			set
-			{
-				Presence previousValue = this._Presence.Entity;
-				if (((previousValue != value) 
-							|| (this._Presence.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Presence.Entity = null;
-						previousValue.Students_Groups.Remove(this);
-					}
-					this._Presence.Entity = value;
-					if ((value != null))
-					{
-						value.Students_Groups.Add(this);
-						this._GroupID = value.ID;
-					}
-					else
-					{
-						this._GroupID = default(int);
-					}
-					this.SendPropertyChanged("Presence");
+					this.SendPropertyChanged("Sections");
 				}
 			}
 		}
@@ -1936,11 +1774,11 @@ namespace DataLayer
 		
 		private string _Description;
 		
-		private string _Active;
+		private string _Status;
 		
 		private int _TeacherID;
 		
-		private EntitySet<Groups> _Groups;
+		private EntitySet<Sections> _Sections;
 		
 		private EntityRef<Teachers> _Teachers;
 		
@@ -1954,15 +1792,15 @@ namespace DataLayer
     partial void OnTitleChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnActiveChanging(string value);
-    partial void OnActiveChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
     partial void OnTeacherIDChanging(int value);
     partial void OnTeacherIDChanged();
     #endregion
 		
 		public Topics()
 		{
-			this._Groups = new EntitySet<Groups>(new Action<Groups>(this.attach_Groups), new Action<Groups>(this.detach_Groups));
+			this._Sections = new EntitySet<Sections>(new Action<Sections>(this.attach_Sections), new Action<Sections>(this.detach_Sections));
 			this._Teachers = default(EntityRef<Teachers>);
 			OnCreated();
 		}
@@ -2027,22 +1865,22 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
-		public string Active
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
+		public string Status
 		{
 			get
 			{
-				return this._Active;
+				return this._Status;
 			}
 			set
 			{
-				if ((this._Active != value))
+				if ((this._Status != value))
 				{
-					this.OnActiveChanging(value);
+					this.OnStatusChanging(value);
 					this.SendPropertyChanging();
-					this._Active = value;
-					this.SendPropertyChanged("Active");
-					this.OnActiveChanged();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
 				}
 			}
 		}
@@ -2071,16 +1909,16 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topics_Groups", Storage="_Groups", ThisKey="ID", OtherKey="TopicID")]
-		public EntitySet<Groups> Groups
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Topics_Sections", Storage="_Sections", ThisKey="ID", OtherKey="TopicID")]
+		public EntitySet<Sections> Sections
 		{
 			get
 			{
-				return this._Groups;
+				return this._Sections;
 			}
 			set
 			{
-				this._Groups.Assign(value);
+				this._Sections.Assign(value);
 			}
 		}
 		
@@ -2138,13 +1976,13 @@ namespace DataLayer
 			}
 		}
 		
-		private void attach_Groups(Groups entity)
+		private void attach_Sections(Sections entity)
 		{
 			this.SendPropertyChanging();
 			entity.Topics = this;
 		}
 		
-		private void detach_Groups(Groups entity)
+		private void detach_Sections(Sections entity)
 		{
 			this.SendPropertyChanging();
 			entity.Topics = null;

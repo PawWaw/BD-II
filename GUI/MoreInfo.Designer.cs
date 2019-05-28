@@ -41,10 +41,10 @@
             this.MembersTextbox = new System.Windows.Forms.RichTextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.MarkLabel = new System.Windows.Forms.Label();
-            this.MarkTextbox = new System.Windows.Forms.TextBox();
             this.StatusCombobox = new System.Windows.Forms.ComboBox();
             this.TopicTextbox = new System.Windows.Forms.RichTextBox();
+            this.MarkLabel = new System.Windows.Forms.Label();
+            this.MarkTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // TopicLabel
@@ -163,25 +163,6 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // MarkLabel
-            // 
-            this.MarkLabel.AutoSize = true;
-            this.MarkLabel.Location = new System.Drawing.Point(30, 450);
-            this.MarkLabel.Name = "MarkLabel";
-            this.MarkLabel.Size = new System.Drawing.Size(43, 17);
-            this.MarkLabel.TabIndex = 16;
-            this.MarkLabel.Text = "Mark:";
-            this.MarkLabel.Visible = false;
-            // 
-            // MarkTextbox
-            // 
-            this.MarkTextbox.Enabled = false;
-            this.MarkTextbox.Location = new System.Drawing.Point(150, 450);
-            this.MarkTextbox.Name = "MarkTextbox";
-            this.MarkTextbox.Size = new System.Drawing.Size(200, 22);
-            this.MarkTextbox.TabIndex = 17;
-            this.MarkTextbox.Visible = false;
-            // 
             // StatusCombobox
             // 
             this.StatusCombobox.FormattingEnabled = true;
@@ -203,6 +184,25 @@
             this.TopicTextbox.Size = new System.Drawing.Size(200, 53);
             this.TopicTextbox.TabIndex = 20;
             this.TopicTextbox.Text = "";
+            // 
+            // MarkLabel
+            // 
+            this.MarkLabel.AutoSize = true;
+            this.MarkLabel.Location = new System.Drawing.Point(30, 450);
+            this.MarkLabel.Name = "MarkLabel";
+            this.MarkLabel.Size = new System.Drawing.Size(43, 17);
+            this.MarkLabel.TabIndex = 16;
+            this.MarkLabel.Text = "Mark:";
+            this.MarkLabel.Visible = false;
+            // 
+            // MarkTextbox
+            // 
+            this.MarkTextbox.Enabled = false;
+            this.MarkTextbox.Location = new System.Drawing.Point(150, 450);
+            this.MarkTextbox.Name = "MarkTextbox";
+            this.MarkTextbox.Size = new System.Drawing.Size(200, 22);
+            this.MarkTextbox.TabIndex = 17;
+            this.MarkTextbox.Visible = false;
             // 
             // MoreInfo
             // 
@@ -248,9 +248,9 @@
         private System.Windows.Forms.RichTextBox MembersTextbox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Label MarkLabel;
-        private System.Windows.Forms.TextBox MarkTextbox;
         private System.Windows.Forms.ComboBox StatusCombobox;
         private System.Windows.Forms.RichTextBox TopicTextbox;
+        private System.Windows.Forms.Label MarkLabel;
+        private System.Windows.Forms.TextBox MarkTextbox;
     }
 }

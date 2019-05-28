@@ -58,7 +58,7 @@
             this.QuantityLabel.Name = "QuantityLabel";
             this.QuantityLabel.Size = new System.Drawing.Size(61, 17);
             this.QuantityLabel.TabIndex = 25;
-            this.QuantityLabel.Text = "Quantity";
+            this.QuantityLabel.Text = "Group Size:";
             // 
             // SectionNameLabel1
             // 

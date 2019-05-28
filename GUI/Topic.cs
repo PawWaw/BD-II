@@ -22,16 +22,22 @@ namespace GUI
             InitializeComponent();
             dataGridView1.Columns.Clear();
             dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void DetailsButton_Click(object sender, EventArgs e)
         {
             Topics top = new Topics();
+            TopicDetails tpd;
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 top.ID = (int)row.Cells[0].Value;
             }
-            TopicDetails tpd = new TopicDetails(0, top);
+            top = DependencyFacade.GetTopicData(top);
+            if (LoginPanel.id == top.TeacherID)
+                tpd = new TopicDetails(0, top);
+            else
+                tpd = new TopicDetails(2, top);
             tpd.ShowDialog();
         }
 

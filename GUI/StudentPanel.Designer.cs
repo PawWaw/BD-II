@@ -35,12 +35,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.InfoButton = new System.Windows.Forms.Button();
             this.MySecButton = new System.Windows.Forms.Button();
+            this.HistoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AddFileButton
             // 
-            this.AddFileButton.Location = new System.Drawing.Point(550, 170);
+            this.AddFileButton.Location = new System.Drawing.Point(650, 150);
             this.AddFileButton.Name = "AddFileButton";
             this.AddFileButton.Size = new System.Drawing.Size(100, 30);
             this.AddFileButton.TabIndex = 6;
@@ -61,7 +62,7 @@
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Location = new System.Drawing.Point(550, 240);
+            this.LogoutButton.Location = new System.Drawing.Point(650, 270);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(100, 30);
             this.LogoutButton.TabIndex = 8;
@@ -75,22 +76,22 @@
             this.dataGridView1.Location = new System.Drawing.Point(30, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(500, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(600, 300);
             this.dataGridView1.TabIndex = 9;
             // 
             // InfoButton
             // 
-            this.InfoButton.Location = new System.Drawing.Point(550, 30);
+            this.InfoButton.Location = new System.Drawing.Point(650, 30);
             this.InfoButton.Name = "InfoButton";
             this.InfoButton.Size = new System.Drawing.Size(100, 30);
             this.InfoButton.TabIndex = 12;
-            this.InfoButton.Text = "View More";
+            this.InfoButton.Text = "Details";
             this.InfoButton.UseVisualStyleBackColor = true;
             this.InfoButton.Click += new System.EventHandler(this.InfoButton_Click);
             // 
             // MySecButton
             // 
-            this.MySecButton.Location = new System.Drawing.Point(550, 100);
+            this.MySecButton.Location = new System.Drawing.Point(650, 90);
             this.MySecButton.Name = "MySecButton";
             this.MySecButton.Size = new System.Drawing.Size(100, 30);
             this.MySecButton.TabIndex = 13;
@@ -98,19 +99,30 @@
             this.MySecButton.UseVisualStyleBackColor = true;
             this.MySecButton.Click += new System.EventHandler(this.MySecButton_Click);
             // 
+            // HistoryButton
+            // 
+            this.HistoryButton.Location = new System.Drawing.Point(650, 210);
+            this.HistoryButton.Name = "HistoryButton";
+            this.HistoryButton.Size = new System.Drawing.Size(100, 30);
+            this.HistoryButton.TabIndex = 14;
+            this.HistoryButton.Text = "Sent Files";
+            this.HistoryButton.UseVisualStyleBackColor = true;
+            this.HistoryButton.Click += new System.EventHandler(this.HistoryButton_Click);
+            // 
             // StudentWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(672, 343);
+            this.ClientSize = new System.Drawing.Size(772, 343);
+            this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.MySecButton);
             this.Controls.Add(this.InfoButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.LogoutButton);
             this.Controls.Add(this.FilenameLabel);
             this.Controls.Add(this.AddFileButton);
-            this.MaximumSize = new System.Drawing.Size(690, 400);
-            this.MinimumSize = new System.Drawing.Size(690, 390);
+            this.MaximumSize = new System.Drawing.Size(790, 400);
+            this.MinimumSize = new System.Drawing.Size(790, 390);
             this.Name = "StudentWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student On-Line";
@@ -128,5 +140,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button InfoButton;
         private System.Windows.Forms.Button MySecButton;
+        private System.Windows.Forms.Button HistoryButton;
     }
 }

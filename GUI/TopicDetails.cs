@@ -34,13 +34,13 @@ namespace GUI
                 {
                     TopicTextbox.Text = top.Title;
                     InfoRichTextbox.Text = top.Description;
-                    if (top.Active == "opn")
+                    if (top.Status == "Open")
                         StatusCombobox.SelectedIndex = 0;
-                    else if (top.Active == "cls")
+                    else if (top.Status == "Close")
                         StatusCombobox.SelectedIndex = 1;
                     else
                         StatusCombobox.SelectedIndex = 2;
-                    TeacherTextbox.Text = top.TeacherID.ToString();
+                    TeacherTextbox.Text = UserFacade.GetName(top.TeacherID);
                     IDTextbox.Text = top.ID.ToString();
                 }
                 IDTextbox.Enabled = false;
@@ -52,6 +52,33 @@ namespace GUI
                 StatusCombobox.Enabled = false;
                 StatusCombobox.SelectedIndex = 0;
                 IDTextbox.Enabled = false;
+                TeacherTextbox.Text = UserFacade.GetName(LoginPanel.id);
+                TeacherTextbox.Enabled = false;
+            }
+            else if (mode == 2)
+            {
+                opentype = 0;
+                InitializeComponent();
+                StatusCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                Topics top = DependencyFacade.GetTopicData(topic);
+                if (top != null)
+                {
+                    TopicTextbox.Text = top.Title;
+                    InfoRichTextbox.Text = top.Description;
+                    if (top.Status == "Open")
+                        StatusCombobox.SelectedIndex = 0;
+                    else if (top.Status == "Close")
+                        StatusCombobox.SelectedIndex = 1;
+                    else
+                        StatusCombobox.SelectedIndex = 2;
+                    TeacherTextbox.Text = UserFacade.GetName(top.TeacherID);
+                    IDTextbox.Text = top.ID.ToString();
+                }
+                TopicTextbox.Enabled = false;
+                InfoRichTextbox.Enabled = false;
+                TeacherTextbox.Enabled = false;
+                IDTextbox.Enabled = false;
+                StatusCombobox.Enabled = false;
             }
         }
 
@@ -62,17 +89,17 @@ namespace GUI
             {
                 searchCrit.Title = TopicTextbox.Text;
                 searchCrit.Description = InfoRichTextbox.Text;
-                searchCrit.TeacherID = Convert.ToInt32(TeacherTextbox.Text);
+                searchCrit.TeacherID = LoginPanel.id;
 
                 if (IDTextbox.Text != "")
                     searchCrit.ID = Convert.ToInt32(IDTextbox.Text);
 
                 if (StatusCombobox.SelectedItem.ToString() == "Open")
-                    searchCrit.Active = "opn";
+                    searchCrit.Status = "Open";
                 else if (StatusCombobox.SelectedItem.ToString() == "Closed")
-                    searchCrit.Active = "cls";
+                    searchCrit.Status = "Close";
                 else
-                    searchCrit.Active = "fin";
+                    searchCrit.Status = "Final";
 
                 if (opentype == 1)
                     DependencyFacade.InsertTopic(searchCrit);

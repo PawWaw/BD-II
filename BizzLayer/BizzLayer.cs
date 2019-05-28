@@ -11,7 +11,7 @@ namespace BizzLayer
     { 
         public static IQueryable<Users> GetUsers(Users searchCrit, string type)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             var res = from el in dc.Users
                       where
                       (String.IsNullOrEmpty(searchCrit.Surname) || el.Surname.StartsWith(searchCrit.Surname))
@@ -25,7 +25,7 @@ namespace BizzLayer
 
         public static IQueryable<dynamic> GetStudents(Users searchCrit, int number)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             var res = from el in dc.Users
                       join ol in dc.Students on el.ID equals ol.UserID
                       where
@@ -50,7 +50,7 @@ namespace BizzLayer
 
         public static int GetMaxIndex()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             string[] numbers = dc.Students.ToList().Select(x => x.AlbumNr).ToArray();
             int[] ints = Array.ConvertAll(numbers, int.Parse);
             int max = ints.Max();
@@ -59,7 +59,7 @@ namespace BizzLayer
 
         public static int GetAlbumNumber(int id)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
 
             string[] words = dc.Students.Where(x => x.UserID == id).Select(x => x.AlbumNr).ToArray();              
             return Convert.ToInt32(words[0]);
@@ -67,7 +67,7 @@ namespace BizzLayer
 
         public static Users GetTeacher(int id)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
 
             var res = (from el in dc.Users
                       join ol in dc.Teachers on el.ID equals ol.UserID
@@ -77,9 +77,21 @@ namespace BizzLayer
             return res;
         }
 
+        public static Teachers GetTeacherFromUser(Users usr)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+
+            var res = (from el in dc.Users
+                       join ol in dc.Teachers on el.ID equals ol.UserID
+                       where
+                       (usr.ID == Convert.ToInt32(el.ID))
+                       select ol).SingleOrDefault();
+            return res;
+        }
+
         public static Users[] GetSectionSquad(int id)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
 
             Users[] res =  (from el in dc.Users
                        join ol in dc.Students on el.ID equals ol.UserID
@@ -90,9 +102,21 @@ namespace BizzLayer
             return res;
         }
 
+        public static string GetName(int id)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+
+            Users res = (from el in dc.Users
+                           join ol in dc.Teachers on el.ID equals ol.UserID
+                           where
+                           (id == Convert.ToInt32(ol.ID))
+                           select el).SingleOrDefault();
+            return res.Name + " " + res.Surname;
+        }
+
         public static Users InsertUser(Users user)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 var res = new Users();
                 res.ID = -1;
@@ -110,7 +134,7 @@ namespace BizzLayer
         public static void InsertStudent(Users user, int album_nr)
         {
             var student = InsertUser(user);
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 Students std = new Students();
                 std.UserID = student.ID;
@@ -123,7 +147,7 @@ namespace BizzLayer
         public static void InsertTeacher(Users user, string degree)
         {
             var teacher = InsertUser(user);
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 Teachers tch = new Teachers();
                 tch.AcademicDegree = degree;
@@ -136,7 +160,7 @@ namespace BizzLayer
 
         public static void UpdateUsers(Users user)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 var res = (from el in dc.Users
                            where el.ID == user.ID
@@ -153,7 +177,7 @@ namespace BizzLayer
 
         public static Users LogIn(Users searchCrit)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
 
             Users usr = dc.Users.Where(x => Equals(x.Password,searchCrit.Password)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x).SingleOrDefault();
             return usr;
@@ -162,27 +186,31 @@ namespace BizzLayer
 
     static public class DependencyFacade
     {
-        public static IQueryable<dynamic> GetSections(Groups searchCrit)
+        public static IQueryable<dynamic> GetSections(Sections searchCrit)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            var res = from el in dc.Groups
+            BDIIDataContext dc = new BDIIDataContext();
+            var res = from el in dc.Sections 
+                      join ol in dc.Topics on el.TopicID equals ol.ID into ps
+                      from ol in ps.DefaultIfEmpty()
                       where
                       ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
                       select new
                       {
                           el.ID,
                           el.GroupSize,
+                          el.Status,
+                          el.SemID,
                           el.TopicID,
-                          el.SemID
+                          ol.Title
                       };
             return res;
         }
 
-        public static Groups GetSection(Groups searchCrit)
+        public static Sections GetSection(Sections searchCrit)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            var res = (from el in dc.Groups
-                      where
+            BDIIDataContext dc = new BDIIDataContext();
+            var res = (from el in dc.Sections
+                       where
                       ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
                       select el).SingleOrDefault();
             return res;
@@ -190,7 +218,7 @@ namespace BizzLayer
 
         public static IQueryable<dynamic> GetTopics(Topics searchCrit)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             var res = from el in dc.Topics
                       join ol in dc.Teachers on el.TeacherID equals ol.ID
                       join il in dc.Users on ol.UserID equals il.ID
@@ -202,29 +230,7 @@ namespace BizzLayer
                       {
                           el.ID,
                           el.Title,
-                          el.Active,
-                          il.Name,
-                          il.Surname
-                      };
-            return res;
-        }
-
-        public static IQueryable<dynamic> GetAvailableTopics(Topics searchCrit)
-        {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            var res = from el in dc.Topics
-                      join ol in dc.Teachers on el.TeacherID equals ol.ID
-                      join il in dc.Users on ol.UserID equals il.ID
-                      join ul in dc.Groups on el.ID equals ul.TopicID
-                      where
-                      ((el.ID == searchCrit.ID) || (searchCrit.ID == 0))
-                      &&
-                      (el.Title.StartsWith(searchCrit.Title) || string.IsNullOrEmpty(searchCrit.Title))
-                      select new
-                      {
-                          el.ID,
-                          el.Title,
-                          el.Active,
+                          el.Status,
                           il.Name,
                           il.Surname
                       };
@@ -233,63 +239,71 @@ namespace BizzLayer
 
         public static Topics GetTopicData(Topics searchCrit)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             var res = dc.Topics.Where(x => x.ID == searchCrit.ID).Select(s => s).SingleOrDefault();
             return res;
         }
 
-        public static Groups GetSectionData(int topicID)
+        public static Sections GetSectionData(int topicID)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            var res = dc.Groups.Where(x => x.TopicID == topicID).Select(s => s).SingleOrDefault();
+            BDIIDataContext dc = new BDIIDataContext();
+            var res = dc.Sections.Where(x => x.TopicID == topicID).Select(s => s).SingleOrDefault();
             return res;
         }
 
         public static int GetStudentNumber(int groupID)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            BDIIDataContext dc = new BDIIDataContext();
             var res = dc.Students_Groups.Where(x => x.GroupID == groupID).Select(s => s).Count();
             return res;
         }
 
-        public static Groups GetMySection(int albumnr)
+        public static Sections GetMySection(int albumnr)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            var res = (from el in dc.Groups
-                      join ol in dc.Students_Groups on el.ID equals ol.GroupID
+            BDIIDataContext dc = new BDIIDataContext();
+            var res = (from el in dc.Sections
+                       join ol in dc.Students_Groups on el.ID equals ol.GroupID
                       where
                       (Convert.ToInt32(ol.StudentAlbumNr) == albumnr)
                       select el).SingleOrDefault();
             return res;
         }
 
-
-
-        public static void InsertSection(Groups section)
+        public static int GetMaxSecID()
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
-                Groups grp = new Groups
+                int max = dc.Sections.Select(x => x.ID).Max();
+                return max;
+            }
+        }
+
+        public static void InsertSection(Sections section)
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                Sections grp = new Sections
                 {
                     GroupSize = section.GroupSize,
                     ID = -1,
-                    SemID = 1
+                    SemID = 1,
+                    Status = "opn"
                 };
-                dc.Groups.InsertOnSubmit(grp);
+                dc.Sections.InsertOnSubmit(grp);
                 dc.SubmitChanges();
             }
         }
 
         public static void InsertTopic(Topics topic)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 Topics tpc = new Topics
                 {
                     ID = -1,
                     Title = topic.Title,
                     Description = topic.Description,
-                    Active = "opn",
+                    Status = "opn",
                     TeacherID = topic.TeacherID
                 };
                 dc.Topics.InsertOnSubmit(tpc);
@@ -299,7 +313,7 @@ namespace BizzLayer
 
         public static void UpdateTopics(Topics topic)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 var res = (from el in dc.Topics
                            where el.ID == topic.ID
@@ -307,7 +321,7 @@ namespace BizzLayer
                 if (res == null)
                     return;
                 res.ID = topic.ID;
-                res.Active = topic.Active;
+                res.Status = topic.Status;
 
                 if(topic.Title != null)
                 {
@@ -319,11 +333,11 @@ namespace BizzLayer
             }
         }
 
-        public static void UpdateSection(Groups grp)
+        public static void UpdateSection(Sections grp)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
-                var res = (from el in dc.Groups
+                var res = (from el in dc.Sections
                            where el.ID == grp.ID
                            select el).SingleOrDefault();
                 if (res == null)
@@ -337,14 +351,14 @@ namespace BizzLayer
 
         public static int SetTopic(int topicID, int sectionID)
         {
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 var res2 = (from ol in dc.Topics
                             where ol.ID == topicID
                             select ol).SingleOrDefault();
                 if (res2 != null)
                 {
-                    var res = (from el in dc.Groups
+                    var res = (from el in dc.Sections
                                where el.ID == sectionID
                                select el).SingleOrDefault();
                     if (res == null)
@@ -364,7 +378,7 @@ namespace BizzLayer
         {
             int nr = 0;
             int oldnr = 0;
-            using (DataClasses1DataContext dc = new DataClasses1DataContext())
+            using (BDIIDataContext dc = new BDIIDataContext())
             {
                 var res = dc.Students_Groups.Where(x => Convert.ToInt32(x.StudentAlbumNr) == album).Select(x => x).SingleOrDefault();
 
@@ -391,23 +405,23 @@ namespace BizzLayer
                 }
             }
 
-            Groups oldgrp = new Groups();
-            Groups newgrp = new Groups();
+            Sections oldgrp = new Sections();
+            Sections newgrp = new Sections();
             Topics topic = new Topics();
             oldgrp.ID = oldnr;
             newgrp.ID = nr;
-            oldgrp = (Groups)DependencyFacade.GetSection(oldgrp);
-            newgrp = (Groups)DependencyFacade.GetSection(newgrp);
+            oldgrp = (Sections)DependencyFacade.GetSection(oldgrp);
+            newgrp = (Sections)DependencyFacade.GetSection(newgrp);
 
             if(newgrp.GroupSize == DependencyFacade.GetStudentNumber(newgrp.ID))
             {
-                topic.Active = "cls";
+                topic.Status = "cls";
                 topic.ID = (int)newgrp.TopicID;
                 DependencyFacade.UpdateTopics(topic);
             }
             if(oldgrp.GroupSize != DependencyFacade.GetStudentNumber(oldgrp.ID))
             {
-                topic.Active = "opn";
+                topic.Status = "opn";
                 topic.ID = (int)oldgrp.TopicID;
                 DependencyFacade.UpdateTopics(topic);
             }          

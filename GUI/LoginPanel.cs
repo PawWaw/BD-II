@@ -15,6 +15,7 @@ namespace GUI
     public partial class LoginPanel : Form
     {
         public static int albumNumber = 0;
+        public static int id = 0;
 
         public LoginPanel()
         {
@@ -44,6 +45,7 @@ namespace GUI
                 else if (log.TypeOfUser == "tch")
                 {
                     this.Hide();
+                    id = UserFacade.GetTeacherFromUser(log).ID;
                     TeacherPanel lct = new TeacherPanel();
                     lct.Show();
                 }

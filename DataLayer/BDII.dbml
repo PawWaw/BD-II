@@ -1,14 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDII" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDII" Class="BDIIDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO_520S;Initial Catalog=BDII;Integrated Security=True" SettingsObjectName="DataLayer.Properties.Settings" SettingsPropertyName="BDIIConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Groups" Member="Groups">
-    <Type Name="Groups">
+  <Table Name="dbo.Presence" Member="Presence">
+    <Type Name="Presence">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="GroupSize" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="TopicID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Groups_Students_Groups" Member="Students_Groups" ThisKey="ID" OtherKey="GroupID" Type="Students_Groups" />
-      <Association Name="Sems_Groups" Member="Sems" ThisKey="SemID" OtherKey="ID" Type="Sems" IsForeignKey="true" />
-      <Association Name="Topics_Groups" Member="Topics" ThisKey="TopicID" OtherKey="ID" Type="Topics" IsForeignKey="true" />
+      <Column Name="Group_StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Presence" Member="Presence1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -23,20 +20,16 @@
       <Association Name="Users_Teachers" Member="Teachers" ThisKey="ID" OtherKey="UserID" Type="Teachers" />
     </Type>
   </Table>
-  <Table Name="dbo.Patient" Member="Patient">
-    <Type Name="Patient">
-      <Column Name="IdPatient" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Presence" Member="Presence">
-    <Type Name="Presence">
+  <Table Name="dbo.Sections" Member="Sections">
+    <Type Name="Sections">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Group_StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Presence" Member="Presence1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Presence_Students_Groups" Member="Students_Groups" ThisKey="ID" OtherKey="GroupID" Type="Students_Groups" />
+      <Column Name="GroupSize" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TopicID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="Sections_Students_Groups" Member="Students_Groups" ThisKey="ID" OtherKey="GroupID" Type="Students_Groups" />
+      <Association Name="Sems_Sections" Member="Sems" ThisKey="SemID" OtherKey="ID" Type="Sems" IsForeignKey="true" />
+      <Association Name="Topics_Sections" Member="Topics" ThisKey="TopicID" OtherKey="ID" Type="Topics" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Sem_Student" Member="Sem_Student">
@@ -54,7 +47,7 @@
       <Column Name="StudyField" Type="System.String" DbType="VarChar(127) NOT NULL" CanBeNull="false" />
       <Column Name="Year" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="Sem" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Association Name="Sems_Groups" Member="Groups" ThisKey="ID" OtherKey="SemID" Type="Groups" />
+      <Association Name="Sems_Sections" Member="Sections" ThisKey="ID" OtherKey="SemID" Type="Sections" />
       <Association Name="Sems_Sem_Student" Member="Sem_Student" ThisKey="ID" OtherKey="SemID" Type="Sem_Student" />
     </Type>
   </Table>
@@ -73,8 +66,7 @@
       <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="StudentAlbumNr" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="Mark" Type="System.Decimal" DbType="Decimal(2,1)" CanBeNull="true" />
-      <Association Name="Groups_Students_Groups" Member="Groups" ThisKey="GroupID" OtherKey="ID" Type="Groups" IsForeignKey="true" />
-      <Association Name="Presence_Students_Groups" Member="Presence" ThisKey="GroupID" OtherKey="ID" Type="Presence" IsForeignKey="true" />
+      <Association Name="Sections_Students_Groups" Member="Sections" ThisKey="GroupID" OtherKey="ID" Type="Sections" IsForeignKey="true" />
       <Association Name="Students_Students_Groups" Member="Students" ThisKey="StudentAlbumNr" OtherKey="AlbumNr" Type="Students" IsForeignKey="true" />
     </Type>
   </Table>
@@ -92,9 +84,9 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
-      <Column Name="Active" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
       <Column Name="TeacherID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Topics_Groups" Member="Groups" ThisKey="ID" OtherKey="TopicID" Type="Groups" />
+      <Association Name="Topics_Sections" Member="Sections" ThisKey="ID" OtherKey="TopicID" Type="Sections" />
       <Association Name="Teachers_Topics" Member="Teachers" ThisKey="TeacherID" OtherKey="ID" Type="Teachers" IsForeignKey="true" />
     </Type>
   </Table>
