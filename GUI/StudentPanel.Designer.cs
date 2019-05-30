@@ -36,12 +36,15 @@
             this.InfoButton = new System.Windows.Forms.Button();
             this.MySecButton = new System.Windows.Forms.Button();
             this.HistoryButton = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AddFileButton
             // 
-            this.AddFileButton.Location = new System.Drawing.Point(650, 150);
+            this.AddFileButton.Location = new System.Drawing.Point(650, 215);
             this.AddFileButton.Name = "AddFileButton";
             this.AddFileButton.Size = new System.Drawing.Size(100, 30);
             this.AddFileButton.TabIndex = 6;
@@ -62,7 +65,7 @@
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Location = new System.Drawing.Point(650, 270);
+            this.LogoutButton.Location = new System.Drawing.Point(650, 350);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(100, 30);
             this.LogoutButton.TabIndex = 8;
@@ -73,7 +76,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 80);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(600, 300);
@@ -81,7 +84,7 @@
             // 
             // InfoButton
             // 
-            this.InfoButton.Location = new System.Drawing.Point(650, 30);
+            this.InfoButton.Location = new System.Drawing.Point(650, 80);
             this.InfoButton.Name = "InfoButton";
             this.InfoButton.Size = new System.Drawing.Size(100, 30);
             this.InfoButton.TabIndex = 12;
@@ -91,7 +94,7 @@
             // 
             // MySecButton
             // 
-            this.MySecButton.Location = new System.Drawing.Point(650, 90);
+            this.MySecButton.Location = new System.Drawing.Point(650, 147);
             this.MySecButton.Name = "MySecButton";
             this.MySecButton.Size = new System.Drawing.Size(100, 30);
             this.MySecButton.TabIndex = 13;
@@ -101,19 +104,47 @@
             // 
             // HistoryButton
             // 
-            this.HistoryButton.Location = new System.Drawing.Point(650, 210);
+            this.HistoryButton.Location = new System.Drawing.Point(650, 283);
             this.HistoryButton.Name = "HistoryButton";
             this.HistoryButton.Size = new System.Drawing.Size(100, 30);
             this.HistoryButton.TabIndex = 14;
-            this.HistoryButton.Text = "Sent Files";
+            this.HistoryButton.Text = "File History";
             this.HistoryButton.UseVisualStyleBackColor = true;
             this.HistoryButton.Click += new System.EventHandler(this.HistoryButton_Click);
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(650, 13);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(100, 30);
+            this.SearchButton.TabIndex = 15;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(137, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 17;
             // 
             // StudentWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(772, 343);
+            this.ClientSize = new System.Drawing.Size(772, 403);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.MySecButton);
             this.Controls.Add(this.InfoButton);
@@ -121,14 +152,15 @@
             this.Controls.Add(this.LogoutButton);
             this.Controls.Add(this.FilenameLabel);
             this.Controls.Add(this.AddFileButton);
-            this.MaximumSize = new System.Drawing.Size(790, 400);
-            this.MinimumSize = new System.Drawing.Size(790, 390);
+            this.MaximumSize = new System.Drawing.Size(790, 450);
+            this.MinimumSize = new System.Drawing.Size(790, 450);
             this.Name = "StudentWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student On-Line";
             this.Load += new System.EventHandler(this.StudentWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,5 +173,8 @@
         private System.Windows.Forms.Button InfoButton;
         private System.Windows.Forms.Button MySecButton;
         private System.Windows.Forms.Button HistoryButton;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

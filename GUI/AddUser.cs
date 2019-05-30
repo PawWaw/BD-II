@@ -15,6 +15,7 @@ namespace GUI
     public partial class AddUser : Form
     {
         byte openType = 0;
+        Sems[] sems;
 
         public AddUser()                              
         {
@@ -31,9 +32,15 @@ namespace GUI
                 InitializeComponent();
                 DegreeTextbox.Enabled = false;
                 AlbumTextbox.Enabled = false;
+                SemCombobox.Enabled = false;
                 IDTextbox.Enabled = false;
                 IDTextbox.Visible = false;
                 IDLabel.Visible = false;
+                sems = DependencyFacade.GetSems();
+                for (int i = 0; i < sems.Length; i++)
+                    SemCombobox.Items.Add(sems[i].StudyField + ", " + sems[i].Year + ", semestr " + sems[i].Sem);
+                SemCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                SemCombobox.SelectedIndex = 0;
             }
             else if(windowType == 1)
             {
@@ -55,7 +62,11 @@ namespace GUI
                     AlbumTextbox.Text = UserFacade.GetAlbumNumber(Convert.ToInt32(user.ID)).ToString();
 
                 FunctionCombobox.Enabled = false;
-
+                sems = DependencyFacade.GetSems();
+                for (int i = 0; i < sems.Length; i++)
+                    SemCombobox.Items.Add(sems[i].StudyField + ", " + sems[i].Year + ", semestr " + sems[i].Sem);
+                SemCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                SemCombobox.SelectedIndex = 0;
             }
         }
 
@@ -67,16 +78,19 @@ namespace GUI
             {
                 DegreeTextbox.Enabled = true;
                 AlbumTextbox.Enabled = false;
+                SemCombobox.Enabled = false;
             }
             else if (FunctionCombobox.SelectedIndex == 2)
             {
                 DegreeTextbox.Enabled = false;
                 AlbumTextbox.Enabled = false;
+                SemCombobox.Enabled = true;
             }
             else
             {
                 DegreeTextbox.Enabled = false;
                 AlbumTextbox.Enabled = false;
+                SemCombobox.Enabled = false;
             }
         }
 
@@ -110,7 +124,9 @@ namespace GUI
                 int max = UserFacade.GetMaxIndex();
                 user.Password = PswdTextbox.Text;
                 if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
-                    UserFacade.InsertStudent(user, max);
+                {
+                    UserFacade.InsertStudent(user, max, DependencyFacade.GetSems()[SemCombobox.SelectedIndex].ID);
+                }
                 else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
                     UserFacade.InsertTeacher(user, DegreeTextbox.Text);
                 else

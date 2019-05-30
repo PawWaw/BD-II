@@ -47,14 +47,16 @@
             this.SurnameTextbox = new System.Windows.Forms.TextBox();
             this.DegreeTextbox = new System.Windows.Forms.TextBox();
             this.PswdButton = new System.Windows.Forms.Button();
+            this.SemLabel = new System.Windows.Forms.Label();
+            this.SemCombobox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(200, 470);
+            this.CloseButton.Location = new System.Drawing.Point(245, 486);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(100, 45);
+            this.CloseButton.Size = new System.Drawing.Size(122, 45);
             this.CloseButton.TabIndex = 0;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -62,7 +64,7 @@
             // 
             // AddUserButton
             // 
-            this.AddUserButton.Location = new System.Drawing.Point(50, 470);
+            this.AddUserButton.Location = new System.Drawing.Point(42, 486);
             this.AddUserButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddUserButton.Name = "AddUserButton";
             this.AddUserButton.Size = new System.Drawing.Size(100, 45);
@@ -73,7 +75,7 @@
             // 
             // AlbumLabel
             // 
-            this.AlbumLabel.Location = new System.Drawing.Point(50, 320);
+            this.AlbumLabel.Location = new System.Drawing.Point(42, 282);
             this.AlbumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AlbumLabel.Name = "AlbumLabel";
             this.AlbumLabel.Size = new System.Drawing.Size(110, 22);
@@ -82,15 +84,15 @@
             // 
             // AlbumTextbox
             // 
-            this.AlbumTextbox.Location = new System.Drawing.Point(200, 320);
+            this.AlbumTextbox.Location = new System.Drawing.Point(192, 282);
             this.AlbumTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.AlbumTextbox.Name = "AlbumTextbox";
-            this.AlbumTextbox.Size = new System.Drawing.Size(100, 22);
+            this.AlbumTextbox.Size = new System.Drawing.Size(175, 22);
             this.AlbumTextbox.TabIndex = 9;
             // 
             // FunctionLabel
             // 
-            this.FunctionLabel.Location = new System.Drawing.Point(50, 220);
+            this.FunctionLabel.Location = new System.Drawing.Point(42, 182);
             this.FunctionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FunctionLabel.Name = "FunctionLabel";
             this.FunctionLabel.Size = new System.Drawing.Size(100, 22);
@@ -105,16 +107,16 @@
             "Admin",
             "Teacher",
             "Student"});
-            this.FunctionCombobox.Location = new System.Drawing.Point(200, 220);
+            this.FunctionCombobox.Location = new System.Drawing.Point(192, 182);
             this.FunctionCombobox.Margin = new System.Windows.Forms.Padding(2);
             this.FunctionCombobox.Name = "FunctionCombobox";
-            this.FunctionCombobox.Size = new System.Drawing.Size(100, 24);
+            this.FunctionCombobox.Size = new System.Drawing.Size(175, 24);
             this.FunctionCombobox.TabIndex = 17;
             this.FunctionCombobox.SelectedIndexChanged += new System.EventHandler(this.FunctionCombobox_SelectedIndexChanged);
             // 
             // LoginLabel
             // 
-            this.LoginLabel.Location = new System.Drawing.Point(50, 370);
+            this.LoginLabel.Location = new System.Drawing.Point(42, 386);
             this.LoginLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(100, 22);
@@ -123,7 +125,7 @@
             // 
             // PswdLabel
             // 
-            this.PswdLabel.Location = new System.Drawing.Point(50, 420);
+            this.PswdLabel.Location = new System.Drawing.Point(42, 436);
             this.PswdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PswdLabel.Name = "PswdLabel";
             this.PswdLabel.Size = new System.Drawing.Size(100, 22);
@@ -132,24 +134,24 @@
             // 
             // LoginTextbox
             // 
-            this.LoginTextbox.Location = new System.Drawing.Point(200, 370);
+            this.LoginTextbox.Location = new System.Drawing.Point(192, 386);
             this.LoginTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.LoginTextbox.Name = "LoginTextbox";
-            this.LoginTextbox.Size = new System.Drawing.Size(100, 22);
+            this.LoginTextbox.Size = new System.Drawing.Size(175, 22);
             this.LoginTextbox.TabIndex = 20;
             // 
             // PswdTextbox
             // 
-            this.PswdTextbox.Location = new System.Drawing.Point(200, 420);
+            this.PswdTextbox.Location = new System.Drawing.Point(192, 436);
             this.PswdTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.PswdTextbox.Name = "PswdTextbox";
             this.PswdTextbox.PasswordChar = '*';
-            this.PswdTextbox.Size = new System.Drawing.Size(100, 22);
+            this.PswdTextbox.Size = new System.Drawing.Size(175, 22);
             this.PswdTextbox.TabIndex = 21;
             // 
             // SurnameLabel
             // 
-            this.SurnameLabel.Location = new System.Drawing.Point(50, 170);
+            this.SurnameLabel.Location = new System.Drawing.Point(42, 132);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(100, 23);
             this.SurnameLabel.TabIndex = 22;
@@ -157,7 +159,7 @@
             // 
             // NameLabel
             // 
-            this.NameLabel.Location = new System.Drawing.Point(50, 120);
+            this.NameLabel.Location = new System.Drawing.Point(42, 82);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(100, 23);
             this.NameLabel.TabIndex = 23;
@@ -166,7 +168,7 @@
             // DegreeLabel
             // 
             this.DegreeLabel.AutoSize = true;
-            this.DegreeLabel.Location = new System.Drawing.Point(50, 270);
+            this.DegreeLabel.Location = new System.Drawing.Point(42, 232);
             this.DegreeLabel.Name = "DegreeLabel";
             this.DegreeLabel.Size = new System.Drawing.Size(122, 17);
             this.DegreeLabel.TabIndex = 24;
@@ -175,7 +177,7 @@
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
-            this.IDLabel.Location = new System.Drawing.Point(50, 70);
+            this.IDLabel.Location = new System.Drawing.Point(42, 32);
             this.IDLabel.Name = "IDLabel";
             this.IDLabel.Size = new System.Drawing.Size(25, 17);
             this.IDLabel.TabIndex = 25;
@@ -183,49 +185,67 @@
             // 
             // IDTextbox
             // 
-            this.IDTextbox.Location = new System.Drawing.Point(200, 70);
+            this.IDTextbox.Location = new System.Drawing.Point(192, 32);
             this.IDTextbox.Name = "IDTextbox";
-            this.IDTextbox.Size = new System.Drawing.Size(100, 22);
+            this.IDTextbox.Size = new System.Drawing.Size(175, 22);
             this.IDTextbox.TabIndex = 26;
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(200, 120);
+            this.NameTextBox.Location = new System.Drawing.Point(192, 82);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(100, 22);
+            this.NameTextBox.Size = new System.Drawing.Size(175, 22);
             this.NameTextBox.TabIndex = 27;
             // 
             // SurnameTextbox
             // 
-            this.SurnameTextbox.Location = new System.Drawing.Point(200, 170);
+            this.SurnameTextbox.Location = new System.Drawing.Point(192, 132);
             this.SurnameTextbox.Name = "SurnameTextbox";
-            this.SurnameTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SurnameTextbox.Size = new System.Drawing.Size(175, 22);
             this.SurnameTextbox.TabIndex = 28;
             // 
             // DegreeTextbox
             // 
-            this.DegreeTextbox.Location = new System.Drawing.Point(200, 270);
+            this.DegreeTextbox.Location = new System.Drawing.Point(192, 232);
             this.DegreeTextbox.Name = "DegreeTextbox";
-            this.DegreeTextbox.Size = new System.Drawing.Size(100, 22);
+            this.DegreeTextbox.Size = new System.Drawing.Size(175, 22);
             this.DegreeTextbox.TabIndex = 29;
             // 
             // PswdButton
             // 
-            this.PswdButton.Location = new System.Drawing.Point(50, 420);
+            this.PswdButton.Location = new System.Drawing.Point(42, 436);
             this.PswdButton.Name = "PswdButton";
-            this.PswdButton.Size = new System.Drawing.Size(250, 30);
+            this.PswdButton.Size = new System.Drawing.Size(325, 30);
             this.PswdButton.TabIndex = 30;
             this.PswdButton.Text = "Change Password";
             this.PswdButton.UseVisualStyleBackColor = true;
             this.PswdButton.Visible = false;
             this.PswdButton.Click += new System.EventHandler(this.PswdButton_Click);
             // 
+            // SemLabel
+            // 
+            this.SemLabel.Location = new System.Drawing.Point(42, 332);
+            this.SemLabel.Name = "SemLabel";
+            this.SemLabel.Size = new System.Drawing.Size(100, 23);
+            this.SemLabel.TabIndex = 31;
+            this.SemLabel.Text = "Semester:";
+            // 
+            // SemCombobox
+            // 
+            this.SemCombobox.FormattingEnabled = true;
+            this.SemCombobox.Location = new System.Drawing.Point(192, 332);
+            this.SemCombobox.Name = "SemCombobox";
+            this.SemCombobox.Size = new System.Drawing.Size(175, 24);
+            this.SemCombobox.TabIndex = 32;
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(332, 553);
+            this.ClientSize = new System.Drawing.Size(402, 553);
             this.Controls.Add(this.PswdButton);
+            this.Controls.Add(this.SemCombobox);
+            this.Controls.Add(this.SemLabel);
             this.Controls.Add(this.DegreeTextbox);
             this.Controls.Add(this.SurnameTextbox);
             this.Controls.Add(this.NameTextBox);
@@ -245,8 +265,8 @@
             this.Controls.Add(this.AddUserButton);
             this.Controls.Add(this.CloseButton);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(350, 600);
-            this.MinimumSize = new System.Drawing.Size(350, 600);
+            this.MaximumSize = new System.Drawing.Size(420, 600);
+            this.MinimumSize = new System.Drawing.Size(420, 600);
             this.Name = "AddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add User";
@@ -276,5 +296,7 @@
         private System.Windows.Forms.TextBox SurnameTextbox;
         private System.Windows.Forms.TextBox DegreeTextbox;
         private System.Windows.Forms.Button PswdButton;
+        private System.Windows.Forms.Label SemLabel;
+        private System.Windows.Forms.ComboBox SemCombobox;
     }
 }

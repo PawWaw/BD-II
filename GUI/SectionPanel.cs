@@ -57,8 +57,11 @@ namespace GUI
 
         private void TopicButton_Click(object sender, EventArgs e)
         {
-            TopicSet tps = new TopicSet(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
-            tps.ShowDialog();
+            if(dataGridView1.SelectedCells.Count != 0)
+            {
+                TopicSet tps = new TopicSet(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
+                tps.ShowDialog();
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -69,7 +72,7 @@ namespace GUI
 
         private void PresenceButton_Click(object sender, EventArgs e)
         {
-            Presences prs = new Presences();
+            Presences prs = new Presences(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
             prs.ShowDialog();
         }
 
@@ -132,7 +135,7 @@ namespace GUI
 
         private void GradesButton_Click(object sender, EventArgs e)
         {
-            Grades mrk = new Grades();
+            AddMark mrk = new AddMark(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
             mrk.ShowDialog();
         }
     }

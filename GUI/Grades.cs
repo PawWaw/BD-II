@@ -30,8 +30,8 @@ namespace GUI
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddMark adm = new AddMark();
-            adm.ShowDialog();
+            //AddMark adm = new AddMark();
+            //adm.ShowDialog();
         }
     }
 }

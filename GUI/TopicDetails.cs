@@ -52,7 +52,7 @@ namespace GUI
                 StatusCombobox.Enabled = false;
                 StatusCombobox.SelectedIndex = 0;
                 IDTextbox.Enabled = false;
-                TeacherTextbox.Text = UserFacade.GetName(LoginPanel.id);
+                TeacherTextbox.Text = UserFacade.GetName(LoginPanel.TeacherID);
                 TeacherTextbox.Enabled = false;
             }
             else if (mode == 2)
@@ -89,7 +89,7 @@ namespace GUI
             {
                 searchCrit.Title = TopicTextbox.Text;
                 searchCrit.Description = InfoRichTextbox.Text;
-                searchCrit.TeacherID = LoginPanel.id;
+                searchCrit.TeacherID = LoginPanel.TeacherID;
 
                 if (IDTextbox.Text != "")
                     searchCrit.ID = Convert.ToInt32(IDTextbox.Text);

@@ -30,9 +30,6 @@ namespace DataLayer
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertPresence(Presence instance);
-    partial void UpdatePresence(Presence instance);
-    partial void DeletePresence(Presence instance);
     partial void InsertUsers(Users instance);
     partial void UpdateUsers(Users instance);
     partial void DeleteUsers(Users instance);
@@ -48,15 +45,21 @@ namespace DataLayer
     partial void InsertStudents(Students instance);
     partial void UpdateStudents(Students instance);
     partial void DeleteStudents(Students instance);
-    partial void InsertStudents_Groups(Students_Groups instance);
-    partial void UpdateStudents_Groups(Students_Groups instance);
-    partial void DeleteStudents_Groups(Students_Groups instance);
     partial void InsertTeachers(Teachers instance);
     partial void UpdateTeachers(Teachers instance);
     partial void DeleteTeachers(Teachers instance);
     partial void InsertTopics(Topics instance);
     partial void UpdateTopics(Topics instance);
     partial void DeleteTopics(Topics instance);
+    partial void InsertFiles(Files instance);
+    partial void UpdateFiles(Files instance);
+    partial void DeleteFiles(Files instance);
+    partial void InsertStudents_Groups(Students_Groups instance);
+    partial void UpdateStudents_Groups(Students_Groups instance);
+    partial void DeleteStudents_Groups(Students_Groups instance);
+    partial void InsertPresence(Presence instance);
+    partial void UpdatePresence(Presence instance);
+    partial void DeletePresence(Presence instance);
     #endregion
 		
 		public BDIIDataContext() : 
@@ -87,14 +90,6 @@ namespace DataLayer
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Presence> Presence
-		{
-			get
-			{
-				return this.GetTable<Presence>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Users> Users
@@ -137,14 +132,6 @@ namespace DataLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Students_Groups> Students_Groups
-		{
-			get
-			{
-				return this.GetTable<Students_Groups>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Teachers> Teachers
 		{
 			get
@@ -160,138 +147,28 @@ namespace DataLayer
 				return this.GetTable<Topics>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Presence")]
-	public partial class Presence : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _Group_StudentID;
-		
-		private System.DateTime _Date;
-		
-		private bool _Presence1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnGroup_StudentIDChanging(int value);
-    partial void OnGroup_StudentIDChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnPresence1Changing(bool value);
-    partial void OnPresence1Changed();
-    #endregion
-		
-		public Presence()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		public System.Data.Linq.Table<Files> Files
 		{
 			get
 			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
+				return this.GetTable<Files>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Group_StudentID", DbType="Int NOT NULL")]
-		public int Group_StudentID
+		public System.Data.Linq.Table<Students_Groups> Students_Groups
 		{
 			get
 			{
-				return this._Group_StudentID;
-			}
-			set
-			{
-				if ((this._Group_StudentID != value))
-				{
-					this.OnGroup_StudentIDChanging(value);
-					this.SendPropertyChanging();
-					this._Group_StudentID = value;
-					this.SendPropertyChanged("Group_StudentID");
-					this.OnGroup_StudentIDChanged();
-				}
+				return this.GetTable<Students_Groups>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
+		public System.Data.Linq.Table<Presence> Presence
 		{
 			get
 			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Presence", Storage="_Presence1", DbType="Bit NOT NULL")]
-		public bool Presence1
-		{
-			get
-			{
-				return this._Presence1;
-			}
-			set
-			{
-				if ((this._Presence1 != value))
-				{
-					this.OnPresence1Changing(value);
-					this.SendPropertyChanging();
-					this._Presence1 = value;
-					this.SendPropertyChanged("Presence1");
-					this.OnPresence1Changed();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Presence>();
 			}
 		}
 	}
@@ -550,6 +427,8 @@ namespace DataLayer
 		
 		private string _Status;
 		
+		private EntitySet<Files> _Files;
+		
 		private EntitySet<Students_Groups> _Students_Groups;
 		
 		private EntityRef<Sems> _Sems;
@@ -574,6 +453,7 @@ namespace DataLayer
 		
 		public Sections()
 		{
+			this._Files = new EntitySet<Files>(new Action<Files>(this.attach_Files), new Action<Files>(this.detach_Files));
 			this._Students_Groups = new EntitySet<Students_Groups>(new Action<Students_Groups>(this.attach_Students_Groups), new Action<Students_Groups>(this.detach_Students_Groups));
 			this._Sems = default(EntityRef<Sems>);
 			this._Topics = default(EntityRef<Topics>);
@@ -688,6 +568,19 @@ namespace DataLayer
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Files", ThisKey="ID", OtherKey="SectionID")]
+		public EntitySet<Files> Files
+		{
+			get
+			{
+				return this._Files;
+			}
+			set
+			{
+				this._Files.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Students_Groups", ThisKey="ID", OtherKey="GroupID")]
 		public EntitySet<Students_Groups> Students_Groups
 		{
@@ -787,6 +680,18 @@ namespace DataLayer
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Files(Files entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sections = this;
+		}
+		
+		private void detach_Files(Files entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sections = null;
 		}
 		
 		private void attach_Students_Groups(Students_Groups entity)
@@ -1367,222 +1272,6 @@ namespace DataLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Students_Groups")]
-	public partial class Students_Groups : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _GroupID;
-		
-		private string _StudentAlbumNr;
-		
-		private System.Nullable<decimal> _Mark;
-		
-		private EntityRef<Sections> _Sections;
-		
-		private EntityRef<Students> _Students;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnGroupIDChanging(int value);
-    partial void OnGroupIDChanged();
-    partial void OnStudentAlbumNrChanging(string value);
-    partial void OnStudentAlbumNrChanged();
-    partial void OnMarkChanging(System.Nullable<decimal> value);
-    partial void OnMarkChanged();
-    #endregion
-		
-		public Students_Groups()
-		{
-			this._Sections = default(EntityRef<Sections>);
-			this._Students = default(EntityRef<Students>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupID", DbType="Int NOT NULL")]
-		public int GroupID
-		{
-			get
-			{
-				return this._GroupID;
-			}
-			set
-			{
-				if ((this._GroupID != value))
-				{
-					if (this._Sections.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnGroupIDChanging(value);
-					this.SendPropertyChanging();
-					this._GroupID = value;
-					this.SendPropertyChanged("GroupID");
-					this.OnGroupIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentAlbumNr", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string StudentAlbumNr
-		{
-			get
-			{
-				return this._StudentAlbumNr;
-			}
-			set
-			{
-				if ((this._StudentAlbumNr != value))
-				{
-					if (this._Students.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnStudentAlbumNrChanging(value);
-					this.SendPropertyChanging();
-					this._StudentAlbumNr = value;
-					this.SendPropertyChanged("StudentAlbumNr");
-					this.OnStudentAlbumNrChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mark", DbType="Decimal(2,1)")]
-		public System.Nullable<decimal> Mark
-		{
-			get
-			{
-				return this._Mark;
-			}
-			set
-			{
-				if ((this._Mark != value))
-				{
-					this.OnMarkChanging(value);
-					this.SendPropertyChanging();
-					this._Mark = value;
-					this.SendPropertyChanged("Mark");
-					this.OnMarkChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Sections", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
-		public Sections Sections
-		{
-			get
-			{
-				return this._Sections.Entity;
-			}
-			set
-			{
-				Sections previousValue = this._Sections.Entity;
-				if (((previousValue != value) 
-							|| (this._Sections.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Sections.Entity = null;
-						previousValue.Students_Groups.Remove(this);
-					}
-					this._Sections.Entity = value;
-					if ((value != null))
-					{
-						value.Students_Groups.Add(this);
-						this._GroupID = value.ID;
-					}
-					else
-					{
-						this._GroupID = default(int);
-					}
-					this.SendPropertyChanged("Sections");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Students_Students_Groups", Storage="_Students", ThisKey="StudentAlbumNr", OtherKey="AlbumNr", IsForeignKey=true)]
-		public Students Students
-		{
-			get
-			{
-				return this._Students.Entity;
-			}
-			set
-			{
-				Students previousValue = this._Students.Entity;
-				if (((previousValue != value) 
-							|| (this._Students.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Students.Entity = null;
-						previousValue.Students_Groups.Remove(this);
-					}
-					this._Students.Entity = value;
-					if ((value != null))
-					{
-						value.Students_Groups.Add(this);
-						this._StudentAlbumNr = value.AlbumNr;
-					}
-					else
-					{
-						this._StudentAlbumNr = default(string);
-					}
-					this.SendPropertyChanged("Students");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Teachers")]
 	public partial class Teachers : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1986,6 +1675,600 @@ namespace DataLayer
 		{
 			this.SendPropertyChanging();
 			entity.Topics = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Files")]
+	public partial class Files : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.DateTime _Date;
+		
+		private System.Data.Linq.Binary _File;
+		
+		private int _SectionID;
+		
+		private EntityRef<Sections> _Sections;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnFileChanging(System.Data.Linq.Binary value);
+    partial void OnFileChanged();
+    partial void OnSectionIDChanging(int value);
+    partial void OnSectionIDChanged();
+    #endregion
+		
+		public Files()
+		{
+			this._Sections = default(EntityRef<Sections>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[File]", Storage="_File", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary File
+		{
+			get
+			{
+				return this._File;
+			}
+			set
+			{
+				if ((this._File != value))
+				{
+					this.OnFileChanging(value);
+					this.SendPropertyChanging();
+					this._File = value;
+					this.SendPropertyChanged("File");
+					this.OnFileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionID", DbType="Int NOT NULL")]
+		public int SectionID
+		{
+			get
+			{
+				return this._SectionID;
+			}
+			set
+			{
+				if ((this._SectionID != value))
+				{
+					if (this._Sections.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSectionIDChanging(value);
+					this.SendPropertyChanging();
+					this._SectionID = value;
+					this.SendPropertyChanged("SectionID");
+					this.OnSectionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Sections", ThisKey="SectionID", OtherKey="ID", IsForeignKey=true)]
+		public Sections Sections
+		{
+			get
+			{
+				return this._Sections.Entity;
+			}
+			set
+			{
+				Sections previousValue = this._Sections.Entity;
+				if (((previousValue != value) 
+							|| (this._Sections.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Sections.Entity = null;
+						previousValue.Files.Remove(this);
+					}
+					this._Sections.Entity = value;
+					if ((value != null))
+					{
+						value.Files.Add(this);
+						this._SectionID = value.ID;
+					}
+					else
+					{
+						this._SectionID = default(int);
+					}
+					this.SendPropertyChanged("Sections");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Students_Groups")]
+	public partial class Students_Groups : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _GroupID;
+		
+		private string _StudentAlbumNr;
+		
+		private System.Nullable<double> _Mark;
+		
+		private EntitySet<Presence> _Presence;
+		
+		private EntityRef<Sections> _Sections;
+		
+		private EntityRef<Students> _Students;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnGroupIDChanging(int value);
+    partial void OnGroupIDChanged();
+    partial void OnStudentAlbumNrChanging(string value);
+    partial void OnStudentAlbumNrChanged();
+    partial void OnMarkChanging(System.Nullable<double> value);
+    partial void OnMarkChanged();
+    #endregion
+		
+		public Students_Groups()
+		{
+			this._Presence = new EntitySet<Presence>(new Action<Presence>(this.attach_Presence), new Action<Presence>(this.detach_Presence));
+			this._Sections = default(EntityRef<Sections>);
+			this._Students = default(EntityRef<Students>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupID", DbType="Int NOT NULL")]
+		public int GroupID
+		{
+			get
+			{
+				return this._GroupID;
+			}
+			set
+			{
+				if ((this._GroupID != value))
+				{
+					if (this._Sections.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnGroupIDChanging(value);
+					this.SendPropertyChanging();
+					this._GroupID = value;
+					this.SendPropertyChanged("GroupID");
+					this.OnGroupIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentAlbumNr", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string StudentAlbumNr
+		{
+			get
+			{
+				return this._StudentAlbumNr;
+			}
+			set
+			{
+				if ((this._StudentAlbumNr != value))
+				{
+					if (this._Students.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStudentAlbumNrChanging(value);
+					this.SendPropertyChanging();
+					this._StudentAlbumNr = value;
+					this.SendPropertyChanged("StudentAlbumNr");
+					this.OnStudentAlbumNrChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mark", DbType="Float")]
+		public System.Nullable<double> Mark
+		{
+			get
+			{
+				return this._Mark;
+			}
+			set
+			{
+				if ((this._Mark != value))
+				{
+					this.OnMarkChanging(value);
+					this.SendPropertyChanging();
+					this._Mark = value;
+					this.SendPropertyChanged("Mark");
+					this.OnMarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Students_Groups_Presence", Storage="_Presence", ThisKey="ID", OtherKey="Group_StudentID")]
+		public EntitySet<Presence> Presence
+		{
+			get
+			{
+				return this._Presence;
+			}
+			set
+			{
+				this._Presence.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Sections", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
+		public Sections Sections
+		{
+			get
+			{
+				return this._Sections.Entity;
+			}
+			set
+			{
+				Sections previousValue = this._Sections.Entity;
+				if (((previousValue != value) 
+							|| (this._Sections.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Sections.Entity = null;
+						previousValue.Students_Groups.Remove(this);
+					}
+					this._Sections.Entity = value;
+					if ((value != null))
+					{
+						value.Students_Groups.Add(this);
+						this._GroupID = value.ID;
+					}
+					else
+					{
+						this._GroupID = default(int);
+					}
+					this.SendPropertyChanged("Sections");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Students_Students_Groups", Storage="_Students", ThisKey="StudentAlbumNr", OtherKey="AlbumNr", IsForeignKey=true)]
+		public Students Students
+		{
+			get
+			{
+				return this._Students.Entity;
+			}
+			set
+			{
+				Students previousValue = this._Students.Entity;
+				if (((previousValue != value) 
+							|| (this._Students.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Students.Entity = null;
+						previousValue.Students_Groups.Remove(this);
+					}
+					this._Students.Entity = value;
+					if ((value != null))
+					{
+						value.Students_Groups.Add(this);
+						this._StudentAlbumNr = value.AlbumNr;
+					}
+					else
+					{
+						this._StudentAlbumNr = default(string);
+					}
+					this.SendPropertyChanged("Students");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Presence(Presence entity)
+		{
+			this.SendPropertyChanging();
+			entity.Students_Groups = this;
+		}
+		
+		private void detach_Presence(Presence entity)
+		{
+			this.SendPropertyChanging();
+			entity.Students_Groups = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Presence")]
+	public partial class Presence : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _Group_StudentID;
+		
+		private System.DateTime _Date;
+		
+		private bool _Present;
+		
+		private EntityRef<Students_Groups> _Students_Groups;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnGroup_StudentIDChanging(int value);
+    partial void OnGroup_StudentIDChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnPresentChanging(bool value);
+    partial void OnPresentChanged();
+    #endregion
+		
+		public Presence()
+		{
+			this._Students_Groups = default(EntityRef<Students_Groups>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Group_StudentID", DbType="Int NOT NULL")]
+		public int Group_StudentID
+		{
+			get
+			{
+				return this._Group_StudentID;
+			}
+			set
+			{
+				if ((this._Group_StudentID != value))
+				{
+					if (this._Students_Groups.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnGroup_StudentIDChanging(value);
+					this.SendPropertyChanging();
+					this._Group_StudentID = value;
+					this.SendPropertyChanged("Group_StudentID");
+					this.OnGroup_StudentIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Present", DbType="Bit NOT NULL")]
+		public bool Present
+		{
+			get
+			{
+				return this._Present;
+			}
+			set
+			{
+				if ((this._Present != value))
+				{
+					this.OnPresentChanging(value);
+					this.SendPropertyChanging();
+					this._Present = value;
+					this.SendPropertyChanged("Present");
+					this.OnPresentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Students_Groups_Presence", Storage="_Students_Groups", ThisKey="Group_StudentID", OtherKey="ID", IsForeignKey=true)]
+		public Students_Groups Students_Groups
+		{
+			get
+			{
+				return this._Students_Groups.Entity;
+			}
+			set
+			{
+				Students_Groups previousValue = this._Students_Groups.Entity;
+				if (((previousValue != value) 
+							|| (this._Students_Groups.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Students_Groups.Entity = null;
+						previousValue.Presence.Remove(this);
+					}
+					this._Students_Groups.Entity = value;
+					if ((value != null))
+					{
+						value.Presence.Add(this);
+						this._Group_StudentID = value.ID;
+					}
+					else
+					{
+						this._Group_StudentID = default(int);
+					}
+					this.SendPropertyChanged("Students_Groups");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

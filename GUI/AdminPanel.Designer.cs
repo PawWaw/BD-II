@@ -177,7 +177,8 @@
             this.TypeCombobox.Items.AddRange(new object[] {
             "Adm",
             "Std",
-            "Tch"});
+            "Tch",
+            "All"});
             this.TypeCombobox.Location = new System.Drawing.Point(530, 30);
             this.TypeCombobox.Name = "TypeCombobox";
             this.TypeCombobox.Size = new System.Drawing.Size(60, 24);

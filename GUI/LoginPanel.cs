@@ -15,11 +15,18 @@ namespace GUI
     public partial class LoginPanel : Form
     {
         public static int albumNumber = 0;
-        public static int id = 0;
+        public static int TeacherID = 0;
+        public static int semID;
+        Sems[] sems;
 
         public LoginPanel()
         {
             InitializeComponent();
+            sems = DependencyFacade.GetSems();
+            for (int i = 0; i < sems.Length; i++)
+                SemCombobox.Items.Add(sems[i].StudyField + ", " + sems[i].Year + ", semestr " + sems[i].Sem);
+            SemCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            SemCombobox.SelectedIndex = 0;
         }
 
         Users userSearchCriteria, log;
@@ -32,9 +39,9 @@ namespace GUI
                 Login = LoginTextBox.Text  
             };
 
+            semID = sems[SemCombobox.SelectedIndex].ID; 
             log = UserFacade.LogIn(userSearchCriteria);
-
-            if (log != null)   //sprawdzanie, czy istnieje konto o podanym loginie i haśle
+            if (log != null)
             {
                 if(log.TypeOfUser == "adm")
                 {
@@ -45,16 +52,25 @@ namespace GUI
                 else if (log.TypeOfUser == "tch")
                 {
                     this.Hide();
-                    id = UserFacade.GetTeacherFromUser(log).ID;
+                    TeacherID = UserFacade.GetTeacherFromUser(log).ID;
                     TeacherPanel lct = new TeacherPanel();
                     lct.Show();
                 }
                 else if (log.TypeOfUser == "std")
                 {
-                    albumNumber = UserFacade.GetAlbumNumber(log.ID);
-                    this.Hide();
-                    StudentWindow std = new StudentWindow();
-                    std.Show();
+                    if(UserFacade.GetStudentSem(log, semID))
+                    {
+                        albumNumber = UserFacade.GetAlbumNumber(log.ID);
+                        this.Hide();
+                        StudentWindow std = new StudentWindow();
+                        std.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!", "Error");
+                        LoginTextBox.Text = "";
+                        PswdTextBox.Text = "";
+                    }
                 }
             }
             else

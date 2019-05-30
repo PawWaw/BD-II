@@ -53,8 +53,13 @@ namespace BizzLayer
             BDIIDataContext dc = new BDIIDataContext();
             string[] numbers = dc.Students.ToList().Select(x => x.AlbumNr).ToArray();
             int[] ints = Array.ConvertAll(numbers, int.Parse);
-            int max = ints.Max();
-            return max;
+            if (ints.Length != 0)
+            {
+                int max = ints.Max();
+                return max;
+            }
+            else
+                return 262000;
         }
 
         public static int GetAlbumNumber(int id)
@@ -114,6 +119,37 @@ namespace BizzLayer
             return res.Name + " " + res.Surname;
         }
 
+        public static bool GetStudentSem(Users user, int semID)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+
+            var res = (from el in dc.Users
+                       join ol in dc.Students on el.ID equals ol.UserID
+                       where (user.ID == ol.UserID)
+                       select ol).SingleOrDefault();
+            if(res != null)
+            {
+                var res2 = (from il in dc.Sem_Student
+                            where 
+                            (res.AlbumNr == il.StudentAlbumNr && il.SemID == semID)
+                            select il).SingleOrDefault();
+                if (res2 != null)
+                    return true;
+            }
+            return false;
+        }
+
+        public static int GetGroupStudentID(int userID)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+
+            var res = (from el in dc.Students_Groups
+                       join ol in dc.Students on el.StudentAlbumNr equals ol.AlbumNr
+                       where (userID == ol.UserID)
+                       select el).SingleOrDefault();
+            return res.ID;
+        }
+
         public static Users InsertUser(Users user)
         {
             using (BDIIDataContext dc = new BDIIDataContext())
@@ -131,15 +167,24 @@ namespace BizzLayer
             }
         }
 
-        public static void InsertStudent(Users user, int album_nr)
+        public static void InsertStudent(Users user, int album_nr, int semID)
         {
             var student = InsertUser(user);
+            Students std = new Students();
+            Sem_Student sms = new Sem_Student();
             using (BDIIDataContext dc = new BDIIDataContext())
             {
-                Students std = new Students();
                 std.UserID = student.ID;
                 std.AlbumNr = (album_nr + 1).ToString();
                 dc.Students.InsertOnSubmit(std);
+                dc.SubmitChanges();
+            }
+
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                sms.StudentAlbumNr = std.AlbumNr;
+                sms.SemID = semID;
+                dc.Sem_Student.InsertOnSubmit(sms);
                 dc.SubmitChanges();
             }
         }
@@ -171,6 +216,25 @@ namespace BizzLayer
                 res.Name = user.Name;
                 res.Surname = user.Surname;
                 res.TypeOfUser = user.TypeOfUser;
+                dc.SubmitChanges();
+            }
+        }
+
+        public static void UpdateMark(int userID, double mark)
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                Students res = (from el in dc.Users
+                           join ol in dc.Students on el.ID equals ol.UserID
+                          where ol.UserID == userID
+                           select ol).SingleOrDefault();
+
+                Students_Groups res2 = (from il in dc.Students_Groups
+                                        join ul in dc.Students on il.StudentAlbumNr equals ul.AlbumNr
+                                        where il.StudentAlbumNr == res.AlbumNr
+                                        select il).SingleOrDefault();
+
+                res2.Mark = mark;
                 dc.SubmitChanges();
             }
         }
@@ -237,6 +301,16 @@ namespace BizzLayer
             return res;
         }
 
+        public static Topics[] GetArrayTopics(int teacherID)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+            Topics[] res = (from el in dc.Topics
+                           where el.TeacherID == teacherID
+                           select el).ToArray();
+
+            return res;
+        }
+
         public static Topics GetTopicData(Topics searchCrit)
         {
             BDIIDataContext dc = new BDIIDataContext();
@@ -278,6 +352,25 @@ namespace BizzLayer
             }
         }
 
+        public static dynamic GetSems()
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                var res = dc.Sems.Select(x=>x).ToArray();
+                return res;
+            }
+        }
+
+        public static Presence[] GetPresence()
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                Presence[] res = (from el in dc.Presence
+                                  select el).ToArray();
+                return res;
+            }
+        }
+
         public static void InsertSection(Sections section)
         {
             using (BDIIDataContext dc = new BDIIDataContext())
@@ -308,6 +401,27 @@ namespace BizzLayer
                 };
                 dc.Topics.InsertOnSubmit(tpc);
                 dc.SubmitChanges();
+            }
+        }
+
+        public static void InsertPresenceDate(int sectionID)
+        {
+            var datetime = DateTime.Now;
+            var date = datetime.Date;
+            Users[] users = UserFacade.GetSectionSquad(sectionID);
+            for(int i = 0; i < users.Length; i++)
+            {
+                using (BDIIDataContext dc = new BDIIDataContext())
+                {
+                    Presence prs = new Presence();
+                    prs.Present = false;
+                    prs.Group_StudentID = UserFacade.GetGroupStudentID(users[i].ID);
+                    prs.ID = -1;
+                    prs.Date = date;
+
+                    dc.Presence.InsertOnSubmit(prs);
+                    dc.SubmitChanges();
+                }
             }
         }
 
@@ -345,6 +459,7 @@ namespace BizzLayer
                 res.ID = grp.ID;
                 res.GroupSize = grp.GroupSize;
                 res.TopicID = grp.TopicID;
+                res.Status = grp.Status;
                 dc.SubmitChanges();
             }
         }
@@ -374,7 +489,7 @@ namespace BizzLayer
             }
         }
 
-        public static void SetStudentSection(int album, int topicID)
+        public static void SetStudentSection(int album, Sections sec)
         {
             int nr = 0;
             int oldnr = 0;
@@ -388,7 +503,7 @@ namespace BizzLayer
                     {
                         ID = -1,
                         StudentAlbumNr = album.ToString(),
-                        GroupID = DependencyFacade.GetSectionData(topicID).ID
+                        GroupID = DependencyFacade.GetSection(sec).ID
                     };
 
                     dc.Students_Groups.InsertOnSubmit(stg);
@@ -399,7 +514,10 @@ namespace BizzLayer
                     res.ID = res.ID;
                     res.StudentAlbumNr = res.StudentAlbumNr;
                     oldnr = res.GroupID;
-                    res.GroupID = DependencyFacade.GetSectionData(topicID).ID;
+                    if (sec.ID != 0)
+                        res.GroupID = DependencyFacade.GetSection(sec).ID;
+                    else
+                        res.GroupID = 0;
                     nr = res.GroupID;
                     dc.SubmitChanges();
                 }
@@ -415,15 +533,13 @@ namespace BizzLayer
 
             if(newgrp.GroupSize == DependencyFacade.GetStudentNumber(newgrp.ID))
             {
-                topic.Status = "cls";
-                topic.ID = (int)newgrp.TopicID;
-                DependencyFacade.UpdateTopics(topic);
+                newgrp.Status = "Close";
+                DependencyFacade.UpdateSection(newgrp);
             }
             if(oldgrp.GroupSize != DependencyFacade.GetStudentNumber(oldgrp.ID))
             {
-                topic.Status = "opn";
-                topic.ID = (int)oldgrp.TopicID;
-                DependencyFacade.UpdateTopics(topic);
+                oldgrp.Status = "Open";
+                DependencyFacade.UpdateSection(oldgrp);
             }          
         }
     }

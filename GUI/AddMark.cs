@@ -7,19 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
     public partial class AddMark : Form
     {
-        public AddMark()
+        Users[] stg;
+
+        public AddMark(int id)
         {
             InitializeComponent();
+            SectionTextbox.Text = id.ToString();
+            StudentCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            stg = UserFacade.GetSectionSquad(id);
+            for(int i = 0; i < stg.Length; i++)
+            {
+                StudentCombobox.Items.Add(stg[i].Name + " " + stg[i].Surname);
+            }
+                        StudentCombobox.SelectedIndex = 0;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // DO DODANIA - zapis do bazy danych
+            UserFacade.UpdateMark(stg[StudentCombobox.SelectedIndex].ID, Convert.ToDouble(MarkCombobox.SelectedItem));
             this.Hide();
         }
 

@@ -70,7 +70,7 @@ namespace GUI
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
-            Sections grp = new Sections();
+            Sections sec = new Sections();
             Topics top = new Topics();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
@@ -79,10 +79,11 @@ namespace GUI
                     top.ID = (int)row.Cells[4].Value;
                     top.Title = row.Cells[5].Value.ToString();
                 }
+                sec.ID = (int)row.Cells[0].Value;
             }
-            grp = DependencyFacade.GetSectionData(top.ID);
+            sec = DependencyFacade.GetSection(sec);
             top = DependencyFacade.GetTopicData(top);
-            MoreInfo mri = new MoreInfo(0, grp, top);
+            MoreInfo mri = new MoreInfo(0, sec, top);
             mri.ShowDialog();
         }
 
@@ -91,7 +92,7 @@ namespace GUI
             Sections grp = new Sections();
             Topics top = new Topics();
             grp = DependencyFacade.GetMySection(LoginPanel.albumNumber);
-            if (grp != null)
+            if (grp != null && grp.TopicID != null)
             {
                 top.ID = (int)grp.TopicID;
                 top = DependencyFacade.GetTopicData(top);
