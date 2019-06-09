@@ -53,28 +53,37 @@ namespace GUI
                 MarkLabel.Visible = true;
                 MarkTextbox.Visible = true;
                 StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                if (sec.Status == "Open")
-                    StatusTextbox.Text = "Open";
-                else if (sec.Status == "Close")
-                    StatusTextbox.Text = "Close";
-                else
-                    StatusTextbox.Text = "Final";
-
-                PlacesTexbox.Text = (sec.GroupSize - DependencyFacade.GetStudentNumber(sec.ID)).ToString();
-                Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
-
-                foreach (Users v in usrs)
-                    MembersTextbox.Text += v.Name + "  " + v.Surname + "\n";
-
-                if (top != null && top.Title != null)
+                if(sec !=null)
                 {
-                    TopicTextbox.Text = top.Title;
-                    DetailsTextbox.Text = top.Description;
-                    TeacherTextbox.Text = UserFacade.GetTeacher(top.TeacherID).Name + " " + UserFacade.GetTeacher(top.TeacherID).Surname;
-                    id = top.ID;
+                    Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
+                    Users usr = new Users();
+                    Users user = UserFacade.GetSingleStudent(LoginPanel.albumNumber);
+                    for (int i = 0; i < usrs.Count(); i++)
+                    {
+                        if (usrs[i].ID == user.ID)
+                        {
+                            if (sec.Status == "Open")
+                                StatusTextbox.Text = "Open";
+                            else if (sec.Status == "Close")
+                                StatusTextbox.Text = "Close";
+                            else
+                                StatusTextbox.Text = "Final";
+
+                            PlacesTexbox.Text = (sec.GroupSize - DependencyFacade.GetStudentNumber(sec.ID)).ToString();
+                            foreach (Users v in usrs)
+                                MembersTextbox.Text += v.Name + "  " + v.Surname + "\n";
+
+                            if (top != null && top.Title != null)
+                            {
+                                TopicTextbox.Text = top.Title;
+                                DetailsTextbox.Text = top.Description;
+                                TeacherTextbox.Text = UserFacade.GetTeacher(top.TeacherID).Name + " " + UserFacade.GetTeacher(top.TeacherID).Surname;
+                                id = top.ID;
+                            }
+                            secID = sec.ID;
+                        }
+                    }
                 }
-                secID = sec.ID;
             }
             else if (mode == 2)
             {
@@ -114,9 +123,8 @@ namespace GUI
         {
             if (SaveButton.Text.Equals("Leave"))
             {
-                Sections sec = new Sections();
-                sec.ID = 0;
-                DependencyFacade.SetStudentSection(LoginPanel.albumNumber, sec);
+                UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, false);
+                this.Hide();
             }
             else
             {
@@ -127,8 +135,11 @@ namespace GUI
                     if (StatusTextbox.Text == "Open")
                     {
                         MessageBox.Show("Joining this section will cause leaving current section!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        int albumNr = LoginPanel.albumNumber;
-                        DependencyFacade.SetStudentSection(albumNr, sec);
+                        id = UserFacade.GetGroupStudentID(UserFacade.GetSingleStudent(LoginPanel.albumNumber).ID);
+                        if (id == 0)
+                            DependencyFacade.SetStudentSection(LoginPanel.albumNumber, sec);
+                        else
+                            UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, true);
                     }
                     else
                     {

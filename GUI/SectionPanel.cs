@@ -92,7 +92,7 @@ namespace GUI
                     ID = 0
                 };
             }
-            dataGridView1.DataSource = DependencyFacade.GetSections(searchCrit);
+            dataGridView1.DataSource = DependencyFacade.GetSections(searchCrit, null);
             for (int i = 2; i < 5; i++)
             {
                 DataGridViewColumn col = dataGridView1.Columns[i];

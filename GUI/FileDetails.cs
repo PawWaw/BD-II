@@ -7,19 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BizzLayer;
+using DataLayer;
 
 namespace GUI
 {
     public partial class FileDetails : Form
     {
-        public FileDetails()
+        byte[] file;
+        int ID;
+
+        public FileDetails(byte[] filedata, int sectionID)
         {
             InitializeComponent();
+
+            file = filedata;
+            ID = sectionID;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // save file 
+            DependencyFacade.InsertFile(file, ID, richTextBox1.Text);
             this.Hide();
         }
 

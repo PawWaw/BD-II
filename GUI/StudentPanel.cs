@@ -15,6 +15,10 @@ namespace GUI
 {
     public partial class StudentWindow : Form
     {
+
+        byte[] pdfBytes;
+        int ID;
+
         public StudentWindow()
         {
             InitializeComponent();
@@ -24,7 +28,7 @@ namespace GUI
         private void StudentWindow_Load(object sender, EventArgs e)
         {
             Sections sec = new Sections();
-            dataGridView1.DataSource = DependencyFacade.GetSections(sec);
+            dataGridView1.DataSource = DependencyFacade.GetSections(sec, null);
             for (int i = 2; i < 5; i++)
             {
                 DataGridViewColumn col = dataGridView1.Columns[i];
@@ -56,8 +60,11 @@ namespace GUI
                     }
                 }
                 else { noErrors = true; }
+                string path = Path.GetFullPath(openFileDialog1.FileName);
+                pdfBytes = File.ReadAllBytes(path);
+                //string pdf = Convert.ToString(pdfBytes);
             }
-            FileDetails fld = new FileDetails();
+            FileDetails fld = new FileDetails(pdfBytes, DependencyFacade.GetMySection(LoginPanel.albumNumber).ID);
             fld.ShowDialog();
         }
 
@@ -105,6 +112,12 @@ namespace GUI
         {
             FileHistory flh = new FileHistory();
             flh.ShowDialog();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            Sections sec = new Sections();
+            dataGridView1.DataSource = DependencyFacade.GetSections(sec, SearchTextbox.Text);
         }
     }
 }

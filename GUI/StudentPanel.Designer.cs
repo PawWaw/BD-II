@@ -37,8 +37,8 @@
             this.MySecButton = new System.Windows.Forms.Button();
             this.HistoryButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchLabel = new System.Windows.Forms.Label();
+            this.SearchTextbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,30 +120,31 @@
             this.SearchButton.TabIndex = 15;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // label1
+            // SearchLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Location = new System.Drawing.Point(27, 20);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(91, 17);
+            this.SearchLabel.TabIndex = 16;
+            this.SearchLabel.Text = "Search topic:";
             // 
-            // textBox1
+            // SearchTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 17;
+            this.SearchTextbox.Location = new System.Drawing.Point(122, 17);
+            this.SearchTextbox.Name = "SearchTextbox";
+            this.SearchTextbox.Size = new System.Drawing.Size(508, 22);
+            this.SearchTextbox.TabIndex = 17;
             // 
             // StudentWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(772, 403);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SearchTextbox);
+            this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.MySecButton);
@@ -174,7 +175,7 @@
         private System.Windows.Forms.Button MySecButton;
         private System.Windows.Forms.Button HistoryButton;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label SearchLabel;
+        private System.Windows.Forms.TextBox SearchTextbox;
     }
 }
