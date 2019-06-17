@@ -44,6 +44,7 @@ namespace GUI
                     IDTextbox.Text = top.ID.ToString();
                 }
                 IDTextbox.Enabled = false;
+                TeacherTextbox.Enabled = false;
             }
             else if(mode == 1)
             {

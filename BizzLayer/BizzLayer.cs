@@ -262,9 +262,11 @@ namespace BizzLayer
                 Students_Groups res = (from el in dc.Students_Groups
                                       where el.StudentAlbumNr == number.ToString()
                                       select el).SingleOrDefault();
-
-                res.Active = state;
-                dc.SubmitChanges();
+                if(res != null)
+                {
+                    res.Active = state;
+                    dc.SubmitChanges();
+                }
             }
         }
 
@@ -304,6 +306,24 @@ namespace BizzLayer
                           ol.Title
                       };
             return res;
+        }
+
+        public static IQueryable<dynamic> GetSectionFiles(int secID)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+            
+            var res = from el in dc.Files
+                      where (el.SectionID == secID)
+                      select new
+                      {
+                          el.ID,
+                          el.Date,
+                          el.SectionID,
+                          el.Details,
+                          el.File
+                      };
+            return res;
+            
         }
 
         public static Sections GetSection(Sections searchCrit)
@@ -476,6 +496,20 @@ namespace BizzLayer
                 fls.Date = date;
                 fls.Details = comment;
                 dc.Files.InsertOnSubmit(fls);
+                dc.SubmitChanges();
+            }
+        }
+
+        public static void InsertSem(Sems sm)
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                Sems sem = new Sems();
+                sem.ID = -1;
+                sem.StudyField = sm.StudyField;
+                sem.Year = sm.Year;
+                sem.Sem = sm.Sem;
+                dc.Sems.InsertOnSubmit(sem);
                 dc.SubmitChanges();
             }
         }

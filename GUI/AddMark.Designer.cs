@@ -36,6 +36,7 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.StudentLabel = new System.Windows.Forms.Label();
             this.StudentCombobox = new System.Windows.Forms.ComboBox();
+            this.FilesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MarkCombobox
@@ -75,7 +76,7 @@
             // 
             // LeaveButton
             // 
-            this.LeaveButton.Location = new System.Drawing.Point(222, 190);
+            this.LeaveButton.Location = new System.Drawing.Point(222, 236);
             this.LeaveButton.Name = "LeaveButton";
             this.LeaveButton.Size = new System.Drawing.Size(100, 45);
             this.LeaveButton.TabIndex = 28;
@@ -93,7 +94,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(44, 190);
+            this.SaveButton.Location = new System.Drawing.Point(44, 236);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(100, 45);
             this.SaveButton.TabIndex = 27;
@@ -117,11 +118,22 @@
             this.StudentCombobox.Size = new System.Drawing.Size(171, 24);
             this.StudentCombobox.TabIndex = 31;
             // 
+            // FilesButton
+            // 
+            this.FilesButton.Location = new System.Drawing.Point(44, 185);
+            this.FilesButton.Name = "FilesButton";
+            this.FilesButton.Size = new System.Drawing.Size(278, 30);
+            this.FilesButton.TabIndex = 32;
+            this.FilesButton.Text = "File History";
+            this.FilesButton.UseVisualStyleBackColor = true;
+            this.FilesButton.Click += new System.EventHandler(this.FilesButton_Click_1);
+            // 
             // AddMark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 273);
+            this.ClientSize = new System.Drawing.Size(369, 293);
+            this.Controls.Add(this.FilesButton);
             this.Controls.Add(this.StudentCombobox);
             this.Controls.Add(this.StudentLabel);
             this.Controls.Add(this.SectionTextbox);
@@ -130,8 +142,8 @@
             this.Controls.Add(this.MarkCombobox);
             this.Controls.Add(this.MarkLabel);
             this.Controls.Add(this.SectionNameLabel);
-            this.MaximumSize = new System.Drawing.Size(387, 320);
-            this.MinimumSize = new System.Drawing.Size(387, 320);
+            this.MaximumSize = new System.Drawing.Size(387, 340);
+            this.MinimumSize = new System.Drawing.Size(387, 340);
             this.Name = "AddMark";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddMarkWindow";
@@ -149,5 +161,6 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label StudentLabel;
         private System.Windows.Forms.ComboBox StudentCombobox;
+        private System.Windows.Forms.Button FilesButton;
     }
 }

@@ -42,7 +42,7 @@
             // 
             this.LoginTextBox.Location = new System.Drawing.Point(124, 84);
             this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(182, 22);
+            this.LoginTextBox.Size = new System.Drawing.Size(212, 22);
             this.LoginTextBox.TabIndex = 0;
             // 
             // PswdTextBox
@@ -50,7 +50,7 @@
             this.PswdTextBox.Location = new System.Drawing.Point(124, 134);
             this.PswdTextBox.Name = "PswdTextBox";
             this.PswdTextBox.PasswordChar = '*';
-            this.PswdTextBox.Size = new System.Drawing.Size(182, 22);
+            this.PswdTextBox.Size = new System.Drawing.Size(212, 22);
             this.PswdTextBox.TabIndex = 1;
             // 
             // InfoLabel
@@ -104,14 +104,14 @@
             this.SemCombobox.FormattingEnabled = true;
             this.SemCombobox.Location = new System.Drawing.Point(124, 184);
             this.SemCombobox.Name = "SemCombobox";
-            this.SemCombobox.Size = new System.Drawing.Size(182, 24);
+            this.SemCombobox.Size = new System.Drawing.Size(212, 24);
             this.SemCombobox.TabIndex = 7;
             // 
             // LoginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(332, 273);
+            this.ClientSize = new System.Drawing.Size(362, 273);
             this.Controls.Add(this.SemCombobox);
             this.Controls.Add(this.SemLabel);
             this.Controls.Add(this.PasswordLabel);
@@ -121,8 +121,8 @@
             this.Controls.Add(this.PswdTextBox);
             this.Controls.Add(this.LoginTextBox);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(350, 320);
-            this.MinimumSize = new System.Drawing.Size(350, 320);
+            this.MaximumSize = new System.Drawing.Size(380, 320);
+            this.MinimumSize = new System.Drawing.Size(380, 320);
             this.Name = "LoginPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

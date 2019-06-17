@@ -25,6 +25,11 @@ namespace GUI
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        private void Topic_Load(object sender, EventArgs e)
+        {
+            SearchButton_Click(sender, e);
+        }
+
         private void DetailsButton_Click(object sender, EventArgs e)
         {
             Topics top = new Topics();

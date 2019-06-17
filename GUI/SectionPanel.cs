@@ -24,6 +24,11 @@ namespace GUI
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        private void SectionPanel_Load(object sender, EventArgs e)
+        {
+            SearchButton_Click(sender, e);
+        }
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -41,6 +46,7 @@ namespace GUI
                 {
                     grp.TopicID = (int)row.Cells[4].Value;
                     top.ID = (int)row.Cells[4].Value;
+                    top.Title = row.Cells[5].Value.ToString();
                 }
                 else
                 {

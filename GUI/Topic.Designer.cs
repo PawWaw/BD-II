@@ -139,6 +139,7 @@
             this.Text = "Topics";
             this.Activated += new System.EventHandler(this.Topic_Activated);
             this.Deactivate += new System.EventHandler(this.Topic_Deactivate);
+            this.Load += new System.EventHandler(this.Topic_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

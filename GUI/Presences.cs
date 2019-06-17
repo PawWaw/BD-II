@@ -23,10 +23,12 @@ namespace GUI
         public Presences(int sectionID)
         {
             InitializeComponent();
-            secID = sectionID;
+            secID = sectionID;    
+        }
 
-
-            users = UserFacade.GetSectionSquad(sectionID);
+        private void Presences_Load(object sender, EventArgs e)
+        {
+            users = UserFacade.GetSectionSquad(secID);
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
 
@@ -34,24 +36,26 @@ namespace GUI
 
             for (int i = 0; i < users.Length; i++)
             {
-                DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
-                column.Name = users[i].Name + " " + users[i].Surname;
-                column.HeaderText = users[i].Name + " " + users[i].Surname;
-                column.FalseValue = 0;
-                column.TrueValue = 1;
+                DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn
+                {
+                    Name = users[i].Name + " " + users[i].Surname,
+                    HeaderText = users[i].Name + " " + users[i].Surname,
+                    FalseValue = 0,
+                    TrueValue = 1
+                };
                 dataGridView1.Columns.Insert(i, column);
             }
 
-            for(int j = 0; j < pres.Length; j++)
+            for (int j = 0; j < pres.Length; j++)
             {
-                for(int k = 0; k < users.Length; k++)
+                for (int k = 0; k < users.Length; k++)
                 {
                     int id = UserFacade.GetGroupStudentID(users[k].ID);
                     if (id == pres[j].Group_StudentID)
                     {
                         var datetime = pres[j].Date;
                         var date = datetime.ToShortDateString();
-                        if(dataGridView1.Rows.Count == 0)
+                        if (dataGridView1.Rows.Count == 0)
                         {
                             dataGridView1.Rows.Add();
                             dataGridView1.RowHeadersWidth = 120;
@@ -63,7 +67,7 @@ namespace GUI
                             temp = 0;
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
-                                if(date.Equals(dataGridView1.Rows[i].HeaderCell.Value.ToString()))
+                                if (date.Equals(dataGridView1.Rows[i].HeaderCell.Value.ToString()))
                                 {
                                     temp = 1;
                                 }
@@ -82,7 +86,7 @@ namespace GUI
             }
             int flag = 0;
 
-            for(int k = 0; k < presDates.Count; k++)
+            for (int k = 0; k < presDates.Count; k++)
             {
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
@@ -112,7 +116,9 @@ namespace GUI
         private void AddButton_Click(object sender, EventArgs e)
         {
             DependencyFacade.InsertPresenceDate(secID);
-            this.Refresh();
+            this.Hide();
+            Presences prs = new Presences(secID);
+            prs.ShowDialog();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

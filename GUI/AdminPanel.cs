@@ -28,6 +28,11 @@ namespace GUI
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        private void AdminPanel_Load(object sender, EventArgs e)
+        {
+            SearchButton_Click(sender, e);
+        }
+
         private void ViewUsers(string type)
         {
             userSearchCriteria = new Users
@@ -131,6 +136,12 @@ namespace GUI
         {
             if (flag == 1)
                 SearchButton_Click(sender, e);
+        }
+
+        private void AddSemButton_Click(object sender, EventArgs e)
+        {
+            AddSem ads = new AddSem();
+            ads.ShowDialog();
         }
     }
 }

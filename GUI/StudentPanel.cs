@@ -17,7 +17,7 @@ namespace GUI
     {
 
         byte[] pdfBytes;
-        int ID;
+        int secID;
 
         public StudentWindow()
         {
@@ -115,7 +115,15 @@ namespace GUI
 
         private void HistoryButton_Click(object sender, EventArgs e)
         {
-            FileHistory flh = new FileHistory();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    secID = (int)row.Cells[0].Value;
+                }
+            }
+
+            FileHistory flh = new FileHistory(secID);
             flh.ShowDialog();
         }
 

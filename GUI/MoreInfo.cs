@@ -21,8 +21,11 @@ namespace GUI
 
         int id;
         int secID;
+        int topID; 
+
         public MoreInfo(int mode, Sections sec, Topics top)
         {
+            topID = top.ID;
             if(mode == 0)
             {
                 InitializeComponent();
@@ -31,14 +34,15 @@ namespace GUI
                 {
                     PlacesTexbox.Text = (sec.GroupSize - DependencyFacade.GetStudentNumber(sec.ID)).ToString();
                     Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
-                    if (sec.Status == "Open")
+                    if (sec.Status == "opn")
                         StatusTextbox.Text = "Open";
-                    else if (sec.Status == "Close")
+                    else if (sec.Status == "cls")
                         StatusTextbox.Text = "Close";
                     else
                         StatusTextbox.Text = "Final";
                     foreach (Users v in usrs)
                         MembersTextbox.AppendText(v.Name + "  " + v.Surname + "\n");
+                        
                     secID = sec.ID;
                 }
                 if (top != null)
@@ -65,9 +69,9 @@ namespace GUI
                     {
                         if (usrs[i].ID == user.ID)
                         {
-                            if (sec.Status == "Open")
+                            if (sec.Status == "opn")
                                 StatusTextbox.Text = "Open";
-                            else if (sec.Status == "Close")
+                            else if (sec.Status == "cls")
                                 StatusTextbox.Text = "Close";
                             else
                                 StatusTextbox.Text = "Final";
@@ -105,20 +109,28 @@ namespace GUI
                 MembersTextbox.Enabled = false;
                 StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
                 id = sec.ID;
+
+                if (sec.Status == "opn")
+                    StatusCombobox.SelectedIndex = 0;
+                else if (sec.Status == "cls")
+                    StatusCombobox.SelectedIndex = 1;
+                else
+                    StatusCombobox.SelectedIndex = 2;
+
                 if (top != null)
                 {
                     TopicTextbox.Text = top.Title;
                     DetailsTextbox.Text = top.Description;
                     TeacherTextbox.Text = UserFacade.GetTeacher(top.TeacherID).Name + " " + UserFacade.GetTeacher(top.TeacherID).Surname;
-                    if (top.Status == "Open")
-                        StatusCombobox.SelectedIndex = 0;
-                    else if (top.Status == "Close")
-                        StatusCombobox.SelectedIndex = 1;
-                    else
-                        StatusCombobox.SelectedIndex = 2;
                 }
+
                 PlacesTexbox.Text = sec.GroupSize.ToString();
                 secID = sec.ID;
+
+                Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
+                PlacesTexbox.Text = sec.GroupSize.ToString();
+                foreach (Users v in usrs)
+                    MembersTextbox.Text += v.Name + "  " + v.Surname + "\n";
             }
         }
 
@@ -154,12 +166,15 @@ namespace GUI
                 {
                     sec.ID = id;
                     sec.GroupSize = Convert.ToByte(PlacesTexbox.Text);
+
                     if (StatusCombobox.Text == "Open")
                         sec.Status = "opn";
-                    else if (StatusCombobox.Text == "Close")
+                    else if (StatusCombobox.Text == "Closed")
                         sec.Status = "cls";
                     else
                         sec.Status = "fin";
+
+                    sec.TopicID = topID;
                     DependencyFacade.UpdateSection(sec);
                 }
                 this.Hide();

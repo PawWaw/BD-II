@@ -41,12 +41,13 @@
             this.AlbumNumberLabel = new System.Windows.Forms.Label();
             this.AlbumTextbox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
+            this.AddSemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ChangeDataButton
             // 
-            this.ChangeDataButton.Location = new System.Drawing.Point(850, 150);
+            this.ChangeDataButton.Location = new System.Drawing.Point(850, 210);
             this.ChangeDataButton.Name = "ChangeDataButton";
             this.ChangeDataButton.Size = new System.Drawing.Size(100, 30);
             this.ChangeDataButton.TabIndex = 0;
@@ -60,13 +61,13 @@
             this.AddUserButton.Name = "AddUserButton";
             this.AddUserButton.Size = new System.Drawing.Size(100, 30);
             this.AddUserButton.TabIndex = 6;
-            this.AddUserButton.Text = "Add";
+            this.AddUserButton.Text = "Add User";
             this.AddUserButton.UseVisualStyleBackColor = true;
             this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
             // LogoutButton
             // 
-            this.LogoutButton.Location = new System.Drawing.Point(850, 210);
+            this.LogoutButton.Location = new System.Drawing.Point(850, 270);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(100, 30);
             this.LogoutButton.TabIndex = 7;
@@ -160,11 +161,22 @@
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
+            // AddSemButton
+            // 
+            this.AddSemButton.Location = new System.Drawing.Point(850, 150);
+            this.AddSemButton.Name = "AddSemButton";
+            this.AddSemButton.Size = new System.Drawing.Size(100, 30);
+            this.AddSemButton.TabIndex = 18;
+            this.AddSemButton.Text = "Add Sem";
+            this.AddSemButton.UseVisualStyleBackColor = true;
+            this.AddSemButton.Click += new System.EventHandler(this.AddSemButton_Click);
+            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(982, 553);
+            this.Controls.Add(this.AddSemButton);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.AlbumTextbox);
             this.Controls.Add(this.AlbumNumberLabel);
@@ -185,6 +197,7 @@
             this.Text = "AdminWindow";
             this.Activated += new System.EventHandler(this.AdminPanel_Activated);
             this.Deactivate += new System.EventHandler(this.AdminPanel_Deactivate);
+            this.Load += new System.EventHandler(this.AdminPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,5 +219,6 @@
         private System.Windows.Forms.Label AlbumNumberLabel;
         private System.Windows.Forms.TextBox AlbumTextbox;
         private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button AddSemButton;
     }
 }

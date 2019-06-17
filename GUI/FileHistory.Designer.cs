@@ -51,7 +51,6 @@
             this.OpenButton.TabIndex = 1;
             this.OpenButton.Text = "Open";
             this.OpenButton.UseVisualStyleBackColor = true;
-            this.OpenButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // CloseButton
             // 
@@ -73,6 +72,7 @@
             this.Controls.Add(this.OpenButton);
             this.Name = "FileHistory";
             this.Text = "FileHistory";
+            this.Load += new System.EventHandler(this.FileHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

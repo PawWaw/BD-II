@@ -15,10 +15,12 @@ namespace GUI
     public partial class AddMark : Form
     {
         Users[] stg;
+        int secID;
 
         public AddMark(int id)
         {
             InitializeComponent();
+            secID = id;
             SectionTextbox.Text = id.ToString();
             StudentCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
             stg = UserFacade.GetSectionSquad(id);
@@ -26,13 +28,17 @@ namespace GUI
             {
                 StudentCombobox.Items.Add(stg[i].Name + " " + stg[i].Surname);
             }
-            StudentCombobox.SelectedIndex = 0;
+            if(stg.Length !=  0)
+                StudentCombobox.SelectedIndex = 0;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            UserFacade.UpdateMark(stg[StudentCombobox.SelectedIndex].ID, Convert.ToDouble(MarkCombobox.SelectedItem));
-            this.Hide();
+            if(stg.Length != 0)
+            {
+                UserFacade.UpdateMark(stg[StudentCombobox.SelectedIndex].ID, Convert.ToDouble(MarkCombobox.SelectedItem));
+                this.Hide();
+            }
         }
 
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -40,9 +46,9 @@ namespace GUI
             this.Hide();
         }
 
-        private void FilesButton_Click(object sender, EventArgs e)
+        private void FilesButton_Click_1(object sender, EventArgs e)
         {
-            FileHistory flh = new FileHistory();
+            FileHistory flh = new FileHistory(secID);
             flh.ShowDialog();
         }
     }

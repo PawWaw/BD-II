@@ -52,29 +52,23 @@
     <Compile Include="AddMark.Designer.cs">
       <DependentUpon>AddMark.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPresence.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddPresence.Designer.cs">
-      <DependentUpon>AddPresence.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddSection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddSection.Designer.cs">
       <DependentUpon>AddSection.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddSem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSem.Designer.cs">
+      <DependentUpon>AddSem.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileHistory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FileHistory.Designer.cs">
       <DependentUpon>FileHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Grades.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Grades.Designer.cs">
-      <DependentUpon>Grades.cs</DependentUpon>
     </Compile>
     <Compile Include="Hashing.cs" />
     <Compile Include="OpenFile.cs">
@@ -166,17 +160,14 @@
     <EmbeddedResource Include="AddMark.resx">
       <DependentUpon>AddMark.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPresence.resx">
-      <DependentUpon>AddPresence.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddSection.resx">
       <DependentUpon>AddSection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddSem.resx">
+      <DependentUpon>AddSem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FileHistory.resx">
       <DependentUpon>FileHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Grades.resx">
-      <DependentUpon>Grades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presences.resx">
       <DependentUpon>Presences.cs</DependentUpon>

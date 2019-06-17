@@ -1,4 +1,6 @@
 Versions: </br>
+9.9 - sems adding, minor bugs fixed</br>
+9.8 - password hashing added, minor bugs fixed</br>
 9.7 - bugs fixed</br>
 9.5 - marks, presences, sems added, database corrected</br>
 9.3 - bugs fixed, database corrected</br>
