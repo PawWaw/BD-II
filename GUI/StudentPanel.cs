@@ -60,12 +60,17 @@ namespace GUI
                     }
                 }
                 else { noErrors = true; }
-                string path = Path.GetFullPath(openFileDialog1.FileName);
-                pdfBytes = File.ReadAllBytes(path);
+                //string path = Path.GetFullPath(openFileDialog1.FileName);
+                //pdfBytes = File.ReadAllBytes(path);
                 //string pdf = Convert.ToString(pdfBytes);
             }
-            FileDetails fld = new FileDetails(pdfBytes, DependencyFacade.GetMySection(LoginPanel.albumNumber).ID);
-            fld.ShowDialog();
+            Sections sec = new Sections();
+            sec = DependencyFacade.GetMySection(LoginPanel.albumNumber);
+            if(sec != null)
+            {
+                FileDetails fld = new FileDetails(pdfBytes, sec.ID);
+                fld.ShowDialog();
+            }
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

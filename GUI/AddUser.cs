@@ -16,6 +16,8 @@ namespace GUI
     {
         byte openType = 0;
         Sems[] sems;
+        Hashing hash = new Hashing();
+        Users usr;
 
         public AddUser()                              
         {
@@ -26,6 +28,7 @@ namespace GUI
 
         public AddUser(int windowType, Users user)
         {
+            usr = user;
             if(windowType == 0)
             {
                 openType = 0;
@@ -96,7 +99,7 @@ namespace GUI
 
         private void PswdButton_Click(object sender, EventArgs e)
         {
-            PswdChange pswd = new PswdChange();
+            PswdChange pswd = new PswdChange(usr);
             pswd.ShowDialog();
         }
 
@@ -108,30 +111,42 @@ namespace GUI
             user.Login = LoginTextbox.Text;
             user.Name = NameTextBox.Text;
             user.Surname = SurnameTextbox.Text;
-            if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
-                user.TypeOfUser = "std";
-            else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
-                user.TypeOfUser = "tch";
-            else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Admin"))
-                user.TypeOfUser = "adm";
+            if ((user.Login != "") && (user.Name != "") && (user.Surname != "") && (FunctionCombobox.SelectedItem != null))
+            {
+                if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
+                    user.TypeOfUser = "std";
+                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
+                    user.TypeOfUser = "tch";
+                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Admin"))
+                    user.TypeOfUser = "adm";
+            }
             if (openType == 1)
-            {      
-                UserFacade.UpdateUsers(user);
-                this.Hide();
+            {
+                if (user.Login != "" && user.Name != "" && user.Surname != "" && user.Hash != "" && user.TypeOfUser != null)
+                {
+                    UserFacade.UpdateUsers(user);
+                    this.Hide();
+                }
             }
             else if (openType == 0)
             {
                 int max = UserFacade.GetMaxIndex();
-                user.Password = PswdTextbox.Text;
-                if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
+                user.Salt = hash.CreateSalt(10);
+                user.Hash = hash.GenSalt(PswdTextbox.Text, user.Salt);
+                if (user.Login != "" && user.Name != "" && user.Surname != "" && user.Hash != "" && user.TypeOfUser != null)
                 {
-                    UserFacade.InsertStudent(user, max, DependencyFacade.GetSems()[SemCombobox.SelectedIndex].ID);
+                    if (Equals(FunctionCombobox.SelectedItem.ToString(), "Student"))
+                    {
+                        UserFacade.InsertStudent(user, max, DependencyFacade.GetSems()[SemCombobox.SelectedIndex].ID);
+                    }
+                    else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
+                        UserFacade.InsertTeacher(user, DegreeTextbox.Text);
+                    else
+                        UserFacade.InsertUser(user);
+                    this.Hide();
                 }
-                else if (Equals(FunctionCombobox.SelectedItem.ToString(), "Teacher"))
-                    UserFacade.InsertTeacher(user, DegreeTextbox.Text);
                 else
-                    UserFacade.InsertUser(user);
-                this.Hide();
+                    MessageBox.Show("Incorrect data!", "Error", MessageBoxButtons.OK);
             }
         }
     }

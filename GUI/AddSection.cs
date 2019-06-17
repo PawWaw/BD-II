@@ -28,12 +28,15 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            searchCrit = new Sections
+            if(QuantityTextbox.Text != "")
             {
-                GroupSize = Convert.ToByte(QuantityTextbox.Text),
-            };
-            DependencyFacade.InsertSection(searchCrit);
-            this.Hide();
+                searchCrit = new Sections
+                {
+                    GroupSize = Convert.ToByte(QuantityTextbox.Text),
+                };
+                DependencyFacade.InsertSection(searchCrit);
+                this.Hide();
+            }
         }
     }
 }

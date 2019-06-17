@@ -2,12 +2,6 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.625, 11" name="BDII">
   <DataContextMoniker Name="/BDIIDataContext" />
   <nestedChildShapes>
-    <classShape Id="ebecc819-aaf9-49ad-8093-d08b42988a30" absoluteBounds="0.75, 3.25, 2, 1.9631982421875005">
-      <DataClassMoniker Name="/BDIIDataContext/Users" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4d3b623c-bfc1-4333-a29d-5304e54ae628" absoluteBounds="0.765, 3.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="a02b8f3e-6666-4e51-bc08-7042f9d25434" absoluteBounds="9, 5.375, 2, 1.7708968098958327">
       <DataClassMoniker Name="/BDIIDataContext/Sections" />
       <nestedChildShapes>
@@ -44,14 +38,14 @@
         <elementListCompartment Id="dab97501-bf3a-46b7-9d3b-a4c627702f7b" absoluteBounds="6.265, 4.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.5 : 8.25); (1.5 : 6.67714680989583); (9 : 6.67714680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.39321685100513 : 8.25); (1.39321685100513 : 6.67714680989583); (9 : 6.67714680989583)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Algorithm">
       <AssociationMoniker Name="/BDIIDataContext/Sems/Sems_Sections" />
       <nodes>
         <classShapeMoniker Id="15b243c1-e6f3-4309-ae4b-c18283c1c6f8" />
         <classShapeMoniker Id="a02b8f3e-6666-4e51-bc08-7042f9d25434" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(0.59375 : 8.25); (0.59375 : 1.78125); (6.25 : 1.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(0.5 : 8.96455159505208); (0.125 : 8.96455159505208); (0.125 : 1.7812505); (6.25 : 1.7812505)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Algorithm">
       <AssociationMoniker Name="/BDIIDataContext/Sems/Sems_Sem_Student" />
       <nodes>
         <classShapeMoniker Id="15b243c1-e6f3-4309-ae4b-c18283c1c6f8" />
@@ -63,20 +57,6 @@
       <nodes>
         <classShapeMoniker Id="75a5c437-273b-4aa2-bb4d-02b1094847b4" />
         <classShapeMoniker Id="90450058-dcbf-43d0-b03f-c654e304469d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 3.40949625651042); (3.625 : 3.40949625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BDIIDataContext/Users/Users_Students" />
-      <nodes>
-        <classShapeMoniker Id="ebecc819-aaf9-49ad-8093-d08b42988a30" />
-        <classShapeMoniker Id="75a5c437-273b-4aa2-bb4d-02b1094847b4" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.85659912109375); (3.5 : 4.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BDIIDataContext/Users/Users_Teachers" />
-      <nodes>
-        <classShapeMoniker Id="ebecc819-aaf9-49ad-8093-d08b42988a30" />
-        <classShapeMoniker Id="8f87dd07-3523-45c4-940a-c8cb8c403795" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.25 : 5.76044840494792); (9 : 5.76044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -118,25 +98,45 @@
         <elementListCompartment Id="9be3b4fe-90b6-4457-93d9-b29a956ef094" absoluteBounds="9.015, 3.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(11 : 3.76044840494792); (15.375 : 3.76044840494792); (15.375 : 5.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 3.76044840494792); (15.375 : 3.76044840494792); (15.375 : 5.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BDIIDataContext/Students_Groups/Students_Groups_Presence" />
       <nodes>
         <classShapeMoniker Id="f4259425-de9e-4d24-973c-9f1311a2411f" />
         <classShapeMoniker Id="a66a1427-4cd5-47bf-ab02-93fe6756a924" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10 : 5.375); (10 : 4.64589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10 : 5.375); (10 : 4.64589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BDIIDataContext/Sections/Sections_Students_Groups" />
       <nodes>
         <classShapeMoniker Id="a02b8f3e-6666-4e51-bc08-7042f9d25434" />
         <classShapeMoniker Id="f4259425-de9e-4d24-973c-9f1311a2411f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.625 : 3.22199625651042); (9 : 3.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.625 : 3.22199625651042); (9 : 3.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BDIIDataContext/Students/Students_Students_Groups" />
       <nodes>
         <classShapeMoniker Id="75a5c437-273b-4aa2-bb4d-02b1094847b4" />
         <classShapeMoniker Id="f4259425-de9e-4d24-973c-9f1311a2411f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="507e9d02-60fb-4e03-8446-48cc6775cf1c" absoluteBounds="0.625, 3, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/BDIIDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b94b91ca-88cc-4256-a324-b2eebecf49de" absoluteBounds="0.64000000000000012, 3.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 3.28449625651042); (3.625 : 3.28449625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BDIIDataContext/Users/Users_Students" />
+      <nodes>
+        <classShapeMoniker Id="507e9d02-60fb-4e03-8446-48cc6775cf1c" />
+        <classShapeMoniker Id="75a5c437-273b-4aa2-bb4d-02b1094847b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 4.92390055338542); (3.5 : 4.92390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BDIIDataContext/Users/Users_Teachers" />
+      <nodes>
+        <classShapeMoniker Id="507e9d02-60fb-4e03-8446-48cc6775cf1c" />
+        <classShapeMoniker Id="8f87dd07-3523-45c4-940a-c8cb8c403795" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

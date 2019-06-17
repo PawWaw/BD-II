@@ -26,7 +26,7 @@ namespace GUI
             {
                 StudentCombobox.Items.Add(stg[i].Name + " " + stg[i].Surname);
             }
-                        StudentCombobox.SelectedIndex = 0;
+            StudentCombobox.SelectedIndex = 0;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

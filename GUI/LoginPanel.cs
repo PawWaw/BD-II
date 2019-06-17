@@ -18,6 +18,7 @@ namespace GUI
         public static int TeacherID = 0;
         public static int semID;
         Sems[] sems;
+        Hashing hash;
 
         public LoginPanel()
         {
@@ -33,13 +34,18 @@ namespace GUI
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            Hashing hash = new Hashing();
+            hash.GenSalt(PswdTextBox.Text, hash.CreateSalt(10));
+
             userSearchCriteria = new Users
             {
-                Password = PswdTextBox.Text,
+                Hash = PswdTextBox.Text,
                 Login = LoginTextBox.Text  
             };
 
-            semID = sems[SemCombobox.SelectedIndex].ID; 
+            semID = sems[SemCombobox.SelectedIndex].ID;
+            String salt = UserFacade.GetSalt(userSearchCriteria);
+            userSearchCriteria.Hash = hash.GenSalt(PswdTextBox.Text, salt);
             log = UserFacade.LogIn(userSearchCriteria);
             if (log != null)
             {

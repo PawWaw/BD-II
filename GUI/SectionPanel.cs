@@ -47,7 +47,6 @@ namespace GUI
                     top.ID = 0;
                     grp.TopicID = 0;
                 }
-
                 grp.SemID = (int)row.Cells[3].Value;
             }
             top = DependencyFacade.GetTopicData(top);
@@ -72,8 +71,11 @@ namespace GUI
 
         private void PresenceButton_Click(object sender, EventArgs e)
         {
-            Presences prs = new Presences(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
-            prs.ShowDialog();
+            if(dataGridView1.SelectedCells.Count != 0)
+            {
+                Presences prs = new Presences(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
+                prs.ShowDialog();
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -127,6 +129,7 @@ namespace GUI
                     grp.GroupSize = (byte)row.Cells[1].Value;
                     grp.TopicID = null;
                     grp.SemID = (int)row.Cells[3].Value;
+                    grp.Status = row.Cells[2].Value.ToString();
                     DependencyFacade.UpdateSection(grp);
                 }
             }
@@ -135,8 +138,11 @@ namespace GUI
 
         private void GradesButton_Click(object sender, EventArgs e)
         {
-            AddMark mrk = new AddMark(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
-            mrk.ShowDialog();
+            if (dataGridView1.SelectedCells.Count != 0)
+            {
+                AddMark mrk = new AddMark(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
+                mrk.ShowDialog();
+            }
         }
     }
 }

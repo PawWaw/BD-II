@@ -27,17 +27,20 @@ namespace GUI
             {
                 InitializeComponent();
                 StatusCombobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                PlacesTexbox.Text = (sec.GroupSize - DependencyFacade.GetStudentNumber(sec.ID)).ToString();
-                Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
-                if (sec.Status == "Open")
-                    StatusTextbox.Text = "Open";
-                else if (sec.Status == "Close")
-                    StatusTextbox.Text = "Close";
-                else
-                    StatusTextbox.Text = "Final";
-                foreach (Users v in usrs)
-                    MembersTextbox.AppendText(v.Name + "  " + v.Surname + "\n");
-                secID = sec.ID;
+                if(sec != null)
+                {
+                    PlacesTexbox.Text = (sec.GroupSize - DependencyFacade.GetStudentNumber(sec.ID)).ToString();
+                    Users[] usrs = UserFacade.GetSectionSquad(sec.ID);
+                    if (sec.Status == "Open")
+                        StatusTextbox.Text = "Open";
+                    else if (sec.Status == "Close")
+                        StatusTextbox.Text = "Close";
+                    else
+                        StatusTextbox.Text = "Final";
+                    foreach (Users v in usrs)
+                        MembersTextbox.AppendText(v.Name + "  " + v.Surname + "\n");
+                    secID = sec.ID;
+                }
                 if (top != null)
                 {
                     TopicTextbox.Text = top.Title;
@@ -151,6 +154,12 @@ namespace GUI
                 {
                     sec.ID = id;
                     sec.GroupSize = Convert.ToByte(PlacesTexbox.Text);
+                    if (StatusCombobox.Text == "Open")
+                        sec.Status = "opn";
+                    else if (StatusCombobox.Text == "Close")
+                        sec.Status = "cls";
+                    else
+                        sec.Status = "fin";
                     DependencyFacade.UpdateSection(sec);
                 }
                 this.Hide();

@@ -34,11 +34,14 @@ namespace GUI
                 top.ID = (int)row.Cells[0].Value;
             }
             top = DependencyFacade.GetTopicData(top);
-            if (LoginPanel.TeacherID == top.TeacherID)
-                tpd = new TopicDetails(0, top);
-            else
-                tpd = new TopicDetails(2, top);
-            tpd.ShowDialog();
+            if(top != null)
+            {
+                if (LoginPanel.TeacherID == top.TeacherID)
+                    tpd = new TopicDetails(0, top);
+                else
+                    tpd = new TopicDetails(2, top);
+                tpd.ShowDialog();
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e) => this.Hide();

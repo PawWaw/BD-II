@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDII" Class="BDIIDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO_520S;Initial Catalog=BDII;Integrated Security=True" SettingsObjectName="DataLayer.Properties.Settings" SettingsPropertyName="BDIIConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="Users">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Login" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="TypeOfUser" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Students" Member="Students" ThisKey="ID" OtherKey="UserID" Type="Students" />
-      <Association Name="Users_Teachers" Member="Teachers" ThisKey="ID" OtherKey="UserID" Type="Teachers" />
-    </Type>
-  </Table>
   <Table Name="dbo.Sections" Member="Sections">
     <Type Name="Sections">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -102,6 +90,20 @@
       <Association Name="Students_Groups_Presence" Member="Presence" ThisKey="ID" OtherKey="Group_StudentID" Type="Presence" />
       <Association Name="Sections_Students_Groups" Member="Sections" ThisKey="GroupID" OtherKey="ID" Type="Sections" IsForeignKey="true" />
       <Association Name="Students_Students_Groups" Member="Students" ThisKey="StudentAlbumNr" OtherKey="AlbumNr" Type="Students" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Salt" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Hash" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeOfUser" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Users_Students" Member="Students" ThisKey="ID" OtherKey="UserID" Type="Students" />
+      <Association Name="Users_Teachers" Member="Teachers" ThisKey="ID" OtherKey="UserID" Type="Teachers" />
     </Type>
   </Table>
 </Database>

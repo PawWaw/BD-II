@@ -40,7 +40,7 @@ namespace BizzLayer
                         el.Login,
                         el.Name,
                         el.Surname,
-                        el.Password,
+                        el.Hash,
                         el.TypeOfUser,
                         ol.UserID,
                         ol.AlbumNr
@@ -172,7 +172,8 @@ namespace BizzLayer
                 res.Login = user.Login;
                 res.Name = user.Name;
                 res.Surname = user.Surname;
-                res.Password = user.Password;
+                res.Hash = user.Hash;
+                res.Salt = user.Salt;
                 res.TypeOfUser = user.TypeOfUser;
                 dc.Users.InsertOnSubmit(res);
                 dc.SubmitChanges();
@@ -229,6 +230,8 @@ namespace BizzLayer
                 res.Name = user.Name;
                 res.Surname = user.Surname;
                 res.TypeOfUser = user.TypeOfUser;
+                res.Hash = user.Hash;
+                res.Salt = user.Salt;
                 dc.SubmitChanges();
             }
         }
@@ -268,9 +271,15 @@ namespace BizzLayer
         public static Users LogIn(Users searchCrit)
         {
             BDIIDataContext dc = new BDIIDataContext();
-
-            Users usr = dc.Users.Where(x => Equals(x.Password,searchCrit.Password)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x).SingleOrDefault();
+            Users usr = dc.Users.Where(x => Equals(x.Hash,searchCrit.Hash)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x).SingleOrDefault();
             return usr;
+        }
+
+        public static String GetSalt(Users searchCrit)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+            String salt = dc.Users.Where(x => x.Login == searchCrit.Login).Select(x => x.Salt).SingleOrDefault();
+            return salt != null ? salt : null;
         }
     }
 
@@ -374,8 +383,10 @@ namespace BizzLayer
         {
             using (BDIIDataContext dc = new BDIIDataContext())
             {
-                int max = dc.Sections.Select(x => x.ID).Max();
-                return max;
+                if (dc.Sections.Select(x => x.ID).Count() == 0)
+                    return 0;
+                else
+                    return dc.Sections.Select(x => x.ID).Max();
             }
         }
 

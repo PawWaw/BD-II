@@ -39,7 +39,8 @@ namespace GUI
             dataGridView1.Columns.Clear();
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.DataSource = UserFacade.GetUsers(userSearchCriteria, type);
-            dataGridView1.Columns.Remove("Password");
+            dataGridView1.Columns.Remove("Hash");
+            dataGridView1.Columns.Remove("Salt");
 
             for (int i = 0; i < 5; i++)
             {
@@ -61,7 +62,7 @@ namespace GUI
             dataGridView1.Columns.Clear();
 
             dataGridView1.DataSource = UserFacade.GetStudents(userSearchCriteria, nr);
-            dataGridView1.Columns.Remove("Password");
+            dataGridView1.Columns.Remove("Hash");
             dataGridView1.Columns.Remove("UserID");
             for (int i = 0; i < 6; i++)
             {

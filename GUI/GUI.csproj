@@ -76,6 +76,7 @@
     <Compile Include="Grades.Designer.cs">
       <DependentUpon>Grades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hashing.cs" />
     <Compile Include="OpenFile.cs">
       <SubType>Form</SubType>
     </Compile>

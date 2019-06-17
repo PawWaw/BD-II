@@ -36,11 +36,6 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameTextbox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Account_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AlbumNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountTypeLabel = new System.Windows.Forms.Label();
             this.TypeCombobox = new System.Windows.Forms.ComboBox();
             this.AlbumNumberLabel = new System.Windows.Forms.Label();
@@ -112,56 +107,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.LastName,
-            this.FirstName,
-            this.Login,
-            this.Account_type,
-            this.AlbumNumber});
             this.dataGridView1.Location = new System.Drawing.Point(30, 80);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(800, 450);
             this.dataGridView1.TabIndex = 12;
-            // 
-            // LastName
-            // 
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.MaxInputLength = 100;
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            this.LastName.Width = 170;
-            // 
-            // FirstName
-            // 
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.MaxInputLength = 50;
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            this.FirstName.Width = 170;
-            // 
-            // Login
-            // 
-            this.Login.HeaderText = "Login";
-            this.Login.MaxInputLength = 50;
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Width = 170;
-            // 
-            // Account_type
-            // 
-            this.Account_type.HeaderText = "Account Type";
-            this.Account_type.MaxInputLength = 3;
-            this.Account_type.Name = "Account_type";
-            this.Account_type.ReadOnly = true;
-            this.Account_type.Width = 120;
-            // 
-            // AlbumNumber
-            // 
-            this.AlbumNumber.HeaderText = "Album Number";
-            this.AlbumNumber.Name = "AlbumNumber";
-            this.AlbumNumber.ReadOnly = true;
-            this.AlbumNumber.Width = 120;
             // 
             // AccountTypeLabel
             // 
@@ -255,11 +205,6 @@
         private System.Windows.Forms.ComboBox TypeCombobox;
         private System.Windows.Forms.Label AlbumNumberLabel;
         private System.Windows.Forms.TextBox AlbumTextbox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Account_type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AlbumNumber;
         private System.Windows.Forms.Button SearchButton;
     }
 }

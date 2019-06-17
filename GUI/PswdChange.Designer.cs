@@ -32,7 +32,7 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.PswdLabel = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PswdTextbox = new System.Windows.Forms.TextBox();
             this.LoginTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -74,13 +74,13 @@
             this.LoginLabel.TabIndex = 3;
             this.LoginLabel.Text = "Login:";
             // 
-            // textBox1
+            // PswdTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 4;
+            this.PswdTextbox.Location = new System.Drawing.Point(110, 100);
+            this.PswdTextbox.Name = "PswdTextbox";
+            this.PswdTextbox.PasswordChar = '*';
+            this.PswdTextbox.Size = new System.Drawing.Size(100, 22);
+            this.PswdTextbox.TabIndex = 4;
             // 
             // LoginTextbox
             // 
@@ -95,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(232, 253);
             this.Controls.Add(this.LoginTextbox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PswdTextbox);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.PswdLabel);
             this.Controls.Add(this.CloseButton);
@@ -116,7 +116,7 @@
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label PswdLabel;
         private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PswdTextbox;
         private System.Windows.Forms.TextBox LoginTextbox;
     }
 }
