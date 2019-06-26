@@ -54,7 +54,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf|Zip Files (*.zip;*.7z)|*7z;*.zip";
+            this.openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf|Zip Files (*.zip)|*.zip|Text Files|*.txt";
             // 
             // FilenameLabel
             // 

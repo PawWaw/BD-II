@@ -51,15 +51,15 @@ namespace DataLayer
     partial void InsertPresence(Presence instance);
     partial void UpdatePresence(Presence instance);
     partial void DeletePresence(Presence instance);
-    partial void InsertFiles(Files instance);
-    partial void UpdateFiles(Files instance);
-    partial void DeleteFiles(Files instance);
     partial void InsertStudents_Groups(Students_Groups instance);
     partial void UpdateStudents_Groups(Students_Groups instance);
     partial void DeleteStudents_Groups(Students_Groups instance);
     partial void InsertUsers(Users instance);
     partial void UpdateUsers(Users instance);
     partial void DeleteUsers(Users instance);
+    partial void InsertFiles(Files instance);
+    partial void UpdateFiles(Files instance);
+    partial void DeleteFiles(Files instance);
     #endregion
 		
 		public BDIIDataContext() : 
@@ -148,14 +148,6 @@ namespace DataLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Files> Files
-		{
-			get
-			{
-				return this.GetTable<Files>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Students_Groups> Students_Groups
 		{
 			get
@@ -169,6 +161,14 @@ namespace DataLayer
 			get
 			{
 				return this.GetTable<Users>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Files> Files
+		{
+			get
+			{
+				return this.GetTable<Files>();
 			}
 		}
 	}
@@ -189,9 +189,9 @@ namespace DataLayer
 		
 		private string _Status;
 		
-		private EntitySet<Files> _Files;
-		
 		private EntitySet<Students_Groups> _Students_Groups;
+		
+		private EntitySet<Files> _Files;
 		
 		private EntityRef<Sems> _Sems;
 		
@@ -215,8 +215,8 @@ namespace DataLayer
 		
 		public Sections()
 		{
-			this._Files = new EntitySet<Files>(new Action<Files>(this.attach_Files), new Action<Files>(this.detach_Files));
 			this._Students_Groups = new EntitySet<Students_Groups>(new Action<Students_Groups>(this.attach_Students_Groups), new Action<Students_Groups>(this.detach_Students_Groups));
+			this._Files = new EntitySet<Files>(new Action<Files>(this.attach_Files), new Action<Files>(this.detach_Files));
 			this._Sems = default(EntityRef<Sems>);
 			this._Topics = default(EntityRef<Topics>);
 			OnCreated();
@@ -330,19 +330,6 @@ namespace DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Files", ThisKey="ID", OtherKey="SectionID")]
-		public EntitySet<Files> Files
-		{
-			get
-			{
-				return this._Files;
-			}
-			set
-			{
-				this._Files.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Students_Groups", Storage="_Students_Groups", ThisKey="ID", OtherKey="GroupID")]
 		public EntitySet<Students_Groups> Students_Groups
 		{
@@ -353,6 +340,19 @@ namespace DataLayer
 			set
 			{
 				this._Students_Groups.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Files", ThisKey="ID", OtherKey="SectionID")]
+		public EntitySet<Files> Files
+		{
+			get
+			{
+				return this._Files;
+			}
+			set
+			{
+				this._Files.Assign(value);
 			}
 		}
 		
@@ -444,18 +444,6 @@ namespace DataLayer
 			}
 		}
 		
-		private void attach_Files(Files entity)
-		{
-			this.SendPropertyChanging();
-			entity.Sections = this;
-		}
-		
-		private void detach_Files(Files entity)
-		{
-			this.SendPropertyChanging();
-			entity.Sections = null;
-		}
-		
 		private void attach_Students_Groups(Students_Groups entity)
 		{
 			this.SendPropertyChanging();
@@ -463,6 +451,18 @@ namespace DataLayer
 		}
 		
 		private void detach_Students_Groups(Students_Groups entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sections = null;
+		}
+		
+		private void attach_Files(Files entity)
+		{
+			this.SendPropertyChanging();
+			entity.Sections = this;
+		}
+		
+		private void detach_Files(Files entity)
 		{
 			this.SendPropertyChanging();
 			entity.Sections = null;
@@ -1615,205 +1615,6 @@ namespace DataLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Files")]
-	public partial class Files : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.DateTime _Date;
-		
-		private System.Data.Linq.Binary _File;
-		
-		private int _SectionID;
-		
-		private string _Details;
-		
-		private EntityRef<Sections> _Sections;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnFileChanging(System.Data.Linq.Binary value);
-    partial void OnFileChanged();
-    partial void OnSectionIDChanging(int value);
-    partial void OnSectionIDChanged();
-    partial void OnDetailsChanging(string value);
-    partial void OnDetailsChanged();
-    #endregion
-		
-		public Files()
-		{
-			this._Sections = default(EntityRef<Sections>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[File]", Storage="_File", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary File
-		{
-			get
-			{
-				return this._File;
-			}
-			set
-			{
-				if ((this._File != value))
-				{
-					this.OnFileChanging(value);
-					this.SendPropertyChanging();
-					this._File = value;
-					this.SendPropertyChanged("File");
-					this.OnFileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionID", DbType="Int NOT NULL")]
-		public int SectionID
-		{
-			get
-			{
-				return this._SectionID;
-			}
-			set
-			{
-				if ((this._SectionID != value))
-				{
-					if (this._Sections.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSectionIDChanging(value);
-					this.SendPropertyChanging();
-					this._SectionID = value;
-					this.SendPropertyChanged("SectionID");
-					this.OnSectionIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Details", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
-		public string Details
-		{
-			get
-			{
-				return this._Details;
-			}
-			set
-			{
-				if ((this._Details != value))
-				{
-					this.OnDetailsChanging(value);
-					this.SendPropertyChanging();
-					this._Details = value;
-					this.SendPropertyChanged("Details");
-					this.OnDetailsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Sections", ThisKey="SectionID", OtherKey="ID", IsForeignKey=true)]
-		public Sections Sections
-		{
-			get
-			{
-				return this._Sections.Entity;
-			}
-			set
-			{
-				Sections previousValue = this._Sections.Entity;
-				if (((previousValue != value) 
-							|| (this._Sections.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Sections.Entity = null;
-						previousValue.Files.Remove(this);
-					}
-					this._Sections.Entity = value;
-					if ((value != null))
-					{
-						value.Files.Add(this);
-						this._SectionID = value.ID;
-					}
-					else
-					{
-						this._SectionID = default(int);
-					}
-					this.SendPropertyChanged("Sections");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Students_Groups")]
 	public partial class Students_Groups : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2365,6 +2166,229 @@ namespace DataLayer
 		{
 			this.SendPropertyChanging();
 			entity.Users = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Files")]
+	public partial class Files : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.DateTime _Date;
+		
+		private System.Data.Linq.Binary _File;
+		
+		private int _SectionID;
+		
+		private string _Details;
+		
+		private string _Ext;
+		
+		private EntityRef<Sections> _Sections;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnFileChanging(System.Data.Linq.Binary value);
+    partial void OnFileChanged();
+    partial void OnSectionIDChanging(int value);
+    partial void OnSectionIDChanged();
+    partial void OnDetailsChanging(string value);
+    partial void OnDetailsChanged();
+    partial void OnExtChanging(string value);
+    partial void OnExtChanged();
+    #endregion
+		
+		public Files()
+		{
+			this._Sections = default(EntityRef<Sections>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[File]", Storage="_File", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary File
+		{
+			get
+			{
+				return this._File;
+			}
+			set
+			{
+				if ((this._File != value))
+				{
+					this.OnFileChanging(value);
+					this.SendPropertyChanging();
+					this._File = value;
+					this.SendPropertyChanged("File");
+					this.OnFileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionID", DbType="Int NOT NULL")]
+		public int SectionID
+		{
+			get
+			{
+				return this._SectionID;
+			}
+			set
+			{
+				if ((this._SectionID != value))
+				{
+					if (this._Sections.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSectionIDChanging(value);
+					this.SendPropertyChanging();
+					this._SectionID = value;
+					this.SendPropertyChanged("SectionID");
+					this.OnSectionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Details", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
+		public string Details
+		{
+			get
+			{
+				return this._Details;
+			}
+			set
+			{
+				if ((this._Details != value))
+				{
+					this.OnDetailsChanging(value);
+					this.SendPropertyChanging();
+					this._Details = value;
+					this.SendPropertyChanged("Details");
+					this.OnDetailsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ext", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
+		public string Ext
+		{
+			get
+			{
+				return this._Ext;
+			}
+			set
+			{
+				if ((this._Ext != value))
+				{
+					this.OnExtChanging(value);
+					this.SendPropertyChanging();
+					this._Ext = value;
+					this.SendPropertyChanged("Ext");
+					this.OnExtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sections_Files", Storage="_Sections", ThisKey="SectionID", OtherKey="ID", IsForeignKey=true)]
+		public Sections Sections
+		{
+			get
+			{
+				return this._Sections.Entity;
+			}
+			set
+			{
+				Sections previousValue = this._Sections.Entity;
+				if (((previousValue != value) 
+							|| (this._Sections.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Sections.Entity = null;
+						previousValue.Files.Remove(this);
+					}
+					this._Sections.Entity = value;
+					if ((value != null))
+					{
+						value.Files.Add(this);
+						this._SectionID = value.ID;
+					}
+					else
+					{
+						this._SectionID = default(int);
+					}
+					this.SendPropertyChanged("Sections");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

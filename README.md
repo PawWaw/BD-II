@@ -1,4 +1,5 @@
 Versions: </br>
+9.9.1 - blob added, minor bugs fixed</br>
 9.9 - sems adding, minor bugs fixed</br>
 9.8 - password hashing added, minor bugs fixed</br>
 9.7 - bugs fixed</br>

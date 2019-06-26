@@ -20,12 +20,14 @@ namespace GUI
         }
 
         int id;
+        Students_Groups[] stdgrp;
         int secID;
-        int topID; 
+        int topID = 0; 
 
         public MoreInfo(int mode, Sections sec, Topics top)
         {
-            topID = top.ID;
+            if(top != null)
+                topID = top.ID;
             if(mode == 0)
             {
                 InitializeComponent();
@@ -136,9 +138,10 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            int flag = 0;
             if (SaveButton.Text.Equals("Leave"))
             {
-                UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, false);
+                UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, secID, false);
                 this.Hide();
             }
             else
@@ -150,11 +153,33 @@ namespace GUI
                     if (StatusTextbox.Text == "Open")
                     {
                         MessageBox.Show("Joining this section will cause leaving current section!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        id = UserFacade.GetGroupStudentID(UserFacade.GetSingleStudent(LoginPanel.albumNumber).ID);
-                        if (id == 0)
-                            DependencyFacade.SetStudentSection(LoginPanel.albumNumber, sec);
+                        stdgrp = UserFacade.GetGroupStudentID(UserFacade.GetSingleStudent(LoginPanel.albumNumber).ID);
+                        if(stdgrp != null)
+                        {
+                            //for(int i = 0; i < stdgrp.Length; i++)
+                            //{
+                            //    if (stdgrp[i].Active == true)
+                            //    {
+                            //        UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, 0, false);
+                            //        flag = 1;
+                            //    }
+                            //    if (stdgrp[i].GroupID == secID)
+                            //    {
+                            //        UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, secID, true);
+                            //        flag = 0;
+                            //    }
+                            //}
+                            //if(flag == 1)
+                            //{
+                                DependencyFacade.SetStudentSection(LoginPanel.albumNumber, sec);
+                                //flag = 0;
+                            //}
+                        }
                         else
-                            UserFacade.UpdateGroupStudent(LoginPanel.albumNumber, true);
+                        {
+                            DependencyFacade.SetStudentSection(LoginPanel.albumNumber, sec);
+                        }
+
                     }
                     else
                     {
@@ -174,7 +199,8 @@ namespace GUI
                     else
                         sec.Status = "fin";
 
-                    sec.TopicID = topID;
+                    if(topID != 0)
+                        sec.TopicID = topID;
                     DependencyFacade.UpdateSection(sec);
                 }
                 this.Hide();

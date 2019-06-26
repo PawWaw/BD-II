@@ -7,8 +7,8 @@
       <Column Name="TopicID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Association Name="Sections_Files" Member="Files" ThisKey="ID" OtherKey="SectionID" Type="Files" />
       <Association Name="Sections_Students_Groups" Member="Students_Groups" ThisKey="ID" OtherKey="GroupID" Type="Students_Groups" />
+      <Association Name="Sections_Files" Member="Files" ThisKey="ID" OtherKey="SectionID" Type="Files" />
       <Association Name="Sems_Sections" Member="Sems" ThisKey="SemID" OtherKey="ID" Type="Sems" IsForeignKey="true" />
       <Association Name="Topics_Sections" Member="Topics" ThisKey="TopicID" OtherKey="ID" Type="Topics" IsForeignKey="true" />
     </Type>
@@ -70,16 +70,6 @@
       <Association Name="Students_Groups_Presence" Member="Students_Groups" ThisKey="Group_StudentID" OtherKey="ID" Type="Students_Groups" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Files" Member="Files">
-    <Type Name="Files">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="[File]" Member="File" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Details" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
-      <Association Name="Sections_Files" Member="Sections" ThisKey="SectionID" OtherKey="ID" Type="Sections" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Students_Groups" Member="Students_Groups">
     <Type Name="Students_Groups">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -104,6 +94,17 @@
       <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Users_Students" Member="Students" ThisKey="ID" OtherKey="UserID" Type="Students" />
       <Association Name="Users_Teachers" Member="Teachers" ThisKey="ID" OtherKey="UserID" Type="Teachers" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Files" Member="Files">
+    <Type Name="Files">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="[File]" Member="File" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Ext" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="Sections_Files" Member="Sections" ThisKey="SectionID" OtherKey="ID" Type="Sections" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

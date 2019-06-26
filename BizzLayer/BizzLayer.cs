@@ -149,18 +149,18 @@ namespace BizzLayer
             return false;
         }
 
-        public static int GetGroupStudentID(int userID)
+        public static Students_Groups[] GetGroupStudentID(int userID)
         {
             BDIIDataContext dc = new BDIIDataContext();
 
             var res = (from el in dc.Students_Groups
                        join ol in dc.Students on el.StudentAlbumNr equals ol.AlbumNr
                        where (userID == ol.UserID)
-                       select el).SingleOrDefault();
+                       select el).ToArray();
             if (res != null)
-                return res.ID;
+                return res;
             else
-                return 0;
+                return null;
         }
 
         public static Users InsertUser(Users user)
@@ -255,17 +255,20 @@ namespace BizzLayer
             }
         }
 
-        public static void UpdateGroupStudent(int number, bool state) 
+        public static void UpdateGroupStudent(int number, int secID, bool state) 
         {
             using (BDIIDataContext dc = new BDIIDataContext())
             {
-                Students_Groups res = (from el in dc.Students_Groups
-                                      where el.StudentAlbumNr == number.ToString()
-                                      select el).SingleOrDefault();
-                if(res != null)
+                if(state == false)
                 {
-                    res.Active = state;
-                    dc.SubmitChanges();
+                    Students_Groups res = (from el in dc.Students_Groups
+                                           where (el.StudentAlbumNr == number.ToString() && el.GroupID == secID)
+                                           select el).SingleOrDefault();
+                    if (res != null)
+                    {
+                        res.Active = state;
+                        dc.SubmitChanges();
+                    }
                 }
             }
         }
@@ -320,10 +323,21 @@ namespace BizzLayer
                           el.Date,
                           el.SectionID,
                           el.Details,
-                          el.File
+                          el.File,
+                          el.Ext
                       };
+            return res;           
+        }
+
+        public static Files GetFile(int id)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+
+            var res = (from el in dc.Files
+                      where (el.ID == id)
+                      select el).SingleOrDefault();
+
             return res;
-            
         }
 
         public static Sections GetSection(Sections searchCrit)
@@ -473,7 +487,12 @@ namespace BizzLayer
                 {
                     Presence prs = new Presence();
                     prs.Present = false;
-                    prs.Group_StudentID = UserFacade.GetGroupStudentID(users[i].ID);
+                    Students_Groups[] stdgrp = UserFacade.GetGroupStudentID(users[i].ID);
+                    for(int j = 0; j < stdgrp.Length; j++)
+                    {
+                        if(stdgrp[j].Active == true)
+                            prs.Group_StudentID = stdgrp[j].ID;
+                    }
                     prs.ID = -1;
                     prs.Date = date;
 
@@ -483,7 +502,7 @@ namespace BizzLayer
             }
         }
 
-        public static void InsertFile(byte[] file, int ID, string comment)
+        public static void InsertFile(byte[] file, int ID, string comment, string extension)
         {
             var datetime = DateTime.Now;
             var date = datetime.Date;
@@ -495,6 +514,7 @@ namespace BizzLayer
                 fls.File = file;
                 fls.Date = date;
                 fls.Details = comment;
+                fls.Ext = extension;
                 dc.Files.InsertOnSubmit(fls);
                 dc.SubmitChanges();
             }
@@ -622,9 +642,23 @@ namespace BizzLayer
                     res.StudentAlbumNr = res.StudentAlbumNr;
                     oldnr = res.GroupID;
                     if (sec.ID != 0)
-                        res.GroupID = DependencyFacade.GetSection(sec).ID;
+                    {
+                        if (sec.ID == res.GroupID)
+                            res.Active = !res.Active;
+                        else
+                        {
+                            res.GroupID = DependencyFacade.GetSection(sec).ID;
+                            if (res.Active == false)
+                                res.Active = true;
+                        }
+                    }
                     else
-                        res.Active = false;
+                    {
+                        if (res.Active == true)
+                            res.Active = false;
+                        else
+                            res.Active = true;
+                    }
                     nr = res.GroupID;
                     dc.SubmitChanges();
                 }
@@ -640,12 +674,12 @@ namespace BizzLayer
 
             if(newgrp.GroupSize == DependencyFacade.GetStudentNumber(newgrp.ID))
             {
-                newgrp.Status = "Close";
+                newgrp.Status = "cls";
                 DependencyFacade.UpdateSection(newgrp);
             }
             if(oldgrp.GroupSize != DependencyFacade.GetStudentNumber(oldgrp.ID))
             {
-                oldgrp.Status = "Open";
+                oldgrp.Status = "opn";
                 DependencyFacade.UpdateSection(oldgrp);
             }          
         }

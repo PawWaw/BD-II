@@ -48,9 +48,9 @@
             this.OpenButton.Location = new System.Drawing.Point(634, 24);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(100, 30);
-            this.OpenButton.TabIndex = 1;
+            this.OpenButton.TabIndex = 3;
             this.OpenButton.Text = "Open";
-            this.OpenButton.UseVisualStyleBackColor = true;
+            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
             // 
             // CloseButton
             // 

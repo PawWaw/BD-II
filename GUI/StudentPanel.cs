@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,8 +16,7 @@ namespace GUI
 {
     public partial class StudentWindow : Form
     {
-
-        byte[] pdfBytes;
+        byte[] file;
         int secID;
 
         public StudentWindow()
@@ -50,27 +50,38 @@ namespace GUI
                     {
                         case ".pdf":
                         case ".zip":
-                        case ".7z": //Add case here if you add some filter
+                        case ".txt":
                             FilenameLabel.Text = openFileDialog1.SafeFileName;
                             noErrors = true;
                             break;
                         default:
-                            MessageBox.Show("Please choose file with pdf extension or archive file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Please choose file with pdf/txt extension or archive file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             break;
                     }
+                    file = GetFile(openFileDialog1.FileName);
                 }
                 else { noErrors = true; }
-                //string path = Path.GetFullPath(openFileDialog1.FileName);
-                //pdfBytes = File.ReadAllBytes(path);
-                //string pdf = Convert.ToString(pdfBytes);
             }
             Sections sec = new Sections();
             sec = DependencyFacade.GetMySection(LoginPanel.albumNumber);
-            if(sec != null)
+            if(sec != null) 
             {
-                FileDetails fld = new FileDetails(pdfBytes, sec.ID);
+                FileDetails fld = new FileDetails(file, sec.ID, Path.GetExtension(openFileDialog1.FileName).ToLower().Substring(1));
                 fld.ShowDialog();
             }
+        }
+
+        private byte[] GetFile(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            byte[] file = br.ReadBytes((int)fs.Length);
+
+            br.Close();
+            fs.Close();
+
+            return file;
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

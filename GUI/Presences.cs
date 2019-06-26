@@ -50,7 +50,13 @@ namespace GUI
             {
                 for (int k = 0; k < users.Length; k++)
                 {
-                    int id = UserFacade.GetGroupStudentID(users[k].ID);
+                    int id = 0;
+                    Students_Groups[] stdgrp = UserFacade.GetGroupStudentID(users[k].ID);
+                    for (int l = 0; l < stdgrp.Length; l++)
+                    {
+                        if (stdgrp[l].Active == true)
+                            id = stdgrp[l].ID;
+                    }
                     if (id == pres[j].Group_StudentID)
                     {
                         var datetime = pres[j].Date;
@@ -92,10 +98,17 @@ namespace GUI
                 {
                     for (int j = 0; j < pres.Length; j++)
                     {
-                        if (UserFacade.GetGroupStudentID(users[i].ID) == pres[j].Group_StudentID && presDates[k] == pres[j].Date)
+                        Students_Groups[] stdgrp = UserFacade.GetGroupStudentID(users[i].ID);
+                        for (int l = 0; l < stdgrp.Length; l++)
                         {
-                            dataGridView1[i, k].Value = pres[j].Present;
-                            flag = 1;
+                            if (stdgrp[l].Active == true)
+                            {
+                                if (stdgrp[l].ID == pres[j].Group_StudentID && presDates[k] == pres[j].Date)
+                                {
+                                    dataGridView1[i, k].Value = pres[j].Present;
+                                    flag = 1;
+                                }
+                            }
                         }
                     }
                     if (flag == 0)
@@ -127,7 +140,14 @@ namespace GUI
             {
                 for(int j = 0; j < users.Length; j++)
                 {
-                    DependencyFacade.UpdatePresences(presDates[i], UserFacade.GetGroupStudentID(users[j].ID), dataGridView1[j, i].Value.ToString());
+                    Students_Groups[] stdgrp = UserFacade.GetGroupStudentID(users[j].ID);
+                    for (int l = 0; l < stdgrp.Length; l++)
+                    {
+                        if (stdgrp[l].Active == true)
+                        {
+                            DependencyFacade.UpdatePresences(presDates[i], stdgrp[l].ID, dataGridView1[j, i].Value.ToString());
+                        }
+                    }
                 }
             }
             this.Hide();

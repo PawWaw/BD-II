@@ -16,18 +16,20 @@ namespace GUI
     {
         byte[] file;
         int ID;
+        string ext;
 
-        public FileDetails(byte[] filedata, int sectionID)
+        public FileDetails(byte[] filedata, int sectionID, string extension)
         {
             InitializeComponent();
 
             file = filedata;
             ID = sectionID;
+            ext = extension;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            DependencyFacade.InsertFile(file, ID, richTextBox1.Text);
+            DependencyFacade.InsertFile(file, ID, richTextBox1.Text, ext);
             this.Hide();
         }
 
