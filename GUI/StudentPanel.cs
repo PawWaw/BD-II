@@ -64,7 +64,7 @@ namespace GUI
             }
             Sections sec = new Sections();
             sec = DependencyFacade.GetMySection(LoginPanel.albumNumber);
-            if(sec != null) 
+            if(sec != null && openFileDialog1.FileName != "") 
             {
                 FileDetails fld = new FileDetails(file, sec.ID, Path.GetExtension(openFileDialog1.FileName).ToLower().Substring(1));
                 fld.ShowDialog();

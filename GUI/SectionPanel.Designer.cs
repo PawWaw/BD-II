@@ -39,6 +39,7 @@
             this.PresenceButton = new System.Windows.Forms.Button();
             this.DelTopicButton = new System.Windows.Forms.Button();
             this.GradesButton = new System.Windows.Forms.Button();
+            this.GenerateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,11 +147,22 @@
             this.GradesButton.UseVisualStyleBackColor = true;
             this.GradesButton.Click += new System.EventHandler(this.GradesButton_Click);
             // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Location = new System.Drawing.Point(670, 370);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(100, 30);
+            this.GenerateButton.TabIndex = 40;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
             // SectionPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(782, 523);
+            this.Controls.Add(this.GenerateButton);
             this.Controls.Add(this.GradesButton);
             this.Controls.Add(this.DelTopicButton);
             this.Controls.Add(this.PresenceButton);
@@ -188,5 +200,6 @@
         private System.Windows.Forms.Button PresenceButton;
         private System.Windows.Forms.Button DelTopicButton;
         private System.Windows.Forms.Button GradesButton;
+        private System.Windows.Forms.Button GenerateButton;
     }
 }

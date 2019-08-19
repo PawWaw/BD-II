@@ -33,8 +33,15 @@ namespace GUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            DependencyFacade.SetTopic(topics[TopicCombobox.SelectedIndex].ID, Convert.ToInt32(SectionTexbox.Text));
-            this.Hide();
+            if(topics[TopicCombobox.SelectedIndex].Status.Equals("Open"))
+            {
+                DependencyFacade.SetTopic(topics[TopicCombobox.SelectedIndex].ID, Convert.ToInt32(SectionTexbox.Text));
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("This topic is already closed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

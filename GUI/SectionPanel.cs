@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using BizzLayer;
 using DataLayer;
 
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using iText.Layout;
+
 namespace GUI
 {
     public partial class SectionPanel : Form
@@ -42,6 +46,7 @@ namespace GUI
             {
                 grp.ID = (int)row.Cells[0].Value;
                 grp.GroupSize = (byte)row.Cells[1].Value;
+                grp.Status = row.Cells[2].Value.ToString();
                 if (row.Cells[4].Value != null)
                 {
                     grp.TopicID = (int)row.Cells[4].Value;
@@ -148,6 +153,43 @@ namespace GUI
             {
                 AddMark mrk = new AddMark(Convert.ToInt32(dataGridView1.SelectedCells[0].Value));
                 mrk.ShowDialog();
+            }
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+
+            var exportFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var exportFile = System.IO.Path.Combine(exportFolder, "Zestawienie.pdf");
+
+            Users[] users = UserFacade.GetStudentsToPDFForm(LoginPanel.TeacherID);
+            Students_Groups[] groups = DependencyFacade.GetStudentsGroupsPDF(LoginPanel.TeacherID);
+            Table tab = new Table(3);
+
+            tab.AddCell("Section number:");
+            tab.AddCell("Album number:");
+            tab.AddCell("Mark:");
+
+            using (var writer = new PdfWriter(exportFile))
+            {
+                using (var pdf = new PdfDocument(writer))
+                {
+                    if(groups != null)
+                    {
+                        var doc = new Document(pdf);
+                        doc.Add(new Paragraph("List of grades for semester:\n\n\n\n\n\n").SetRelativePosition(200,20,50,200));
+                        for (int i = 0; i < groups.Length; i++)
+                        {
+                            tab.AddCell(groups[i].GroupID.ToString());
+                            tab.AddCell(groups[i].StudentAlbumNr + ": ");
+                            if (!groups[i].Mark.ToString().Equals(null))
+                                tab.AddCell(groups[i].Mark.ToString());
+                            else
+                                tab.AddCell("No mark");
+                        }
+                        doc.Add(tab);
+                    }
+                }
             }
         }
     }

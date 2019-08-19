@@ -189,19 +189,22 @@ namespace GUI
                 }
                 else
                 {
-                    sec.ID = id;
-                    sec.GroupSize = Convert.ToByte(PlacesTexbox.Text);
+                    if(!PlacesTexbox.Text.Equals(""))
+                    {
+                        sec.ID = id;
+                        sec.GroupSize = Convert.ToByte(PlacesTexbox.Text);
 
-                    if (StatusCombobox.Text == "Open")
-                        sec.Status = "opn";
-                    else if (StatusCombobox.Text == "Closed")
-                        sec.Status = "cls";
-                    else
-                        sec.Status = "fin";
+                        if (StatusCombobox.Text == "Open")
+                            sec.Status = "opn";
+                        else if (StatusCombobox.Text == "Closed")
+                            sec.Status = "cls";
+                        else
+                            sec.Status = "fin";
 
-                    if(topID != 0)
-                        sec.TopicID = topID;
-                    DependencyFacade.UpdateSection(sec);
+                        if (topID != 0)
+                            sec.TopicID = topID;
+                        DependencyFacade.UpdateSection(sec);
+                    }
                 }
                 this.Hide();
             }

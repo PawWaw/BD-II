@@ -163,6 +163,28 @@ namespace BizzLayer
                 return null;
         }
 
+        public static String GetSalt(Users searchCrit)
+        {
+            BDIIDataContext dc = new BDIIDataContext();
+            String salt = dc.Users.Where(x => x.Login == searchCrit.Login).Select(x => x.Salt).SingleOrDefault();
+            return salt != null ? salt : null;
+        }
+
+        public static Users[] GetStudentsToPDFForm(int ID)
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                var res = (from el in dc.Users
+                          join ol in dc.Students on el.ID equals ol.UserID
+                          join il in dc.Students_Groups on ol.AlbumNr equals il.StudentAlbumNr
+                          join ul in dc.Sections on il.GroupID equals ul.ID
+                          join yl in dc.Topics on ul.TopicID equals yl.ID
+                          where (yl.TeacherID == ID)
+                          select el).ToArray();
+                return res;
+            }
+        }
+
         public static Users InsertUser(Users user)
         {
             using (BDIIDataContext dc = new BDIIDataContext())
@@ -278,13 +300,6 @@ namespace BizzLayer
             BDIIDataContext dc = new BDIIDataContext();
             Users usr = dc.Users.Where(x => Equals(x.Hash,searchCrit.Hash)).Where(x=> Equals(x.Login, searchCrit.Login)).Select(x => x).SingleOrDefault();
             return usr;
-        }
-
-        public static String GetSalt(Users searchCrit)
-        {
-            BDIIDataContext dc = new BDIIDataContext();
-            String salt = dc.Users.Where(x => x.Login == searchCrit.Login).Select(x => x.Salt).SingleOrDefault();
-            return salt != null ? salt : null;
         }
     }
 
@@ -408,7 +423,7 @@ namespace BizzLayer
             var res = (from el in dc.Sections
                        join ol in dc.Students_Groups on el.ID equals ol.GroupID
                       where
-                      (Convert.ToInt32(ol.StudentAlbumNr) == albumnr)
+                      (Convert.ToInt32(ol.StudentAlbumNr) == albumnr && ol.Active != false)
                       select el).SingleOrDefault();
             return res;
         }
@@ -439,6 +454,21 @@ namespace BizzLayer
             {
                 Presence[] res = (from el in dc.Presence
                                   select el).ToArray();
+                return res;
+            }
+        }
+
+        public static Students_Groups[] GetStudentsGroupsPDF(int ID)
+        {
+            using (BDIIDataContext dc = new BDIIDataContext())
+            {
+                var res = (from el in dc.Users
+                           join ol in dc.Students on el.ID equals ol.UserID
+                           join il in dc.Students_Groups on ol.AlbumNr equals il.StudentAlbumNr
+                           join ul in dc.Sections on il.GroupID equals ul.ID
+                           join yl in dc.Topics on ul.TopicID equals yl.ID
+                           where (yl.TeacherID == ID)
+                           select il).ToArray();
                 return res;
             }
         }
