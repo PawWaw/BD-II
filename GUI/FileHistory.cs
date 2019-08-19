@@ -48,18 +48,18 @@ namespace GUI
 
             if (extension.Equals("txt"))
             {
-                fs = new FileStream("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "txt" + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
-                path = "C:/Users/pawel/source/repos/BD-II/file.txt";
+                fs = new FileStream("../BD-II/section" + id.ToString() + "txt" + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+                path = "../BD-II/section" + id.ToString() + "txt" + ".txt";
             }
             else if (extension.Equals("pdf"))
             {
-                fs = new FileStream("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "pdf" + ".pdf", FileMode.OpenOrCreate, FileAccess.Write);
-                path = "C:/Users/pawel/source/repos/BD-II/file.pdf";
+                fs = new FileStream("../BD-II/section" + id.ToString() + "pdf" + ".pdf", FileMode.OpenOrCreate, FileAccess.Write);
+                path = "../BD-II/section" + id.ToString() + "pdf" + ".pdf";
             }
             else
             {
-                fs = new FileStream("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "zip" + ".zip", FileMode.OpenOrCreate, FileAccess.Write);
-                path = "C:/Users/pawel/source/repos/BD-II/file.zip";
+                fs = new FileStream("../BD-II/section" + id.ToString() + "zip" + ".zip", FileMode.OpenOrCreate, FileAccess.Write);
+                path = "../BD-II/section" + id.ToString() + "zip" + ".zip";
             }
 
             bw = new BinaryWriter(fs);
@@ -70,14 +70,17 @@ namespace GUI
             bw.Close();
             fs.Close();
             Process process = new Process();
-            if (File.Exists("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "txt" + ".txt") && extension.Equals("txt"))
-                process.StartInfo.FileName = "C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "txt" + ".txt";
-            else if (File.Exists("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "pdf" + ".pdf") && extension.Equals("pdf"))
-                process.StartInfo.FileName = "C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "pdf" + ".pdf";
-            else if (File.Exists("C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "zip" + ".zip") && extension.Equals("zip"))
-                process.StartInfo.FileName = "C:/Users/pawel/source/repos/BD-II/section" + id.ToString() + "zip" + ".zip";
+            if (File.Exists("../BD-II/section" + id.ToString() + "txt" + ".txt") && extension.Equals("txt"))
+                process.StartInfo.FileName = "../BD-II/section" + id.ToString() + "txt" + ".txt";
+            else if (File.Exists("../BD-II/section" + id.ToString() + "pdf" + ".pdf") && extension.Equals("pdf"))
+                process.StartInfo.FileName = "../BD-II/section" + id.ToString() + "pdf" + ".pdf";
+            else if (File.Exists("../BD-II/section" + id.ToString() + "zip" + ".zip") && extension.Equals("zip"))
+                process.StartInfo.FileName = "../BD-II/section" + id.ToString() + "zip" + ".zip";
             else
+            {
                 MessageBox.Show("Wrong file!");
+                return path;
+            }
             process.Start();
             process.WaitForExit();
             return path;

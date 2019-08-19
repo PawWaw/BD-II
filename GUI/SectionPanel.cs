@@ -160,7 +160,7 @@ namespace GUI
         {
 
             var exportFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var exportFile = System.IO.Path.Combine(exportFolder, "Zestawienie.pdf");
+            var exportFile = System.IO.Path.Combine(exportFolder, "MarkSummary.pdf");
 
             Users[] users = UserFacade.GetStudentsToPDFForm(LoginPanel.TeacherID);
             Students_Groups[] groups = DependencyFacade.GetStudentsGroupsPDF(LoginPanel.TeacherID);
