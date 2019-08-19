@@ -1,4 +1,5 @@
 Versions: </br>
+9.9.3 Minor bugs fixed, added dynamic paths</br>
 9.9.2 - Added generation of summaries, minor bug fixed</br>
 9.9.1 - blob added, minor bugs fixed</br>
 9.9 - sems adding, minor bugs fixed</br>
